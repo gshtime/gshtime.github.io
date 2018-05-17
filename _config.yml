@@ -28,7 +28,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year:month-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
@@ -78,5 +78,17 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy: 
   type: git
-  repo: https://github.com/gshtime/gshtime.github.io.git
+  repo: git@github.com:gshtime/gshtime.github.io.git
   branch: master
+
+# hexo-admin authentification
+admin:
+  username: gshtime
+  password_hash: $2a$10$608uiQEldgHnF.SwzpPAOuauJ6K0a3AQSKDvoOnKIxQ595mqiLxeO
+  secret: beiyouwangluojishuyanjiuyuan
+  qiniuCfg:
+      imageslim: false  # 启动图片瘦身，仅华东区bucket可以使用
+      AccessKey: 'Lz8ELgpWZ9dY-uOmfWKF-m-hImAD6Cxif20A0WRl'
+      SecretKey: 'XLxoslSjczovB5vwjspShe99Xj6qhcqTz5lHYggH'
+      BucketName: 'gshtime-github-io-image'
+      bucketHost: 'p8vrqzrnj.bkt.clouddn.com'
