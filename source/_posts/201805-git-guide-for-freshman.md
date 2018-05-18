@@ -1,15 +1,58 @@
-title: git使用指南
+title: git 使用指南
 tags: git
 date: 2018-05-18 00:11:03
 ---
 
+# 克隆 git 仓库
+
+命令
+
+``` bash
+git clone <remote_repo> -b <branch>
+```
+
 # 远程仓库
 
+## 添加远程仓库
+
+``` bash
+git remote add origin http://192.168.36.10:10080/quantum_rng_testing/nist # （”quantum_rng_testing/nist“ 为工程的目录）
+```
+
 ## git push 命令
+
 git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相似。
+
 ```
-$ git push <远程主机名> <本地分支名>:<远程分支名>
+$ git push [参数] <远程主机名> <本地分支名>:<远程分支名>
 ```
+参数：
+- -u 第一次推送的时候，可以将分支进行关联，以后只要 `git push` 就行了
+
+### 强制覆盖远程分支
+
+``` bash
+# 方法一
+git push origin develop:master -f # 就可以把本地的develop分支强制(-f)推送到远程master
+
+# 方法二 
+git checkout master 		# 切换到旧的分支 
+git reset –hard develop 	# 将本地的旧分支 master 重置成 develop 
+git push origin master –force 	# 再推送到远程仓库
+```
+
+## 放弃本地所有修改，强制拉取远程更新
+
+开发时，对于本地的项目中修改不做保存操作（或代码改崩），可以用到Git pull的强制覆盖，具体代码如下：
+
+``` bash
+git fetch --all
+git reset --hard origin/master
+git pull //可以省略
+```
+git fetch 指令是下载远程仓库最新内容，不做合并 
+git reset 指令把HEAD指向master最新版本
+
 
 ## git 查看远程分支
 

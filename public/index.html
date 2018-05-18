@@ -303,7 +303,11 @@
       
         
           
-            <h1 id="hexo-主题"><a href="#hexo-主题" class="headerlink" title="hexo 主题"></a>hexo 主题</h1><h2 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h2><p>Next是Hexo一个精简的主题系统，包含多种外观（Schema）选择，“精于心，简于形”是Next的目标。</p>
+            <h1 id="可视化写博客"><a href="#可视化写博客" class="headerlink" title="可视化写博客"></a>可视化写博客</h1><p>借助vsc、atom之类的编辑器，可以实现hexo博客的编辑和实时预览，还可以试试 <code>hexo-admin</code>这款插件。</p>
+<p><code>hexo-admin</code> 能够管理文章，添加分类和标签，也可以一键部署到pages,现在图片可以实现粘贴上传，原插件为保存到<code>source/images</code>目录下,部署博客时同时上传。</p>
+<p>另外，还有一款<code>hexo-admin-qiniu</code> 插件，实现了自动上传文件到七牛云的配置，比较方便。（不需要先安装<code>hexo-admin</code>，直接装这个就行了）</p>
+<p>网址： <a href="https://github.com/xbotao/hexo-admin-qiniu" target="_blank" rel="noopener">hexo-admin-qiniu github</a></p>
+<h1 id="hexo-主题"><a href="#hexo-主题" class="headerlink" title="hexo 主题"></a>hexo 主题</h1><h2 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h2><p>Next是Hexo一个精简的主题系统，包含多种外观（Schema）选择，“精于心，简于形”是Next的目标。</p>
 <p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">Next主题主页</a></p>
 <h3 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> your-hexo-site</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
 <p>###</p>
@@ -381,7 +385,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/18/git-guide-for-freshman/" itemprop="url">git使用指南</a></h1>
+                <a class="post-title-link" href="/2018/05/18/git-guide-for-freshman/" itemprop="url">git 使用指南</a></h1>
         
 
         <div class="post-meta">
@@ -433,7 +437,19 @@
       
         
           
-            <h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="git-push-命令"><a href="#git-push-命令" class="headerlink" title="git push 命令"></a>git push 命令</h2><p>git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相似。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure></p>
+            <h1 id="克隆-git-仓库"><a href="#克隆-git-仓库" class="headerlink" title="克隆 git 仓库"></a>克隆 git 仓库</h1><p>命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;remote_repo&gt; -b &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin http://192.168.36.10:10080/quantum_rng_testing/nist <span class="comment"># （”quantum_rng_testing/nist“ 为工程的目录）</span></span><br></pre></td></tr></table></figure>
+<h2 id="git-push-命令"><a href="#git-push-命令" class="headerlink" title="git push 命令"></a>git push 命令</h2><p>git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相似。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push [参数] &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li>-u 第一次推送的时候，可以将分支进行关联，以后只要 <code>git push</code> 就行了</li>
+</ul>
+<h3 id="强制覆盖远程分支"><a href="#强制覆盖远程分支" class="headerlink" title="强制覆盖远程分支"></a>强制覆盖远程分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line">git push origin develop:master -f <span class="comment"># 就可以把本地的develop分支强制(-f)推送到远程master</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二 </span></span><br><span class="line">git checkout master 		<span class="comment"># 切换到旧的分支 </span></span><br><span class="line">git reset –hard develop 	<span class="comment"># 将本地的旧分支 master 重置成 develop </span></span><br><span class="line">git push origin master –force 	<span class="comment"># 再推送到远程仓库</span></span><br></pre></td></tr></table></figure>
+<h2 id="放弃本地所有修改，强制拉取远程更新"><a href="#放弃本地所有修改，强制拉取远程更新" class="headerlink" title="放弃本地所有修改，强制拉取远程更新"></a>放弃本地所有修改，强制拉取远程更新</h2><p>开发时，对于本地的项目中修改不做保存操作（或代码改崩），可以用到Git pull的强制覆盖，具体代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/master</span><br><span class="line">git pull //可以省略</span><br></pre></td></tr></table></figure>
+<p>git fetch 指令是下载远程仓库最新内容，不做合并<br>git reset 指令把HEAD指向master最新版本</p>
 <h2 id="git-查看远程分支"><a href="#git-查看远程分支" class="headerlink" title="git 查看远程分支"></a>git 查看远程分支</h2><p>查看远程分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure></p>
 <h2 id="git-拉取远程分支并创建本地分支"><a href="#git-拉取远程分支并创建本地分支" class="headerlink" title="git 拉取远程分支并创建本地分支"></a>git 拉取远程分支并创建本地分支</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>使用如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b 本地分支名 origin/远程分支名</span><br></pre></td></tr></table></figure></p>
 <p>使用该方式会在本地新建分支，并自动切换到该本地分支x</p>
