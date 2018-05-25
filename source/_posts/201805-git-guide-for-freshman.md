@@ -29,6 +29,14 @@ $ git push [参数] <远程主机名> <本地分支名>:<远程分支名>
 参数：
 - -u 第一次推送的时候，可以将分支进行关联，以后只要 `git push` 就行了
 
+### 删除远程分支
+如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。
+```
+$ git push origin :master
+# 等同于
+$ git push origin --delete master
+```
+
 ### 强制覆盖远程分支
 
 ``` bash
@@ -39,6 +47,13 @@ git push origin develop:master -f # 就可以把本地的develop分支强制(-f)
 git checkout master 		# 切换到旧的分支 
 git reset –hard develop 	# 将本地的旧分支 master 重置成 develop 
 git push origin master –force 	# 再推送到远程仓库
+```
+
+### 推送本地所有分支
+不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。
+```
+git push --all origin
+
 ```
 
 ## 放弃本地所有修改，强制拉取远程更新
@@ -54,14 +69,14 @@ git fetch 指令是下载远程仓库最新内容，不做合并
 git reset 指令把HEAD指向master最新版本
 
 
-## git 查看远程分支
+## 查看远程分支
 
 查看远程分支
 ```
 git branch -r 
 ```
 
-## git 拉取远程分支并创建本地分支
+## 拉取远程分支并创建本地分支
 
 ### 方法一
 
