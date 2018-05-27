@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Array 类型参数化数组scala Array 的初始化 12345// 简洁的方法创造和初始化：val numNames = Array(&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;)// 更罗嗦的调用 apply 方法：val numNames2 = Array.apply(&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;) 12345678910111213141516object HelloWorl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scala array list tuple and so on">
+<meta property="og:url" content="http://yoursite.com/2018/05/20/scala-array-list-tuple-and-so-on/index.html">
+<meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
+<meta property="og:description" content="Array 类型参数化数组scala Array 的初始化 12345// 简洁的方法创造和初始化：val numNames = Array(&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;)// 更罗嗦的调用 apply 方法：val numNames2 = Array.apply(&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;) 12345678910111213141516object HelloWorl">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-27T07:16:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scala array list tuple and so on">
+<meta name="twitter:description" content="Array 类型参数化数组scala Array 的初始化 12345// 简洁的方法创造和初始化：val numNames = Array(&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;)// 更罗嗦的调用 apply 方法：val numNames2 = Array.apply(&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;) 12345678910111213141516object HelloWorl">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/20/scala-array-list-tuple-and-so-on/"/>
+
+
+
+
+
+  <title>scala array list tuple and so on | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Record study process, and keep improving and producing.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/scala-array-list-tuple-and-so-on/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">scala array list tuple and so on</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T10:11:31+08:00">
+                2018-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Array-类型参数化数组"><a href="#Array-类型参数化数组" class="headerlink" title="Array 类型参数化数组"></a>Array 类型参数化数组</h1><p>scala Array 的初始化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简洁的方法创造和初始化：</span></span><br><span class="line">val numNames = Array(<span class="string">"zero"</span>, <span class="string">"one"</span>, <span class="string">"two"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更罗嗦的调用 apply 方法：</span></span><br><span class="line">val numNames2 = Array.apply(<span class="string">"zero"</span>, <span class="string">"one"</span>, <span class="string">"two"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">object HelloWorld </span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">def <span class="title">main</span><span class="params">(args: Array[String])</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      val greetStrings = <span class="keyword">new</span> Array[String](<span class="number">3</span>)  </span><br><span class="line"></span><br><span class="line">      greetStrings(<span class="number">0</span>) = <span class="string">"Scala: Hello"</span> </span><br><span class="line">      greetStrings(<span class="number">1</span>) = <span class="string">", "</span> </span><br><span class="line">      greetStrings(<span class="number">2</span>) = <span class="string">"world!\n"</span> </span><br><span class="line">      <span class="keyword">for</span> (i &lt;- <span class="number">0</span> to <span class="number">2</span>) </span><br><span class="line">           print(greetStrings(i)) </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出结果：Scala: Hello, world!</span></span><br></pre></td></tr></table></figure>
+<p>Scala里的数组是通过把索引放在圆括号里面访问的，而不是像Java那样放在方括号里。所以数组的第零个元素是greetStrings(0)，不是greetStrings[0]。</p>
+<p><code>val</code> 的概念: 当你用val定义一个变量，那么这个变量就不能重新赋值，但它指向的对象却仍可以改变。</p>
+<blockquote>
+<p>在本例中，你不能把greetStrings重新赋值成不同的数组；greetStrings将永远指向那个它被初始化时候指向的同一个Array[String]实例。但是你能一遍遍修改那个Array[String]的元素，因此数组本身是可变的。</p>
+</blockquote>
+<h1 id="使用列表【List】"><a href="#使用列表【List】" class="headerlink" title="使用列表【List】"></a>使用列表【List】</h1><p>Scala <code>Array</code> 数组是一个所有对象都共享相同类型的可变序列。比方说Array[String]仅包含String。尽管实例化之后你无法改变Array的长度，它的元素值却是可变的。因此，Array是可变的对象。</p>
+<p>Scala的List类是共享相同类型的不可变对象序列。</p>
+<p>和数组一样，List[String]包含的仅仅是String。<br>Scala的List不同于Java的java.util.List，总是不可变的（而Java的List可变）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个Scala的List很简单</span></span><br><span class="line">val oneTwoThree = List(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>上述代码完成了一个新的叫做oneTwoThree的val，并已经用带有整数元素值1，2和3的新List[Int]初始化。</p>
+<h2 id="List-操作"><a href="#List-操作" class="headerlink" title="List 操作"></a>List 操作</h2><p>这个List可以这么用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">val oneTwo = List(<span class="number">1</span>, <span class="number">2</span>)  </span><br><span class="line">val threeFour = List(<span class="number">3</span>, <span class="number">4</span>) </span><br><span class="line">val oneTwoThreeFour = oneTwo ::: threeFour  <span class="comment">// ::: 拼接List</span></span><br><span class="line"></span><br><span class="line">println(oneTwo + <span class="string">" 和 "</span> + threeFour + <span class="string">" 是不可变的"</span>)  </span><br><span class="line">println(oneTwoThreeFour + <span class="string">" 是个新列表了"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果:</span></span><br><span class="line"><span class="comment">// List(1, 2) 和 List(3, 4) 是不可变的</span></span><br><span class="line"><span class="comment">// List(1, 2, 3, 4) 是个新列表了</span></span><br></pre></td></tr></table></figure>
+<p>List最常用的操作符是发音为”cons”的” :: “. 例如，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val twoThree = List(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">val oneTwoThree = <span class="number">1</span> :: twoThree  <span class="comment">// 拼接元素 和 List</span></span><br><span class="line">println(oneTwoThree) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果为：List(1, 2, 3)</span></span><br></pre></td></tr></table></figure>
+<p>类List没有提供append操作。<br>如果你想通过添加元素来构造列表： </p>
+<ul>
+<li>前缀进去，完成之后再调用reverse； </li>
+<li>使用ListBuffer，一种提供append操作的可变列表，完成之后调用toList。</li>
+</ul>
+<h1 id="使用元组【Tuple】"><a href="#使用元组【Tuple】" class="headerlink" title="使用元组【Tuple】"></a>使用元组【Tuple】</h1><p>另一种有用的容器对象是元组：tuple。与列表一样，元组也是不可变的，但与列表不同，元组可以包含不同类型的元素。</p>
+<p>列表应该是List[Int]或List[String]的样子，元组可以同时拥有Int和String。</p>
+<p>Scala里你可以简单地返回一个元组。<br>而且这么做的确简单：实例化一个装有一些对象的新元组，只要把这些对象放在括号里，并用逗号分隔即可。<br>一旦你已经实例化了一个元组，你可以用点号，下划线和一个基于1的元素索引访问它。</p>
+<p>一个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val pair = (<span class="number">99</span>, <span class="string">"Luftballons"</span>)  <span class="comment">//Scala推断元组类型为Tuple2[Int, String]，并把它赋给变量pair。</span></span><br><span class="line">println(pair._1)                <span class="comment">//访问_1字段，从而输出第一个元素，99。</span></span><br><span class="line">println(pair._2)                </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// 99</span></span><br><span class="line"><span class="comment">// Luftballons</span></span><br></pre></td></tr></table></figure>
+<p>元组第一个元素是以99为值的Int，第二个是”luftballons”为值的String。</p>
+<p>元组的实际类型取决于它含有的元素数量和这些元素的类型。<br>因此，(99, “Luftballons”)的类型是Tuple2[Int, String]。</p>
+<p>类似地，(‘u’, ‘r’, ‘the’, 1, 4, “me”)是Tuple6[Char, Char, String, Int, Int, String]。</p>
+<h2 id="访问元组的元素"><a href="#访问元组的元素" class="headerlink" title="访问元组的元素"></a>访问元组的元素</h2><p>为什么你不能像访问List里的元素那样访问元组的，就像pair(0)？<br>因为List的apply方法始终返回同样的类型，但是元组里的或许类型不同。<br>_1可以有一个结果类型，_2是另外一个。 </p>
+<blockquote>
+<p>另：元组元素编号从1开始。</p>
+</blockquote>
+<h1 id="使用Set和Map"><a href="#使用Set和Map" class="headerlink" title="使用Set和Map"></a>使用Set和Map</h1><p>当问题讨论到集和映射，Scala同样提供了可变和不可变的替代品，不过用了不同的办法。</p>
+<p>对于集和映射，Scala把可变性建模在类继承中。</p>
+<p>例如，Scala的API包含了集的一个基本特质：trait，特质这个概念接近于Java的接口。</p>
+<p>Scala于是提供了两个子特质，一个是可变的集，另一个是不可变的集。这三个特质都共享同样的简化名，Set。</p>
+<p>如果你想要使用HashSet，你可以根据你的需要选择可变的或不可变的变体。</p>
+<p>创造集的缺省方法实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var jetSet = Set(<span class="string">"Boeing"</span>, <span class="string">"Airbus"</span>)  <span class="comment">//定义了名为jetSet的新var，包含两个字串</span></span><br><span class="line">jetSet += <span class="string">"Lear"</span>                      <span class="comment">// jetSet = jetSet + "Lear" </span></span><br><span class="line">println(jetSet.contains(<span class="string">"Cessna"</span>))    <span class="comment">//打印输出集是否包含字串"Cessna"。</span></span><br><span class="line">println(jetSet.contains(<span class="string">"Lear"</span>))      <span class="comment">//打印输出集是否包含字串"Lear"。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// false</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>需要不可变集，就需要使用一个引用：import，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.collection.mutable.Set  </span><br><span class="line"></span><br><span class="line">val movieSet = Set(<span class="string">"Hitch"</span>, <span class="string">"Poltergeist"</span>)  </span><br><span class="line">movieSet += <span class="string">"Shrek"</span> </span><br><span class="line">println(movieSet)  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// Set(Poltergeist, Shrek, Hitch)</span></span><br></pre></td></tr></table></figure>
+<p>需要一个不可变的HashSet，你可以这么做：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.collection.immutable.HashSet  </span><br><span class="line">val hashSet = HashSet(<span class="string">"Tomatoes"</span>, <span class="string">"Chilies"</span>)  </span><br><span class="line">println(hashSet + <span class="string">"Coriander"</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// Set(Chilies, Tomatoes, Coriander)</span></span><br></pre></td></tr></table></figure>
+<p>Map是Scala里另一种有用的集合类。<br>和集一样，Scala采用了类继承机制提供了可变的和不可变的两种版本的Map。</p>
+<p><code>scala.collection</code> 包里面有一个基础Map特质和两个子特质Map：<br>可变的Map在scala.collection.mutable里，不可变的在scala.collection.immutable里。</p>
+<p>可变映射的创造过程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.collection.mutable.Map  </span><br><span class="line"></span><br><span class="line">val treasureMap = Map[Int, String]()  </span><br><span class="line">treasureMap += (<span class="number">1</span> -&gt; <span class="string">"我在"</span>)  </span><br><span class="line">treasureMap += (<span class="number">2</span> -&gt; <span class="string">"学习"</span>)  </span><br><span class="line">treasureMap += (<span class="number">3</span> -&gt; <span class="string">"Scala"</span>)  </span><br><span class="line">println(treasureMap(<span class="number">1</span>) + treasureMap(<span class="number">2</span>) + treasureMap(<span class="number">3</span>)) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// 我在学习Scala.</span></span><br></pre></td></tr></table></figure>
+<p>至于不可变映射，就不用引用任何类了，因为不可变映射是缺省的，代码例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">val romanNumeral = Map(      </span><br><span class="line">        <span class="number">1</span> -&gt; <span class="string">"我"</span>, <span class="number">2</span> -&gt; <span class="string">"是"</span>, <span class="number">3</span> -&gt; <span class="string">"缺"</span>, <span class="number">4</span> -&gt; <span class="string">"省"</span>, <span class="number">5</span> -&gt; <span class="string">"的"</span> )  </span><br><span class="line">println(romanNumeral(<span class="number">1</span>) + romanNumeral(<span class="number">2</span>) + romanNumeral(<span class="number">3</span>) + romanNumeral(<span class="number">4</span>) + romanNumeral(<span class="number">5</span>))  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// 我是缺省的</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/20/vim-guide/" rel="next" title="vim使用指南及vim快捷键">
+                <i class="fa fa-chevron-left"></i> vim使用指南及vim快捷键
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/21/tensorflow-flags-guide/" rel="prev" title="tensorflow-flags-guide">
+                tensorflow-flags-guide <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gao Shang</p>
+              <p class="site-description motion-element" itemprop="description">Hi, I'm fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Array-类型参数化数组"><span class="nav-number">1.</span> <span class="nav-text">Array 类型参数化数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用列表【List】"><span class="nav-number">2.</span> <span class="nav-text">使用列表【List】</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#List-操作"><span class="nav-number">2.1.</span> <span class="nav-text">List 操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用元组【Tuple】"><span class="nav-number">3.</span> <span class="nav-text">使用元组【Tuple】</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问元组的元素"><span class="nav-number">3.1.</span> <span class="nav-text">访问元组的元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Set和Map"><span class="nav-number">4.</span> <span class="nav-text">使用Set和Map</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gao Shang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
