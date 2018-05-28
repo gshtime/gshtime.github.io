@@ -284,6 +284,342 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/21/tensorflow-flags-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="Hi, I'm fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/21/tensorflow-flags-guide/" itemprop="url">
+                  tensorflow-flags-guide
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-21 20:29:51" itemprop="dateCreated datePublished" datetime="2018-05-21T20:29:51+08:00">2018-05-21</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/scala-array-list-tuple-and-so-on/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="Hi, I'm fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/20/scala-array-list-tuple-and-so-on/" itemprop="url">
+                  scala array list tuple and so on
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-20 10:11:31" itemprop="dateCreated datePublished" datetime="2018-05-20T10:11:31+08:00">2018-05-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-05-21 20:31:55" itemprop="dateModified" datetime="2018-05-21T20:31:55+08:00">2018-05-21</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Array-类型参数化数组"><a href="#Array-类型参数化数组" class="headerlink" title="Array 类型参数化数组"></a>Array 类型参数化数组</h1><p>scala Array 的初始化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简洁的方法创造和初始化：</span></span><br><span class="line">val numNames = Array(<span class="string">"zero"</span>, <span class="string">"one"</span>, <span class="string">"two"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更罗嗦的调用 apply 方法：</span></span><br><span class="line">val numNames2 = Array.apply(<span class="string">"zero"</span>, <span class="string">"one"</span>, <span class="string">"two"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">object HelloWorld </span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">def <span class="title">main</span><span class="params">(args: Array[String])</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      val greetStrings = <span class="keyword">new</span> Array[String](<span class="number">3</span>)  </span><br><span class="line"></span><br><span class="line">      greetStrings(<span class="number">0</span>) = <span class="string">"Scala: Hello"</span> </span><br><span class="line">      greetStrings(<span class="number">1</span>) = <span class="string">", "</span> </span><br><span class="line">      greetStrings(<span class="number">2</span>) = <span class="string">"world!\n"</span> </span><br><span class="line">      <span class="keyword">for</span> (i &lt;- <span class="number">0</span> to <span class="number">2</span>) </span><br><span class="line">           print(greetStrings(i)) </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出结果：Scala: Hello, world!</span></span><br></pre></td></tr></table></figure>
+<p>Scala里的数组是通过把索引放在圆括号里面访问的，而不是像Java那样放在方括号里。所以数组的第零个元素是greetStrings(0)，不是greetStrings[0]。</p>
+<p><code>val</code> 的概念: 当你用val定义一个变量，那么这个变量就不能重新赋值，但它指向的对象却仍可以改变。</p>
+<blockquote>
+<p>在本例中，你不能把greetStrings重新赋值成不同的数组；greetStrings将永远指向那个它被初始化时候指向的同一个Array[String]实例。但是你能一遍遍修改那个Array[String]的元素，因此数组本身是可变的。</p>
+</blockquote>
+<h1 id="使用列表【List】"><a href="#使用列表【List】" class="headerlink" title="使用列表【List】"></a>使用列表【List】</h1><p>Scala <code>Array</code> 数组是一个所有对象都共享相同类型的可变序列。比方说Array[String]仅包含String。尽管实例化之后你无法改变Array的长度，它的元素值却是可变的。因此，Array是可变的对象。</p>
+<p>Scala的List类是共享相同类型的不可变对象序列。</p>
+<p>和数组一样，List[String]包含的仅仅是String。<br>Scala的List不同于Java的java.util.List，总是不可变的（而Java的List可变）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个Scala的List很简单</span></span><br><span class="line">val oneTwoThree = List(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>上述代码完成了一个新的叫做oneTwoThree的val，并已经用带有整数元素值1，2和3的新List[Int]初始化。</p>
+<h2 id="List-操作"><a href="#List-操作" class="headerlink" title="List 操作"></a>List 操作</h2><p>这个List可以这么用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">val oneTwo = List(<span class="number">1</span>, <span class="number">2</span>)  </span><br><span class="line">val threeFour = List(<span class="number">3</span>, <span class="number">4</span>) </span><br><span class="line">val oneTwoThreeFour = oneTwo ::: threeFour  <span class="comment">// ::: 拼接List</span></span><br><span class="line"></span><br><span class="line">println(oneTwo + <span class="string">" 和 "</span> + threeFour + <span class="string">" 是不可变的"</span>)  </span><br><span class="line">println(oneTwoThreeFour + <span class="string">" 是个新列表了"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果:</span></span><br><span class="line"><span class="comment">// List(1, 2) 和 List(3, 4) 是不可变的</span></span><br><span class="line"><span class="comment">// List(1, 2, 3, 4) 是个新列表了</span></span><br></pre></td></tr></table></figure>
+<p>List最常用的操作符是发音为”cons”的” :: “. 例如，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val twoThree = List(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">val oneTwoThree = <span class="number">1</span> :: twoThree  <span class="comment">// 拼接元素 和 List</span></span><br><span class="line">println(oneTwoThree) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果为：List(1, 2, 3)</span></span><br></pre></td></tr></table></figure>
+<p>类List没有提供append操作。<br>如果你想通过添加元素来构造列表： </p>
+<ul>
+<li>前缀进去，完成之后再调用reverse； </li>
+<li>使用ListBuffer，一种提供append操作的可变列表，完成之后调用toList。</li>
+</ul>
+<h1 id="使用元组【Tuple】"><a href="#使用元组【Tuple】" class="headerlink" title="使用元组【Tuple】"></a>使用元组【Tuple】</h1><p>另一种有用的容器对象是元组：tuple。与列表一样，元组也是不可变的，但与列表不同，元组可以包含不同类型的元素。</p>
+<p>列表应该是List[Int]或List[String]的样子，元组可以同时拥有Int和String。</p>
+<p>Scala里你可以简单地返回一个元组。<br>而且这么做的确简单：实例化一个装有一些对象的新元组，只要把这些对象放在括号里，并用逗号分隔即可。<br>一旦你已经实例化了一个元组，你可以用点号，下划线和一个基于1的元素索引访问它。</p>
+<p>一个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val pair = (<span class="number">99</span>, <span class="string">"Luftballons"</span>)  <span class="comment">//Scala推断元组类型为Tuple2[Int, String]，并把它赋给变量pair。</span></span><br><span class="line">println(pair._1)                <span class="comment">//访问_1字段，从而输出第一个元素，99。</span></span><br><span class="line">println(pair._2)                </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// 99</span></span><br><span class="line"><span class="comment">// Luftballons</span></span><br></pre></td></tr></table></figure>
+<p>元组第一个元素是以99为值的Int，第二个是”luftballons”为值的String。</p>
+<p>元组的实际类型取决于它含有的元素数量和这些元素的类型。<br>因此，(99, “Luftballons”)的类型是Tuple2[Int, String]。</p>
+<p>类似地，(‘u’, ‘r’, ‘the’, 1, 4, “me”)是Tuple6[Char, Char, String, Int, Int, String]。</p>
+<h2 id="访问元组的元素"><a href="#访问元组的元素" class="headerlink" title="访问元组的元素"></a>访问元组的元素</h2><p>为什么你不能像访问List里的元素那样访问元组的，就像pair(0)？<br>因为List的apply方法始终返回同样的类型，但是元组里的或许类型不同。<br>_1可以有一个结果类型，_2是另外一个。 </p>
+<blockquote>
+<p>另：元组元素编号从1开始。</p>
+</blockquote>
+<h1 id="使用Set和Map"><a href="#使用Set和Map" class="headerlink" title="使用Set和Map"></a>使用Set和Map</h1><p>当问题讨论到集和映射，Scala同样提供了可变和不可变的替代品，不过用了不同的办法。</p>
+<p>对于集和映射，Scala把可变性建模在类继承中。</p>
+<p>例如，Scala的API包含了集的一个基本特质：trait，特质这个概念接近于Java的接口。</p>
+<p>Scala于是提供了两个子特质，一个是可变的集，另一个是不可变的集。这三个特质都共享同样的简化名，Set。</p>
+<p>如果你想要使用HashSet，你可以根据你的需要选择可变的或不可变的变体。</p>
+<p>创造集的缺省方法实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var jetSet = Set(<span class="string">"Boeing"</span>, <span class="string">"Airbus"</span>)  <span class="comment">//定义了名为jetSet的新var，包含两个字串</span></span><br><span class="line">jetSet += <span class="string">"Lear"</span>                      <span class="comment">// jetSet = jetSet + "Lear" </span></span><br><span class="line">println(jetSet.contains(<span class="string">"Cessna"</span>))    <span class="comment">//打印输出集是否包含字串"Cessna"。</span></span><br><span class="line">println(jetSet.contains(<span class="string">"Lear"</span>))      <span class="comment">//打印输出集是否包含字串"Lear"。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// false</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>需要不可变集，就需要使用一个引用：import，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.collection.mutable.Set  </span><br><span class="line"></span><br><span class="line">val movieSet = Set(<span class="string">"Hitch"</span>, <span class="string">"Poltergeist"</span>)  </span><br><span class="line">movieSet += <span class="string">"Shrek"</span> </span><br><span class="line">println(movieSet)  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// Set(Poltergeist, Shrek, Hitch)</span></span><br></pre></td></tr></table></figure>
+<p>需要一个不可变的HashSet，你可以这么做：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.collection.immutable.HashSet  </span><br><span class="line">val hashSet = HashSet(<span class="string">"Tomatoes"</span>, <span class="string">"Chilies"</span>)  </span><br><span class="line">println(hashSet + <span class="string">"Coriander"</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// Set(Chilies, Tomatoes, Coriander)</span></span><br></pre></td></tr></table></figure>
+<p>Map是Scala里另一种有用的集合类。<br>和集一样，Scala采用了类继承机制提供了可变的和不可变的两种版本的Map。</p>
+<p><code>scala.collection</code> 包里面有一个基础Map特质和两个子特质Map：<br>可变的Map在scala.collection.mutable里，不可变的在scala.collection.immutable里。</p>
+<p>可变映射的创造过程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.collection.mutable.Map  </span><br><span class="line"></span><br><span class="line">val treasureMap = Map[Int, String]()  </span><br><span class="line">treasureMap += (<span class="number">1</span> -&gt; <span class="string">"我在"</span>)  </span><br><span class="line">treasureMap += (<span class="number">2</span> -&gt; <span class="string">"学习"</span>)  </span><br><span class="line">treasureMap += (<span class="number">3</span> -&gt; <span class="string">"Scala"</span>)  </span><br><span class="line">println(treasureMap(<span class="number">1</span>) + treasureMap(<span class="number">2</span>) + treasureMap(<span class="number">3</span>)) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// 我在学习Scala.</span></span><br></pre></td></tr></table></figure>
+<p>至于不可变映射，就不用引用任何类了，因为不可变映射是缺省的，代码例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">val romanNumeral = Map(      </span><br><span class="line">        <span class="number">1</span> -&gt; <span class="string">"我"</span>, <span class="number">2</span> -&gt; <span class="string">"是"</span>, <span class="number">3</span> -&gt; <span class="string">"缺"</span>, <span class="number">4</span> -&gt; <span class="string">"省"</span>, <span class="number">5</span> -&gt; <span class="string">"的"</span> )  </span><br><span class="line">println(romanNumeral(<span class="number">1</span>) + romanNumeral(<span class="number">2</span>) + romanNumeral(<span class="number">3</span>) + romanNumeral(<span class="number">4</span>) + romanNumeral(<span class="number">5</span>))  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// 我是缺省的</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/vim-guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -330,7 +666,7 @@
                 
               
 
-              <time title="Created: 2018-05-20 01:12:54 / Modified: 01:19:54" itemprop="dateCreated datePublished" datetime="2018-05-20T01:12:54+08:00">2018-05-20</time>
+              <time title="Created: 2018-05-20 01:12:54 / Modified: 10:03:02" itemprop="dateCreated datePublished" datetime="2018-05-20T01:12:54+08:00">2018-05-20</time>
             
 
             
@@ -371,42 +707,24 @@
         
           
             <h1 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">h, j, k, l 上，下，左，右</span><br><span class="line">ctrl-e 移动页面</span><br><span class="line">ctrl-f 上翻一页</span><br><span class="line">ctrl-b 下翻一页</span><br><span class="line">ctrl-u 上翻半页</span><br><span class="line">ctrl-d 下翻半页</span><br><span class="line">w 跳到下一个字首，按标点或单词分割</span><br><span class="line">W 跳到下一个字首，长跳，如end-of-line被认为是一个字</span><br><span class="line">e 跳到下一个字尾</span><br><span class="line">E 跳到下一个字尾，长跳</span><br><span class="line">b 跳到上一个字</span><br><span class="line">B 跳到上一个字，长跳</span><br><span class="line">0 跳至行首，不管有无缩进，就是跳到第0个字符</span><br><span class="line">^ 跳至行首的第一个字符</span><br><span class="line">$ 跳至行尾</span><br><span class="line">gg 跳至文首</span><br><span class="line">G 调至文尾</span><br><span class="line">5gg/5G 调至第5行</span><br><span class="line">gd 跳至当前光标所在的变量的声明处</span><br><span class="line">fx 在当前行中找x字符，找到了就跳转至</span><br><span class="line">; 重复上一个f命令，而不用重复的输入fx</span><br><span class="line">* 查找光标所在处的单词，向下查找</span><br><span class="line"># 查找光标所在处的单词，向上查找</span><br></pre></td></tr></table></figure>
-<p>二、删除复制<br>dd 删除光标所在行<br>dw 删除一个字(word)<br>d/D删除到行末x删除当前字符X删除前一个字符yy复制一行yw复制一个字y/Y 复制到行末<br>p 粘贴粘贴板的内容到当前行的下面<br>P 粘贴粘贴板的内容到当前行的上面</p>
-<p>三、插入模式<br>i 从当前光标处进入插入模式<br>I 进入插入模式，并置光标于行首<br>a 追加模式，置光标于当前光标之后<br>A 追加模式，置光标于行末<br>o 在当前行之下新加一行，并进入插入模式<br>O 在当前行之上新加一行，并进入插入模式<br>Esc 退出插入模式</p>
-<p>四、编辑<br>J 将下一行和当前行连接为一行<br>cc 删除当前行并进入编辑模式<br>cw 删除当前字，并进入编辑模式<br>c$ 擦除从当前位置至行末的内容，并进入编辑模式<br>s 删除当前字符并进入编辑模式<br>S 删除光标所在行并进入编辑模式<br>xp 交换当前字符和下一个字符<br>u 撤销<br>ctrl+r 重做<br>~ 切换大小写，当前字符</p>
-<blockquote>
-<blockquote>
-<p>将当前行右移一个单位<br>&lt;&lt; 将当前行左移一个单位(一个tab符)<br>== 自动缩进当前行</p>
-</blockquote>
-</blockquote>
-<p>五、查找替换<br>/pattern 向后搜索字符串pattern<br>?pattern 向前搜索字符串pattern<br>“\c” 忽略大小写<br>“\C” 大小写敏感</p>
-<p>n 下一个匹配(如果是/搜索，则是向下的下一个，?搜索则是向上的下一个)<br>N 上一个匹配(同上)<br>:%s/old/new/g 搜索整个文件，将所有的old替换为new<br>:%s/old/new/gc 搜索整个文件，将所有的old替换为new，每次都要你确认是否替换</p>
-<p>六、退出编辑器<br>:w 将缓冲区写入文件，即保存修改<br>:wq 保存修改并退出<br>:x 保存修改并退出<br>:q 退出，如果对缓冲区进行过修改，则会提示<br>:q! 强制退出，放弃修改</p>
-<p>七、多文件编辑<br>vim file1.. 同时打开多个文件<br>:args 显示当前编辑文件<br>:next 切换到下个文件<br>:prev 切换到前个文件<br>:next！ 不保存当前编辑文件并切换到下个文件<br>:prev！ 不保存当前编辑文件并切换到上个文件<br>:wnext 保存当前编辑文件并切换到下个文件<br>:wprev 保存当前编辑文件并切换到上个文件<br>:first 定位首文件<br>:last 定位尾文件<br>ctrl+^ 快速在最近打开的两个文件间切换<br>:split[sp] 把当前文件水平分割<br>:split file 把当前窗口水平分割, file<br>:vsplit[vsp] file 把当前窗口垂直分割, file<br>:new file 同split file<br>:close 关闭当前窗口<br>:only 只显示当前窗口, 关闭所有其他的窗口<br>:all 打开所有的窗口<br>:vertical all 打开所有的窗口, 垂直打开<br>:qall 对所有窗口执行：q操作<br>:qall! 对所有窗口执行：q!操作<br>:wall 对所有窗口执行：w操作<br>:wqall 对所有窗口执行：wq操作<br>ctrl-w h 跳转到左边的窗口<br>ctrl-w j 跳转到下面的窗口<br>ctrl-w k 跳转到上面的窗口<br>ctrl-w l 跳转到右边的窗口<br>ctrl-w t 跳转到最顶上的窗口<br>ctrl-w b 跳转到最底下的窗口</p>
-<p>八、多标签编辑<br>:tabedit file 在新标签中打开文件file<br>:tab split file 在新标签中打开文件file<br>:tabp 切换到前一个标签<br>:tabn 切换到后一个标签<br>:tabc 关闭当前标签<br>:tabo 关闭其他标签<br>gt 到下一个tab<br>gT 到上一个tab<br>0gt 跳到第一个tab<br>5gt 跳到第五个tab</p>
-<p>九、执行shell命令<br>1、在命令模式下输入”:sh”，可以运行相当于在字符模式下，到输入结束想回到VIM编辑器中用exit，ctrl+D返回VIM编辑器<br>2、可以”!command”，运行结束后自动回到VIM编辑器中<br>3、用“Ctrl+Z“回到shell，用fg返回编辑<br>4、:!make -&gt; 直接在当前目录下运行make指令</p>
-<p>十、VIM启动项<br>-o[n] 以水平分屏的方式打开多个文件<br>-O[n] 以垂直分屏的方式打开多个文件</p>
-<p>十一、自动排版<br>在粘贴了一些代码之后，vim变得比较乱，只要执行gg=G就能搞定</p>
-<p>十二、如何在vim中编译程序<br>在vim中可以完成make,而且可以将编译的结果也显示在vim里，先执行 :copen 命令，将结果输出的窗口打开，然后执行 :make<br>编译后的结果就显示在了copen打开的小窗口里了，而且用鼠标双击错误信息，就会跳转到发生错误的行。</p>
-<p>十三、buffer操作<br>1、buffer状态</p>
-<ul>
-<li>（非活动的缓冲区）<br>a （当前被激活缓冲区）<br>h （隐藏的缓冲区）<br>% （当前的缓冲区）<h1 id="（交换缓冲区）"><a href="#（交换缓冲区）" class="headerlink" title="（交换缓冲区）"></a>（交换缓冲区）</h1>= （只读缓冲区）</li>
-</ul>
-<ul>
-<li>（已经更改的缓冲区）</li>
-</ul>
-<p>十四、 VIM 操作目录<br>1.打开目录<br>vim .<br>vim a-path/</p>
-<p>2.以下操作在操作目录时生效<br>p,P,t,u,U,x,v,o,r,s</p>
-<p>c 使当前打开的目录成为当前目录<br>d 创建目录<br>% 创建文件<br>D 删除文件/目录</p>
-<ul>
-<li>转到上层目录<br>gb 转到上一个 bookmarked directory<br>i 改变目录文件列表方式<br>^l 刷新当前打开的目录</li>
-</ul>
-<p>mf - 标记文件<br>mu - unmark all marked files<br>mz - Compress/decompress marked files<br>gh 显示/不显示隐藏文件( dot-files)<br>^h 编辑隐藏文件列表<br>a 转换显示模式, all - hide - unhide<br>qf diplay infomation about file<br>qb list the bookmarked directories and directory traversal history<br>gi Display information on file</p>
-<p>mb<br>mc<br>md - 将标记的文件(mf标记文件)使用 diff 模式<br>me - 编辑标记的文件,只显示一个，其余放入 buffer 中<br>mh<br>mm - move marked files to marked-file target directory<br>mc - copy<br>mp<br>mr<br>mt</p>
-<p>vim 中复制,移动文件<br>1, mt - 移动到的目录<br>2, mf - 标记要移动的文件<br>3, mc - 移动/复制</p>
+<h1 id="删除复制"><a href="#删除复制" class="headerlink" title="删除复制"></a>删除复制</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dd 删除光标所在行</span><br><span class="line">dw 删除一个字(word)</span><br><span class="line">d/D删除到行末x删除当前字符X删除前一个字符yy复制一行yw复制一个字y/Y 复制到行末</span><br><span class="line">p 粘贴粘贴板的内容到当前行的下面</span><br><span class="line">P 粘贴粘贴板的内容到当前行的上面</span><br></pre></td></tr></table></figure>
+<h1 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">i 从当前光标处进入插入模式</span><br><span class="line">I 进入插入模式，并置光标于行首</span><br><span class="line">a 追加模式，置光标于当前光标之后</span><br><span class="line">A 追加模式，置光标于行末</span><br><span class="line">o 在当前行之下新加一行，并进入插入模式</span><br><span class="line">O 在当前行之上新加一行，并进入插入模式</span><br><span class="line">Esc 退出插入模式</span><br></pre></td></tr></table></figure>
+<h1 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">J 将下一行和当前行连接为一行</span><br><span class="line">cc 删除当前行并进入编辑模式</span><br><span class="line">cw 删除当前字，并进入编辑模式</span><br><span class="line">c$ 擦除从当前位置至行末的内容，并进入编辑模式</span><br><span class="line">s 删除当前字符并进入编辑模式</span><br><span class="line">S 删除光标所在行并进入编辑模式</span><br><span class="line">xp 交换当前字符和下一个字符</span><br><span class="line">u 撤销</span><br><span class="line">ctrl+r 重做</span><br><span class="line">~ 切换大小写，当前字符</span><br><span class="line">&gt;&gt; 将当前行右移一个单位</span><br><span class="line">&lt;&lt; 将当前行左移一个单位(一个tab符)</span><br><span class="line">== 自动缩进当前行</span><br></pre></td></tr></table></figure>
+<h1 id="查找替换"><a href="#查找替换" class="headerlink" title="查找替换"></a>查找替换</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/pattern 向后搜索字符串pattern</span><br><span class="line">?pattern 向前搜索字符串pattern</span><br><span class="line">&quot;\c&quot; 忽略大小写</span><br><span class="line">&quot;\C&quot; 大小写敏感</span><br><span class="line"></span><br><span class="line">n 下一个匹配(如果是/搜索，则是向下的下一个，?搜索则是向上的下一个)</span><br><span class="line">N 上一个匹配(同上)</span><br><span class="line">:%s/old/new/g 搜索整个文件，将所有的old替换为new</span><br><span class="line">:%s/old/new/gc 搜索整个文件，将所有的old替换为new，每次都要你确认是否替换</span><br></pre></td></tr></table></figure>
+<h1 id="退出编辑器"><a href="#退出编辑器" class="headerlink" title="退出编辑器"></a>退出编辑器</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:w 将缓冲区写入文件，即保存修改</span><br><span class="line">:wq 保存修改并退出</span><br><span class="line">:x 保存修改并退出</span><br><span class="line">:q 退出，如果对缓冲区进行过修改，则会提示</span><br><span class="line">:q! 强制退出，放弃修改</span><br></pre></td></tr></table></figure>
+<h1 id="多文件编辑"><a href="#多文件编辑" class="headerlink" title="多文件编辑"></a>多文件编辑</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">vim file1.. 同时打开多个文件</span><br><span class="line">:args 显示当前编辑文件</span><br><span class="line">:next 切换到下个文件</span><br><span class="line">:prev 切换到前个文件</span><br><span class="line">:next！ 不保存当前编辑文件并切换到下个文件</span><br><span class="line">:prev！ 不保存当前编辑文件并切换到上个文件</span><br><span class="line">:wnext 保存当前编辑文件并切换到下个文件</span><br><span class="line">:wprev 保存当前编辑文件并切换到上个文件</span><br><span class="line">:first 定位首文件</span><br><span class="line">:last 定位尾文件</span><br><span class="line">ctrl+^ 快速在最近打开的两个文件间切换</span><br><span class="line">:split[sp] 把当前文件水平分割</span><br><span class="line">:split file 把当前窗口水平分割, file</span><br><span class="line">:vsplit[vsp] file 把当前窗口垂直分割, file</span><br><span class="line">:new file 同split file</span><br><span class="line">:close 关闭当前窗口</span><br><span class="line">:only 只显示当前窗口, 关闭所有其他的窗口</span><br><span class="line">:all 打开所有的窗口</span><br><span class="line">:vertical all 打开所有的窗口, 垂直打开</span><br><span class="line">:qall 对所有窗口执行：q操作</span><br><span class="line">:qall! 对所有窗口执行：q!操作</span><br><span class="line">:wall 对所有窗口执行：w操作</span><br><span class="line">:wqall 对所有窗口执行：wq操作</span><br><span class="line">ctrl-w h 跳转到左边的窗口</span><br><span class="line">ctrl-w j 跳转到下面的窗口</span><br><span class="line">ctrl-w k 跳转到上面的窗口</span><br><span class="line">ctrl-w l 跳转到右边的窗口</span><br><span class="line">ctrl-w t 跳转到最顶上的窗口</span><br><span class="line">ctrl-w b 跳转到最底下的窗口</span><br></pre></td></tr></table></figure>
+<h1 id="多标签编辑"><a href="#多标签编辑" class="headerlink" title="多标签编辑"></a>多标签编辑</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">:tabedit file 在新标签中打开文件file</span><br><span class="line">:tab split file 在新标签中打开文件file</span><br><span class="line">:tabp 切换到前一个标签</span><br><span class="line">:tabn 切换到后一个标签</span><br><span class="line">:tabc 关闭当前标签</span><br><span class="line">:tabo 关闭其他标签</span><br><span class="line">gt 到下一个tab</span><br><span class="line">gT 到上一个tab</span><br><span class="line">0gt 跳到第一个tab</span><br><span class="line">5gt 跳到第五个tab</span><br></pre></td></tr></table></figure>
+<h1 id="执行shell命令"><a href="#执行shell命令" class="headerlink" title="执行shell命令"></a>执行shell命令</h1><p>1、在命令模式下输入”:sh”，可以运行相当于在字符模式下，到输入结束想回到VIM编辑器中用exit，ctrl+D返回VIM编辑器<br>2、可以”!command”，运行结束后自动回到VIM编辑器中<br>3、用“Ctrl+Z“回到shell，用fg返回编辑<br>4、:!make -&gt; 直接在当前目录下运行make指令</p>
+<h1 id="VIM启动项"><a href="#VIM启动项" class="headerlink" title="VIM启动项"></a>VIM启动项</h1><p>-o[n] 以水平分屏的方式打开多个文件<br>-O[n] 以垂直分屏的方式打开多个文件</p>
+<h1 id="自动排版"><a href="#自动排版" class="headerlink" title="自动排版"></a>自动排版</h1><p>在粘贴了一些代码之后，vim变得比较乱，只要执行gg=G就能搞定</p>
+<h1 id="如何在vim中编译程序"><a href="#如何在vim中编译程序" class="headerlink" title="如何在vim中编译程序"></a>如何在vim中编译程序</h1><p>在vim中可以完成make,而且可以将编译的结果也显示在vim里，先执行 :copen 命令，将结果输出的窗口打开，然后执行 :make<br>编译后的结果就显示在了copen打开的小窗口里了，而且用鼠标双击错误信息，就会跳转到发生错误的行。</p>
+<h1 id="buffer操作"><a href="#buffer操作" class="headerlink" title="buffer操作"></a>buffer操作</h1><h2 id="buffer状态"><a href="#buffer状态" class="headerlink" title="buffer状态"></a>buffer状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- （非活动的缓冲区）</span><br><span class="line">a （当前被激活缓冲区）</span><br><span class="line">h （隐藏的缓冲区）</span><br><span class="line">% （当前的缓冲区）</span><br><span class="line"># （交换缓冲区）</span><br><span class="line">= （只读缓冲区）</span><br><span class="line">+ （已经更改的缓冲区）</span><br></pre></td></tr></table></figure>
+<h1 id="VIM-操作目录"><a href="#VIM-操作目录" class="headerlink" title="VIM 操作目录"></a>VIM 操作目录</h1><h2 id="打开目录"><a href="#打开目录" class="headerlink" title="打开目录"></a>打开目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim .</span><br><span class="line">vim a-path/</span><br></pre></td></tr></table></figure>
+<h2 id="以下操作在操作目录时生效"><a href="#以下操作在操作目录时生效" class="headerlink" title="以下操作在操作目录时生效"></a>以下操作在操作目录时生效</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">p,P,t,u,U,x,v,o,r,s</span><br><span class="line"></span><br><span class="line">c 使当前打开的目录成为当前目录</span><br><span class="line">d 创建目录</span><br><span class="line">% 创建文件</span><br><span class="line">D 删除文件/目录</span><br><span class="line">- 转到上层目录</span><br><span class="line">gb 转到上一个 bookmarked directory</span><br><span class="line">i 改变目录文件列表方式</span><br><span class="line">^l 刷新当前打开的目录</span><br><span class="line"></span><br><span class="line">mf - 标记文件</span><br><span class="line">mu - unmark all marked files</span><br><span class="line">mz - Compress/decompress marked files</span><br><span class="line">gh 显示/不显示隐藏文件( dot-files)</span><br><span class="line">^h 编辑隐藏文件列表</span><br><span class="line">a 转换显示模式, all - hide - unhide</span><br><span class="line">qf diplay infomation about file</span><br><span class="line">qb list the bookmarked directories and directory traversal history</span><br><span class="line">gi Display information on file</span><br><span class="line"></span><br><span class="line">mb</span><br><span class="line">mc</span><br><span class="line">md - 将标记的文件(mf标记文件)使用 diff 模式</span><br><span class="line">me - 编辑标记的文件,只显示一个，其余放入 buffer 中</span><br><span class="line">mh</span><br><span class="line">mm - move marked files to marked-file target directory</span><br><span class="line">mc - copy</span><br><span class="line">mp</span><br><span class="line">mr</span><br><span class="line">mt</span><br></pre></td></tr></table></figure>
+<p>vim 中复制,移动文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1, mt - 移动到的目录</span><br><span class="line">2, mf - 标记要移动的文件</span><br><span class="line">3, mc - 移动/复制</span><br></pre></td></tr></table></figure></p>
 <p>R 移动文件</p>
-<p>打开当前编辑文件的目录<br>:Explore<br>:Hexplore<br>:Nexplore<br>:Pexplore<br>:Sexplore<br>:Texplore<br>:Vexplore</p>
-
+<p>打开当前编辑文件的目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">:Explore</span><br><span class="line">:Hexplore</span><br><span class="line">:Nexplore</span><br><span class="line">:Pexplore</span><br><span class="line">:Sexplore</span><br><span class="line">:Texplore</span><br><span class="line">:Vexplore</span><br></pre></td></tr></table></figure>
           
         
       
@@ -876,7 +1194,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
