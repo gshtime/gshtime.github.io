@@ -1,34 +1,55 @@
 ---
-title: hexo 使用记录
+title: hexo 使用指南
 date: 2018-05-18 11:03:14
 tags:
 ---
 
-# 安装
+# 安装支持
 
 1. 安装Node.js
 
-```
-curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+mac系统到 node.js 官网下安装包
+
+``` bash
+# 安装 Node.js
+# 安装 Node.js 的最佳方式是使用 nvm。
+
+# cURL方式
+$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+
+# Wget方式
+$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
+
+# 安装完成后，重启终端并执行下列命令即可安装 Node.js。
+$ nvm install stable
 ```
 
 2. 安装git
 
-```
-Windows：下载并安装 git.
-Mac：使用 Homebrew, MacPorts ：brew install git;或下载 安装程序 安装。
-Linux (Ubuntu, Debian)：sudo apt-get install git-core
-Linux (Fedora, Red Hat, CentOS)：sudo yum install git-core
+``` bash
+# Windows：下载并安装 git.
+
+# Mac：使用 Homebrew, MacPorts ：
+brew install git  # ;或下载 安装程序 安装。
+
+# Linux (Ubuntu, Debian)：
+sudo apt-get install git-core
+
+# Linux (Fedora, Red Hat, CentOS)：
+sudo yum install git-core
 ```
 
-3. 安装Hexo
+# 安装Hexo
 
 ```
-$ npm install -g hexo-cli
+$ sudo npm install -g hexo-cli
 ```
 之后要在博客的文件夹下执行以下命令
-```
-npm install hexo
+
+``` bash
+npm install hexo  # 有上面一步可以省略 
+hexo init <folder>  # 初始化
+cd <folder> 
 npm install
 npm install hexo-deployer-git
 ```
@@ -87,7 +108,7 @@ theme: next
 `language: zh-Hans`
 
 
-# hexo 使用过程中出现的错误
+# 异常
 
 - hexo本地测试运行重启后页面空白,提示 : `WARN No layout: index.html`?
 
@@ -97,3 +118,18 @@ theme: next
 git clone https://github.com/iissnan/hexo-theme-next themes/next
 ```
 
+- Hexo异常：fatal:inunpopulatedsubmodule'.deploy_git'怎么解决？
+
+这种情况可以先安装下相关的依赖：
+
+``` bash
+npm install hexo-deployer-git –save
+```
+
+实在不行，就把它删掉，然后重新生成和部署。
+
+``` bash
+rm -rf .deploy_git
+hexo g
+hexo d
+```
