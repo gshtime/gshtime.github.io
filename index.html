@@ -232,6 +232,542 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/tensorflow-embedding-lookup-sparse/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/01/tensorflow-embedding-lookup-sparse/" itemprop="url">机器学习中的embedding原理及tf.nn.embedding_lookup_sparse等API的理解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-01T14:57:00+08:00">
+                2018-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          概述本文主要讲解tensorflow中涉及embedding的API。之前看了一些文章，写的云山雾绕，花了好长时间才搞懂，太笨了。embedding 算法主要用于处理稀疏特征，应用于NLP、推荐、广告等领域。所以word2vec 只是embbeding 思想的一个应用，而不是全部。
+代码地址：git@github.com:gshtime/tensorflow-api.git
+embedding原理常见的特征降维方法主要有PCA、SVD等。
+而embedding的主要目的也是对（稀疏）特征进行降维，它降维的方式可以类比为一个全连接层（没有激活函数），通过 embedding 层的权重矩阵计算来降低维度。
+假设：
+
+feature_num : 原始特征数
+embedding_size: embedding之后的特征数
+[feature_num, embedding_size] 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/01/tensorflow-embedding-lookup-sparse/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/linux-command-line-and-iterm-use-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/31/linux-command-line-and-iterm-use-guide/" itemprop="url">linux 命令行和 iterm2 操作指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T12:39:47+08:00">
+                2018-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          标签
+新建标签：command + t
+关闭标签：command + w
+切换标签：command + 数字 或 command + 左右方向键
+切换全屏：command + enter
+
+分屏
+垂直分屏：command + d
+水平分屏：command + shift + d
+切换屏幕：command + option + 方向键 command + [ 或 command + ]
+
+命令编辑删除
+删除单词：ctrl + w, 删除光标之前的单词
+删除行：ctrl + u，删除到行首
+删除行：ctrl + k，删除到行尾
+删除字符：删除当前光标ctrl + d，删除光标之前：ctrl + h
+清屏1：command + r
+清屏2：ctrl + l
+
+光标移动
+光标到行首：ctrl + a (同 ⌘ + ←)
+光标到行尾：ctrl + e (同 ⌘ + →)
+单词移动：alt + b /
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/31/linux-command-line-and-iterm-use-guide/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/27/to-write-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/27/to-write-list/" itemprop="url">to-write-list</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T17:07:59+08:00">
+                2018-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/27/to-write-list/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/27/hexo-transfer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/27/hexo-transfer/" itemprop="url">hexo 网站的迁移</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T17:06:53+08:00">
+                2018-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          markhttps://blog.csdn.net/aceking10/article/details/41540889
+https://www.jianshu.com/p/f8a55b972972
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/27/hexo-transfer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/21/tensorflow-flags-guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -251,7 +787,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/21/tensorflow-flags-guide/" itemprop="url">tensorflow-flags-guide</a></h1>
+                <a class="post-title-link" href="/2018/05/21/tensorflow-flags-guide/" itemprop="url">tensorflow 中的 tf.app.flags</a></h1>
         
 
         <div class="post-meta">
@@ -303,8 +839,16 @@
       
         
           
-            
-          
+          tf定义了tf.app.flags，用于支持接受命令行传递参数，相当于接受argv
+123456789101112131415import tensorflow as tfflags = tf.app.flags #flags是一个文件：flags.py，用于处理命令行参数的解析工作# 第一个是参数名称，第二个参数是默认值，第三个是参数描述flags.DEFINE_string("para_string", "default_val", "description") # 定义一个 stringflags.DEFINE_integer("pare_int", 1000, "this is an integer") # 定义一个integerflags.DEFINE_bool("para_bool", True, "description") # 定义一个 bool# FLAGS是一个对象，保
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/21/tensorflow-flags-guide/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -422,58 +966,17 @@
       
         
           
-            <h1 id="Array-类型参数化数组"><a href="#Array-类型参数化数组" class="headerlink" title="Array 类型参数化数组"></a>Array 类型参数化数组</h1><p>scala Array 的初始化</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简洁的方法创造和初始化：</span></span><br><span class="line">val numNames = Array(<span class="string">"zero"</span>, <span class="string">"one"</span>, <span class="string">"two"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更罗嗦的调用 apply 方法：</span></span><br><span class="line">val numNames2 = Array.apply(<span class="string">"zero"</span>, <span class="string">"one"</span>, <span class="string">"two"</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">object HelloWorld </span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">def <span class="title">main</span><span class="params">(args: Array[String])</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">      val greetStrings = <span class="keyword">new</span> Array[String](<span class="number">3</span>)  </span><br><span class="line"></span><br><span class="line">      greetStrings(<span class="number">0</span>) = <span class="string">"Scala: Hello"</span> </span><br><span class="line">      greetStrings(<span class="number">1</span>) = <span class="string">", "</span> </span><br><span class="line">      greetStrings(<span class="number">2</span>) = <span class="string">"world!\n"</span> </span><br><span class="line">      <span class="keyword">for</span> (i &lt;- <span class="number">0</span> to <span class="number">2</span>) </span><br><span class="line">           print(greetStrings(i)) </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出结果：Scala: Hello, world!</span></span><br></pre></td></tr></table></figure>
-<p>Scala里的数组是通过把索引放在圆括号里面访问的，而不是像Java那样放在方括号里。所以数组的第零个元素是greetStrings(0)，不是greetStrings[0]。</p>
-<p><code>val</code> 的概念: 当你用val定义一个变量，那么这个变量就不能重新赋值，但它指向的对象却仍可以改变。</p>
-<blockquote>
-<p>在本例中，你不能把greetStrings重新赋值成不同的数组；greetStrings将永远指向那个它被初始化时候指向的同一个Array[String]实例。但是你能一遍遍修改那个Array[String]的元素，因此数组本身是可变的。</p>
-</blockquote>
-<h1 id="使用列表【List】"><a href="#使用列表【List】" class="headerlink" title="使用列表【List】"></a>使用列表【List】</h1><p>Scala <code>Array</code> 数组是一个所有对象都共享相同类型的可变序列。比方说Array[String]仅包含String。尽管实例化之后你无法改变Array的长度，它的元素值却是可变的。因此，Array是可变的对象。</p>
-<p>Scala的List类是共享相同类型的不可变对象序列。</p>
-<p>和数组一样，List[String]包含的仅仅是String。<br>Scala的List不同于Java的java.util.List，总是不可变的（而Java的List可变）。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个Scala的List很简单</span></span><br><span class="line">val oneTwoThree = List(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<p>上述代码完成了一个新的叫做oneTwoThree的val，并已经用带有整数元素值1，2和3的新List[Int]初始化。</p>
-<h2 id="List-操作"><a href="#List-操作" class="headerlink" title="List 操作"></a>List 操作</h2><p>这个List可以这么用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">val oneTwo = List(<span class="number">1</span>, <span class="number">2</span>)  </span><br><span class="line">val threeFour = List(<span class="number">3</span>, <span class="number">4</span>) </span><br><span class="line">val oneTwoThreeFour = oneTwo ::: threeFour  <span class="comment">// ::: 拼接List</span></span><br><span class="line"></span><br><span class="line">println(oneTwo + <span class="string">" 和 "</span> + threeFour + <span class="string">" 是不可变的"</span>)  </span><br><span class="line">println(oneTwoThreeFour + <span class="string">" 是个新列表了"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果:</span></span><br><span class="line"><span class="comment">// List(1, 2) 和 List(3, 4) 是不可变的</span></span><br><span class="line"><span class="comment">// List(1, 2, 3, 4) 是个新列表了</span></span><br></pre></td></tr></table></figure>
-<p>List最常用的操作符是发音为”cons”的” :: “. 例如，</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val twoThree = List(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">val oneTwoThree = <span class="number">1</span> :: twoThree  <span class="comment">// 拼接元素 和 List</span></span><br><span class="line">println(oneTwoThree) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果为：List(1, 2, 3)</span></span><br></pre></td></tr></table></figure>
-<p>类List没有提供append操作。<br>如果你想通过添加元素来构造列表： </p>
-<ul>
-<li>前缀进去，完成之后再调用reverse； </li>
-<li>使用ListBuffer，一种提供append操作的可变列表，完成之后调用toList。</li>
-</ul>
-<h1 id="使用元组【Tuple】"><a href="#使用元组【Tuple】" class="headerlink" title="使用元组【Tuple】"></a>使用元组【Tuple】</h1><p>另一种有用的容器对象是元组：tuple。与列表一样，元组也是不可变的，但与列表不同，元组可以包含不同类型的元素。</p>
-<p>列表应该是List[Int]或List[String]的样子，元组可以同时拥有Int和String。</p>
-<p>Scala里你可以简单地返回一个元组。<br>而且这么做的确简单：实例化一个装有一些对象的新元组，只要把这些对象放在括号里，并用逗号分隔即可。<br>一旦你已经实例化了一个元组，你可以用点号，下划线和一个基于1的元素索引访问它。</p>
-<p>一个例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val pair = (<span class="number">99</span>, <span class="string">"Luftballons"</span>)  <span class="comment">//Scala推断元组类型为Tuple2[Int, String]，并把它赋给变量pair。</span></span><br><span class="line">println(pair._1)                <span class="comment">//访问_1字段，从而输出第一个元素，99。</span></span><br><span class="line">println(pair._2)                </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// 99</span></span><br><span class="line"><span class="comment">// Luftballons</span></span><br></pre></td></tr></table></figure>
-<p>元组第一个元素是以99为值的Int，第二个是”luftballons”为值的String。</p>
-<p>元组的实际类型取决于它含有的元素数量和这些元素的类型。<br>因此，(99, “Luftballons”)的类型是Tuple2[Int, String]。</p>
-<p>类似地，(‘u’, ‘r’, ‘the’, 1, 4, “me”)是Tuple6[Char, Char, String, Int, Int, String]。</p>
-<h2 id="访问元组的元素"><a href="#访问元组的元素" class="headerlink" title="访问元组的元素"></a>访问元组的元素</h2><p>为什么你不能像访问List里的元素那样访问元组的，就像pair(0)？<br>因为List的apply方法始终返回同样的类型，但是元组里的或许类型不同。<br>_1可以有一个结果类型，_2是另外一个。 </p>
-<blockquote>
-<p>另：元组元素编号从1开始。</p>
-</blockquote>
-<h1 id="使用Set和Map"><a href="#使用Set和Map" class="headerlink" title="使用Set和Map"></a>使用Set和Map</h1><p>当问题讨论到集和映射，Scala同样提供了可变和不可变的替代品，不过用了不同的办法。</p>
-<p>对于集和映射，Scala把可变性建模在类继承中。</p>
-<p>例如，Scala的API包含了集的一个基本特质：trait，特质这个概念接近于Java的接口。</p>
-<p>Scala于是提供了两个子特质，一个是可变的集，另一个是不可变的集。这三个特质都共享同样的简化名，Set。</p>
-<p>如果你想要使用HashSet，你可以根据你的需要选择可变的或不可变的变体。</p>
-<p>创造集的缺省方法实例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var jetSet = Set(<span class="string">"Boeing"</span>, <span class="string">"Airbus"</span>)  <span class="comment">//定义了名为jetSet的新var，包含两个字串</span></span><br><span class="line">jetSet += <span class="string">"Lear"</span>                      <span class="comment">// jetSet = jetSet + "Lear" </span></span><br><span class="line">println(jetSet.contains(<span class="string">"Cessna"</span>))    <span class="comment">//打印输出集是否包含字串"Cessna"。</span></span><br><span class="line">println(jetSet.contains(<span class="string">"Lear"</span>))      <span class="comment">//打印输出集是否包含字串"Lear"。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// false</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p>需要不可变集，就需要使用一个引用：import，如下所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.collection.mutable.Set  </span><br><span class="line"></span><br><span class="line">val movieSet = Set(<span class="string">"Hitch"</span>, <span class="string">"Poltergeist"</span>)  </span><br><span class="line">movieSet += <span class="string">"Shrek"</span> </span><br><span class="line">println(movieSet)  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// Set(Poltergeist, Shrek, Hitch)</span></span><br></pre></td></tr></table></figure>
-<p>需要一个不可变的HashSet，你可以这么做：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.collection.immutable.HashSet  </span><br><span class="line">val hashSet = HashSet(<span class="string">"Tomatoes"</span>, <span class="string">"Chilies"</span>)  </span><br><span class="line">println(hashSet + <span class="string">"Coriander"</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// Set(Chilies, Tomatoes, Coriander)</span></span><br></pre></td></tr></table></figure>
-<p>Map是Scala里另一种有用的集合类。<br>和集一样，Scala采用了类继承机制提供了可变的和不可变的两种版本的Map。</p>
-<p><code>scala.collection</code> 包里面有一个基础Map特质和两个子特质Map：<br>可变的Map在scala.collection.mutable里，不可变的在scala.collection.immutable里。</p>
-<p>可变映射的创造过程：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scala.collection.mutable.Map  </span><br><span class="line"></span><br><span class="line">val treasureMap = Map[Int, String]()  </span><br><span class="line">treasureMap += (<span class="number">1</span> -&gt; <span class="string">"我在"</span>)  </span><br><span class="line">treasureMap += (<span class="number">2</span> -&gt; <span class="string">"学习"</span>)  </span><br><span class="line">treasureMap += (<span class="number">3</span> -&gt; <span class="string">"Scala"</span>)  </span><br><span class="line">println(treasureMap(<span class="number">1</span>) + treasureMap(<span class="number">2</span>) + treasureMap(<span class="number">3</span>)) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// 我在学习Scala.</span></span><br></pre></td></tr></table></figure>
-<p>至于不可变映射，就不用引用任何类了，因为不可变映射是缺省的，代码例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">val romanNumeral = Map(      </span><br><span class="line">        <span class="number">1</span> -&gt; <span class="string">"我"</span>, <span class="number">2</span> -&gt; <span class="string">"是"</span>, <span class="number">3</span> -&gt; <span class="string">"缺"</span>, <span class="number">4</span> -&gt; <span class="string">"省"</span>, <span class="number">5</span> -&gt; <span class="string">"的"</span> )  </span><br><span class="line">println(romanNumeral(<span class="number">1</span>) + romanNumeral(<span class="number">2</span>) + romanNumeral(<span class="number">3</span>) + romanNumeral(<span class="number">4</span>) + romanNumeral(<span class="number">5</span>))  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行结果：</span></span><br><span class="line"><span class="comment">// 我是缺省的</span></span><br></pre></td></tr></table></figure>
-          
+          Array 类型参数化数组scala Array 的初始化
+12345// 简洁的方法创造和初始化：val numNames = Array("zero", "one", "two")// 更罗嗦的调用 apply 方法：val numNames2 = Array.apply("zero", "one", "two")
+12345678910111213141516object HelloWorld &#123;    def main(args: Array[String])     &#123;      val greetStrings = new Array[String](3)        greetStrings(0) = "Scala: Hello"       greetStrings(1) = ", "       greetStrings(2) = "world!\n
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/20/scala-array-list-tuple-and-so-on/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -591,26 +1094,16 @@
       
         
           
-            <h1 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">h, j, k, l 上，下，左，右</span><br><span class="line">ctrl-e 移动页面</span><br><span class="line">ctrl-f 上翻一页</span><br><span class="line">ctrl-b 下翻一页</span><br><span class="line">ctrl-u 上翻半页</span><br><span class="line">ctrl-d 下翻半页</span><br><span class="line">w 跳到下一个字首，按标点或单词分割</span><br><span class="line">W 跳到下一个字首，长跳，如end-of-line被认为是一个字</span><br><span class="line">e 跳到下一个字尾</span><br><span class="line">E 跳到下一个字尾，长跳</span><br><span class="line">b 跳到上一个字</span><br><span class="line">B 跳到上一个字，长跳</span><br><span class="line">0 跳至行首，不管有无缩进，就是跳到第0个字符</span><br><span class="line">^ 跳至行首的第一个字符</span><br><span class="line">$ 跳至行尾</span><br><span class="line">gg 跳至文首</span><br><span class="line">G 调至文尾</span><br><span class="line">5gg/5G 调至第5行</span><br><span class="line">gd 跳至当前光标所在的变量的声明处</span><br><span class="line">fx 在当前行中找x字符，找到了就跳转至</span><br><span class="line">; 重复上一个f命令，而不用重复的输入fx</span><br><span class="line">* 查找光标所在处的单词，向下查找</span><br><span class="line"># 查找光标所在处的单词，向上查找</span><br></pre></td></tr></table></figure>
-<h1 id="删除复制"><a href="#删除复制" class="headerlink" title="删除复制"></a>删除复制</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dd 删除光标所在行</span><br><span class="line">dw 删除一个字(word)</span><br><span class="line">d/D删除到行末x删除当前字符X删除前一个字符yy复制一行yw复制一个字y/Y 复制到行末</span><br><span class="line">p 粘贴粘贴板的内容到当前行的下面</span><br><span class="line">P 粘贴粘贴板的内容到当前行的上面</span><br></pre></td></tr></table></figure>
-<h1 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">i 从当前光标处进入插入模式</span><br><span class="line">I 进入插入模式，并置光标于行首</span><br><span class="line">a 追加模式，置光标于当前光标之后</span><br><span class="line">A 追加模式，置光标于行末</span><br><span class="line">o 在当前行之下新加一行，并进入插入模式</span><br><span class="line">O 在当前行之上新加一行，并进入插入模式</span><br><span class="line">Esc 退出插入模式</span><br></pre></td></tr></table></figure>
-<h1 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">J 将下一行和当前行连接为一行</span><br><span class="line">cc 删除当前行并进入编辑模式</span><br><span class="line">cw 删除当前字，并进入编辑模式</span><br><span class="line">c$ 擦除从当前位置至行末的内容，并进入编辑模式</span><br><span class="line">s 删除当前字符并进入编辑模式</span><br><span class="line">S 删除光标所在行并进入编辑模式</span><br><span class="line">xp 交换当前字符和下一个字符</span><br><span class="line">u 撤销</span><br><span class="line">ctrl+r 重做</span><br><span class="line">~ 切换大小写，当前字符</span><br><span class="line">&gt;&gt; 将当前行右移一个单位</span><br><span class="line">&lt;&lt; 将当前行左移一个单位(一个tab符)</span><br><span class="line">== 自动缩进当前行</span><br></pre></td></tr></table></figure>
-<h1 id="查找替换"><a href="#查找替换" class="headerlink" title="查找替换"></a>查找替换</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/pattern 向后搜索字符串pattern</span><br><span class="line">?pattern 向前搜索字符串pattern</span><br><span class="line">&quot;\c&quot; 忽略大小写</span><br><span class="line">&quot;\C&quot; 大小写敏感</span><br><span class="line"></span><br><span class="line">n 下一个匹配(如果是/搜索，则是向下的下一个，?搜索则是向上的下一个)</span><br><span class="line">N 上一个匹配(同上)</span><br><span class="line">:%s/old/new/g 搜索整个文件，将所有的old替换为new</span><br><span class="line">:%s/old/new/gc 搜索整个文件，将所有的old替换为new，每次都要你确认是否替换</span><br></pre></td></tr></table></figure>
-<h1 id="退出编辑器"><a href="#退出编辑器" class="headerlink" title="退出编辑器"></a>退出编辑器</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:w 将缓冲区写入文件，即保存修改</span><br><span class="line">:wq 保存修改并退出</span><br><span class="line">:x 保存修改并退出</span><br><span class="line">:q 退出，如果对缓冲区进行过修改，则会提示</span><br><span class="line">:q! 强制退出，放弃修改</span><br></pre></td></tr></table></figure>
-<h1 id="多文件编辑"><a href="#多文件编辑" class="headerlink" title="多文件编辑"></a>多文件编辑</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">vim file1.. 同时打开多个文件</span><br><span class="line">:args 显示当前编辑文件</span><br><span class="line">:next 切换到下个文件</span><br><span class="line">:prev 切换到前个文件</span><br><span class="line">:next！ 不保存当前编辑文件并切换到下个文件</span><br><span class="line">:prev！ 不保存当前编辑文件并切换到上个文件</span><br><span class="line">:wnext 保存当前编辑文件并切换到下个文件</span><br><span class="line">:wprev 保存当前编辑文件并切换到上个文件</span><br><span class="line">:first 定位首文件</span><br><span class="line">:last 定位尾文件</span><br><span class="line">ctrl+^ 快速在最近打开的两个文件间切换</span><br><span class="line">:split[sp] 把当前文件水平分割</span><br><span class="line">:split file 把当前窗口水平分割, file</span><br><span class="line">:vsplit[vsp] file 把当前窗口垂直分割, file</span><br><span class="line">:new file 同split file</span><br><span class="line">:close 关闭当前窗口</span><br><span class="line">:only 只显示当前窗口, 关闭所有其他的窗口</span><br><span class="line">:all 打开所有的窗口</span><br><span class="line">:vertical all 打开所有的窗口, 垂直打开</span><br><span class="line">:qall 对所有窗口执行：q操作</span><br><span class="line">:qall! 对所有窗口执行：q!操作</span><br><span class="line">:wall 对所有窗口执行：w操作</span><br><span class="line">:wqall 对所有窗口执行：wq操作</span><br><span class="line">ctrl-w h 跳转到左边的窗口</span><br><span class="line">ctrl-w j 跳转到下面的窗口</span><br><span class="line">ctrl-w k 跳转到上面的窗口</span><br><span class="line">ctrl-w l 跳转到右边的窗口</span><br><span class="line">ctrl-w t 跳转到最顶上的窗口</span><br><span class="line">ctrl-w b 跳转到最底下的窗口</span><br></pre></td></tr></table></figure>
-<h1 id="多标签编辑"><a href="#多标签编辑" class="headerlink" title="多标签编辑"></a>多标签编辑</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">:tabedit file 在新标签中打开文件file</span><br><span class="line">:tab split file 在新标签中打开文件file</span><br><span class="line">:tabp 切换到前一个标签</span><br><span class="line">:tabn 切换到后一个标签</span><br><span class="line">:tabc 关闭当前标签</span><br><span class="line">:tabo 关闭其他标签</span><br><span class="line">gt 到下一个tab</span><br><span class="line">gT 到上一个tab</span><br><span class="line">0gt 跳到第一个tab</span><br><span class="line">5gt 跳到第五个tab</span><br></pre></td></tr></table></figure>
-<h1 id="执行shell命令"><a href="#执行shell命令" class="headerlink" title="执行shell命令"></a>执行shell命令</h1><p>1、在命令模式下输入”:sh”，可以运行相当于在字符模式下，到输入结束想回到VIM编辑器中用exit，ctrl+D返回VIM编辑器<br>2、可以”!command”，运行结束后自动回到VIM编辑器中<br>3、用“Ctrl+Z“回到shell，用fg返回编辑<br>4、:!make -&gt; 直接在当前目录下运行make指令</p>
-<h1 id="VIM启动项"><a href="#VIM启动项" class="headerlink" title="VIM启动项"></a>VIM启动项</h1><p>-o[n] 以水平分屏的方式打开多个文件<br>-O[n] 以垂直分屏的方式打开多个文件</p>
-<h1 id="自动排版"><a href="#自动排版" class="headerlink" title="自动排版"></a>自动排版</h1><p>在粘贴了一些代码之后，vim变得比较乱，只要执行gg=G就能搞定</p>
-<h1 id="如何在vim中编译程序"><a href="#如何在vim中编译程序" class="headerlink" title="如何在vim中编译程序"></a>如何在vim中编译程序</h1><p>在vim中可以完成make,而且可以将编译的结果也显示在vim里，先执行 :copen 命令，将结果输出的窗口打开，然后执行 :make<br>编译后的结果就显示在了copen打开的小窗口里了，而且用鼠标双击错误信息，就会跳转到发生错误的行。</p>
-<h1 id="buffer操作"><a href="#buffer操作" class="headerlink" title="buffer操作"></a>buffer操作</h1><h2 id="buffer状态"><a href="#buffer状态" class="headerlink" title="buffer状态"></a>buffer状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- （非活动的缓冲区）</span><br><span class="line">a （当前被激活缓冲区）</span><br><span class="line">h （隐藏的缓冲区）</span><br><span class="line">% （当前的缓冲区）</span><br><span class="line"># （交换缓冲区）</span><br><span class="line">= （只读缓冲区）</span><br><span class="line">+ （已经更改的缓冲区）</span><br></pre></td></tr></table></figure>
-<h1 id="VIM-操作目录"><a href="#VIM-操作目录" class="headerlink" title="VIM 操作目录"></a>VIM 操作目录</h1><h2 id="打开目录"><a href="#打开目录" class="headerlink" title="打开目录"></a>打开目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim .</span><br><span class="line">vim a-path/</span><br></pre></td></tr></table></figure>
-<h2 id="以下操作在操作目录时生效"><a href="#以下操作在操作目录时生效" class="headerlink" title="以下操作在操作目录时生效"></a>以下操作在操作目录时生效</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">p,P,t,u,U,x,v,o,r,s</span><br><span class="line"></span><br><span class="line">c 使当前打开的目录成为当前目录</span><br><span class="line">d 创建目录</span><br><span class="line">% 创建文件</span><br><span class="line">D 删除文件/目录</span><br><span class="line">- 转到上层目录</span><br><span class="line">gb 转到上一个 bookmarked directory</span><br><span class="line">i 改变目录文件列表方式</span><br><span class="line">^l 刷新当前打开的目录</span><br><span class="line"></span><br><span class="line">mf - 标记文件</span><br><span class="line">mu - unmark all marked files</span><br><span class="line">mz - Compress/decompress marked files</span><br><span class="line">gh 显示/不显示隐藏文件( dot-files)</span><br><span class="line">^h 编辑隐藏文件列表</span><br><span class="line">a 转换显示模式, all - hide - unhide</span><br><span class="line">qf diplay infomation about file</span><br><span class="line">qb list the bookmarked directories and directory traversal history</span><br><span class="line">gi Display information on file</span><br><span class="line"></span><br><span class="line">mb</span><br><span class="line">mc</span><br><span class="line">md - 将标记的文件(mf标记文件)使用 diff 模式</span><br><span class="line">me - 编辑标记的文件,只显示一个，其余放入 buffer 中</span><br><span class="line">mh</span><br><span class="line">mm - move marked files to marked-file target directory</span><br><span class="line">mc - copy</span><br><span class="line">mp</span><br><span class="line">mr</span><br><span class="line">mt</span><br></pre></td></tr></table></figure>
-<p>vim 中复制,移动文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1, mt - 移动到的目录</span><br><span class="line">2, mf - 标记要移动的文件</span><br><span class="line">3, mc - 移动/复制</span><br></pre></td></tr></table></figure></p>
-<p>R 移动文件</p>
-<p>打开当前编辑文件的目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">:Explore</span><br><span class="line">:Hexplore</span><br><span class="line">:Nexplore</span><br><span class="line">:Pexplore</span><br><span class="line">:Sexplore</span><br><span class="line">:Texplore</span><br><span class="line">:Vexplore</span><br></pre></td></tr></table></figure>
-          
+          移动光标1234567891011121314151617181920212223h, j, k, l 上，下，左，右ctrl-e 移动页面ctrl-f 上翻一页ctrl-b 下翻一页ctrl-u 上翻半页ctrl-d 下翻半页w 跳到下一个字首，按标点或单词分割W 跳到下一个字首，长跳，如end-of-line被认为是一个字e 跳到下一个字尾E 跳到下一个字尾，长跳b 跳到上一个字B 跳到上一个字，长跳0 跳至行首，不管有无缩进，就是跳到第0个字符^ 跳至行首的第一个字符$ 跳至行尾gg 跳至文首G 调至文尾5gg/5G 调至第5行gd 跳至当前光标所在的变量的声明处fx 在当前行中找x字符，找到了就跳转至; 重复上一个f命令，而不用重复的输入fx* 查找光标所在处的单词，向下查找# 查找光标所在处的单词，向上查找
+删除复制12345dd 删除光标所在行dw 删除一个字(word)d/D
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/20/vim-guide/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -728,53 +1221,23 @@
       
         
           
-            <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ol>
-<li>安装Node.js</li>
-</ol>
-<p>mac系统到node.js官网下安装包吧</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>安装git</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Windows：下载并安装 git.</span><br><span class="line">Mac：使用 Homebrew, MacPorts ：brew install git;或下载 安装程序 安装。</span><br><span class="line">Linux (Ubuntu, Debian)：sudo apt-get install git-core</span><br><span class="line">Linux (Fedora, Red Hat, CentOS)：sudo yum install git-core</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>安装Hexo</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>之后要在博客的文件夹下执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo</span><br><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
-<h1 id="可视化写博客"><a href="#可视化写博客" class="headerlink" title="可视化写博客"></a>可视化写博客</h1><p>借助vsc、atom之类的编辑器，可以实现hexo博客的编辑和实时预览，还可以试试 <code>hexo-admin</code>这款插件。</p>
-<p><code>hexo-admin</code> 能够管理文章，添加分类和标签，也可以一键部署到pages,现在图片可以实现粘贴上传，原插件为保存到<code>source/images</code>目录下,部署博客时同时上传。</p>
-<p>另外，还有一款<code>hexo-admin-qiniu</code> 插件，实现了自动上传文件到七牛云的配置，比较方便。（不需要先安装<code>hexo-admin</code>，直接装这个就行了）</p>
-<p>网址： <a href="https://github.com/xbotao/hexo-admin-qiniu" target="_blank" rel="noopener">hexo-admin-qiniu github</a></p>
-<h1 id="hexo-主题"><a href="#hexo-主题" class="headerlink" title="hexo 主题"></a>hexo 主题</h1><blockquote>
-<p>说明：在 Hexo 中有两份主要的配置文件，其名称都是 <code>_config.yml</code>。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。</p>
-</blockquote>
-<p>为了描述方便，在以下说明中，将前者称为 站点配置文件， 后者称为 主题配置文件。</p>
-<h2 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h2><p>Next是Hexo一个精简的主题系统，包含多种外观（Schema）选择，“精于心，简于形”是Next的目标。</p>
-<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">Next主题主页</a></p>
-<h3 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> your-hexo-site</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<h3 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h3><p>与所有 Hexo 主题启用的模式一样。 当 克隆/下载 完成后，打开站点配置文件 <code>_config.yml</code>， 找到 theme 字段，并将其值更改为 next。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 启用 NexT 主题</span><br><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-<p>到此，NexT 主题安装完成。下一步我们将验证主题是否正确启用。在切换主题之后、验证之前， 我们最好使用 hexo clean 来清除 Hexo 的缓存。</p>
-<p>主题设定包括：详细见官网介绍</p>
-<ul>
-<li>选择「Scheme」</li>
-<li>设置「界面语言」</li>
-<li>设置「菜单」</li>
-<li>设置「侧栏」</li>
-<li>设置「头像」</li>
-<li>设置「作者昵称」</li>
-<li>设置「站点描述」</li>
-</ul>
-<h3 id="设置语言"><a href="#设置语言" class="headerlink" title="设置语言"></a>设置语言</h3><p>编辑 站点配置文件， 将 language 设置成你所需要的语言。建议明确设置你所需要的语言，例如选用简体中文，配置如下：</p>
-<p><code>language: zh-Hans</code></p>
-<h1 id="hexo-使用过程中出现的错误"><a href="#hexo-使用过程中出现的错误" class="headerlink" title="hexo 使用过程中出现的错误"></a>hexo 使用过程中出现的错误</h1><ul>
-<li>hexo本地测试运行重启后页面空白,提示 : <code>WARN No layout: index.html</code>?</li>
-</ul>
-<p>原因：从git hexo分支（存放hexo文件）把代码拉下来，之前的Next 主题被忽略了，就没拉下来，所以必须重新 git clone Next主题的仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+          安装支持
+安装Node.js
 
-          
+mac系统到 node.js 官网下安装包
+1234567891011# 安装 Node.js# 安装 Node.js 的最佳方式是使用 nvm。# cURL方式$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh# Wget方式$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh# 安装完成后，重启终端并执行下列命令即可安装 Node.js。$ nvm install stable
+
+安装git
+
+12345678910# Windows：下载并安装 git.# Mac：使用 Homebrew, MacPorts ：brew install git  # ;或下载 安装程序 安装。#
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/18/hexo-blog-system-guide/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -892,51 +1355,24 @@
       
         
           
-            <h1 id="克隆-git-仓库"><a href="#克隆-git-仓库" class="headerlink" title="克隆 git 仓库"></a>克隆 git 仓库</h1><p>命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;remote_repo&gt; -b &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin http://192.168.36.10:10080/quantum_rng_testing/nist <span class="comment"># （”quantum_rng_testing/nist“ 为工程的目录）</span></span><br></pre></td></tr></table></figure>
-<h2 id="git-push-命令"><a href="#git-push-命令" class="headerlink" title="git push 命令"></a>git push 命令</h2><p>git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相似。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push [参数] &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure>
-<p>参数：</p>
-<ul>
-<li>-u 第一次推送的时候，可以将分支进行关联，以后只要 <code>git push</code> 就行了</li>
-</ul>
-<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin :master</span><br><span class="line"># 等同于</span><br><span class="line">$ git push origin --delete master</span><br></pre></td></tr></table></figure></p>
-<h3 id="强制覆盖远程分支"><a href="#强制覆盖远程分支" class="headerlink" title="强制覆盖远程分支"></a>强制覆盖远程分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line">git push origin develop:master -f <span class="comment"># 就可以把本地的develop分支强制(-f)推送到远程master</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二 </span></span><br><span class="line">git checkout master 		<span class="comment"># 切换到旧的分支 </span></span><br><span class="line">git reset –hard develop 	<span class="comment"># 将本地的旧分支 master 重置成 develop </span></span><br><span class="line">git push origin master –force 	<span class="comment"># 再推送到远程仓库</span></span><br></pre></td></tr></table></figure>
-<h3 id="推送本地所有分支"><a href="#推送本地所有分支" class="headerlink" title="推送本地所有分支"></a>推送本地所有分支</h3><p>不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --all origin</span><br></pre></td></tr></table></figure></p>
-<h2 id="放弃本地所有修改，强制拉取远程更新"><a href="#放弃本地所有修改，强制拉取远程更新" class="headerlink" title="放弃本地所有修改，强制拉取远程更新"></a>放弃本地所有修改，强制拉取远程更新</h2><p>开发时，对于本地的项目中修改不做保存操作（或代码改崩），可以用到Git pull的强制覆盖，具体代码如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/master</span><br><span class="line">git pull //可以省略</span><br></pre></td></tr></table></figure>
-<p>git fetch 指令是下载远程仓库最新内容，不做合并<br>git reset 指令把HEAD指向master最新版本</p>
-<h2 id="查看远程分支"><a href="#查看远程分支" class="headerlink" title="查看远程分支"></a>查看远程分支</h2><p>查看远程分支<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure></p>
-<h2 id="拉取远程分支并创建本地分支"><a href="#拉取远程分支并创建本地分支" class="headerlink" title="拉取远程分支并创建本地分支"></a>拉取远程分支并创建本地分支</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>使用如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b 本地分支名 origin/远程分支名</span><br></pre></td></tr></table></figure></p>
-<p>使用该方式会在本地新建分支，并自动切换到该本地分支x</p>
-<blockquote>
-<p>采用此种方法建立的本地分支会和远程分支建立映射关系。</p>
-</blockquote>
-<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>使用如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin 远程分支名x:本地分支名x</span><br></pre></td></tr></table></figure></p>
-<p>使用该方式会在本地新建分支x，但是不会自动切换到该本地分支x，需要手动checkout。</p>
-<blockquote>
-<p>采用此种方法建立的本地分支不会和远程分支建立映射关系。</p>
-</blockquote>
-<h3 id="本地分支和远程分支建立映射关系的作用"><a href="#本地分支和远程分支建立映射关系的作用" class="headerlink" title="本地分支和远程分支建立映射关系的作用"></a>本地分支和远程分支建立映射关系的作用</h3><p>ref: 博文<a href="https://blog.csdn.net/tterminator/article/details/78108550" target="_blank" rel="noopener">Git branch upstream</a></p>
-<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>本博文中git操作的目标为建立本地分支与远程分支的映射关系（或者为跟踪关系track）。这样使用 <code>git pull</code> 或者 <code>git push</code> 时就不必每次都要指定从远程的哪个分支拉取合并和推送到远程的哪个分支了。</p>
-<h4 id="查看本地分支与远程分支的映射关系"><a href="#查看本地分支与远程分支的映射关系" class="headerlink" title="查看本地分支与远程分支的映射关系"></a>查看本地分支与远程分支的映射关系</h4><p>使用以下命令（注意是双v）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -vv</span><br></pre></td></tr></table></figure>
-<p>可以获得如下信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* hexo   d60a56a create the world</span><br><span class="line">  master 649e511 [origin/master: ahead 6, behind 3] Site updated: 2018-04-22 18:23:40</span><br></pre></td></tr></table></figure></p>
-<p>可以看到分支hexo没有和远程分支建立任何映射，此时若执行如下拉取命令则不成功（因为git此时不知道拉取哪个远程分支和本地分支合并）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br><span class="line">There is no tracking information for the current branch.</span><br><span class="line">Please specify which branch you want to merge with.</span><br><span class="line">See git-pull(1) for details.</span><br><span class="line"></span><br><span class="line">    git pull &lt;remote&gt; &lt;branch&gt;</span><br><span class="line"></span><br><span class="line">If you wish to set tracking information for this branch you can do so with:</span><br><span class="line"></span><br><span class="line">    git branch --set-upstream-to=origin/&lt;branch&gt; hexo</span><br></pre></td></tr></table></figure></p>
-<p>同理，若此时执行如下推送命令同样不成功：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br><span class="line">There is no tracking information for the current branch.</span><br><span class="line">Please specify which branch you want to merge with.</span><br><span class="line">See git-pull(1) for details.</span><br><span class="line"></span><br><span class="line">    git pull &lt;remote&gt; &lt;branch&gt;</span><br><span class="line"></span><br><span class="line">If you wish to set tracking information for this branch you can do so with:</span><br><span class="line"></span><br><span class="line">    git branch --set-upstream-to=origin/&lt;branch&gt; hexo</span><br><span class="line"></span><br><span class="line">Kevin-MacBook-Air:blog arthur-mac$ git push</span><br><span class="line">fatal: The current branch hexo has no upstream branch.</span><br><span class="line">To push the current branch and set the remote as upstream, use</span><br><span class="line"></span><br><span class="line">    git push --set-upstream origin hexo</span><br></pre></td></tr></table></figure></p>
-<h4 id="建立本地分支与远程分支的映射关系"><a href="#建立本地分支与远程分支的映射关系" class="headerlink" title="建立本地分支与远程分支的映射关系"></a>建立本地分支与远程分支的映射关系</h4><p>建立当前分支与远程分支的映射关系:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -u origin/hexo</span><br></pre></td></tr></table></figure></p>
-<p>或者使用命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to origin/hexo</span><br></pre></td></tr></table></figure></p>
-<p>得到结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Branch &apos;hexo&apos; set up to track remote branch &apos;hexo&apos; from &apos;origin&apos;.</span><br></pre></td></tr></table></figure></p>
-<p>查看当前本地分支与远程分支的映射关系结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -vv</span><br><span class="line">* hexo   d60a56a [origin/hexo] create the world</span><br><span class="line">  master 649e511 [origin/master: ahead 6, behind 3] Site updated: 2018-04-22 18:23:40</span><br></pre></td></tr></table></figure></p>
-<p>此时就能够正常的拉取和推送了。</p>
-<h4 id="撤销本地分支与远程分支的映射关系"><a href="#撤销本地分支与远程分支的映射关系" class="headerlink" title="撤销本地分支与远程分支的映射关系"></a>撤销本地分支与远程分支的映射关系</h4><p>撤销本地分支与远程分支的映射关系</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --unset-upstream</span><br></pre></td></tr></table></figure>
-<p>使用git branch -vv得到结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -vv</span><br><span class="line">* hexo   d60a56a create the world</span><br><span class="line">  master 649e511 [origin/master: ahead 6, behind 3] Site updated: 2018-04-22 18:23:40</span><br></pre></td></tr></table></figure></p>
-<p>可以看到本地分支与远程分支的映射关系已经撤销。</p>
-<h4 id="问题思考：本地分支只能跟踪远程的同名分支吗？"><a href="#问题思考：本地分支只能跟踪远程的同名分支吗？" class="headerlink" title="问题思考：本地分支只能跟踪远程的同名分支吗？"></a>问题思考：本地分支只能跟踪远程的同名分支吗？</h4><p>答案是否定的，本地分支可以与远程不同名的分支建立映射关系。</p>
+          克隆 git 仓库命令
+1git clone &lt;remote_repo&gt; -b &lt;branch&gt;
+远程仓库添加远程仓库1git remote add origin http://192.168.36.10:10080/quantum_rng_testing/nist # （”quantum_rng_testing/nist“ 为工程的目录）
+git push 命令git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相似。
+1$ git push [参数] &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;
+参数：
 
-          
+-u 第一次推送的时候，可以将分支进行关联，以后只要 git push 就行了
+
+删除远程分支如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。1
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/18/git-guide-for-freshman/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1016,7 +1452,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1029,7 +1465,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
