@@ -7,7 +7,7 @@
 
 <html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="概述本文主要讲解tensorflow中涉及embedding的API。之前看了一些文章，写的云山雾绕，花了好长时间才搞懂，太笨了。embedding 算法主要用于处理稀疏特征，应用于NLP、推荐、广告等领域。所以word2vec 只是embbeding 思想的一个应用，而不是全部。 代码地址：git@github.com:gshtime/tensorflow-api.git embed">
+<meta name="description" content="概述本文主要讲解tensorflow中涉及embedding的API。之前看了一些文章，写的云山雾绕，花了好长时间才搞懂，太笨了。embedding 算法主要用于处理稀疏特征，应用于NLP、推荐、广告等领域。所以word2vec 只是embbeding 思想的一个应用，而不是全部。 代码地址：git@github.com:gshtime/tensorflow-api.git // es">
 <meta name="keywords" content="embedding_lookup, tf.gather, embedding_lookup_sparse">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习中的embedding原理及tf.nn.embedding_lookup_sparse等API的理解">
 <meta property="og:url" content="http://yoursite.com/2018/06/01/tensorflow-embedding-lookup-sparse/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:description" content="概述本文主要讲解tensorflow中涉及embedding的API。之前看了一些文章，写的云山雾绕，花了好长时间才搞懂，太笨了。embedding 算法主要用于处理稀疏特征，应用于NLP、推荐、广告等领域。所以word2vec 只是embbeding 思想的一个应用，而不是全部。 代码地址：git@github.com:gshtime/tensorflow-api.git embed">
+<meta property="og:description" content="概述本文主要讲解tensorflow中涉及embedding的API。之前看了一些文章，写的云山雾绕，花了好长时间才搞懂，太笨了。embedding 算法主要用于处理稀疏特征，应用于NLP、推荐、广告等领域。所以word2vec 只是embbeding 思想的一个应用，而不是全部。 代码地址：git@github.com:gshtime/tensorflow-api.git // es">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/WX20180601-155344.png">
 <meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/20170814220528829.jpg">
-<meta property="og:updated_time" content="2018-06-01T11:14:30.000Z">
+<meta property="og:updated_time" content="2018-06-02T06:10:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习中的embedding原理及tf.nn.embedding_lookup_sparse等API的理解">
-<meta name="twitter:description" content="概述本文主要讲解tensorflow中涉及embedding的API。之前看了一些文章，写的云山雾绕，花了好长时间才搞懂，太笨了。embedding 算法主要用于处理稀疏特征，应用于NLP、推荐、广告等领域。所以word2vec 只是embbeding 思想的一个应用，而不是全部。 代码地址：git@github.com:gshtime/tensorflow-api.git embed">
+<meta name="twitter:description" content="概述本文主要讲解tensorflow中涉及embedding的API。之前看了一些文章，写的云山雾绕，花了好长时间才搞懂，太笨了。embedding 算法主要用于处理稀疏特征，应用于NLP、推荐、广告等领域。所以word2vec 只是embbeding 思想的一个应用，而不是全部。 代码地址：git@github.com:gshtime/tensorflow-api.git // es">
 <meta name="twitter:image" content="http://p8vrqzrnj.bkt.clouddn.com/WX20180601-155344.png">
 
 
@@ -129,7 +129,7 @@
 
 
 
-  <title>机器学习中的embedding原理及tf.nn.embedding_lookup_sparse等API的理解 | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title>
+  <title>机器学习中的embedding原理及tf.nn.embedding_lookup_sparse等API的理解 | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -148,7 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -304,8 +304,9 @@
 
       
         <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文主要讲解tensorflow中涉及embedding的API。之前看了一些文章，写的云山雾绕，花了好长时间才搞懂，太笨了。<br><br>embedding 算法主要用于处理稀疏特征，应用于NLP、推荐、广告等领域。所以word2vec 只是embbeding 思想的一个应用，而不是全部。</p>
-<p>代码地址：<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:gshtime/tensorflow-api.git</p>
-<h1 id="embedding原理"><a href="#embedding原理" class="headerlink" title="embedding原理"></a>embedding原理</h1><p>常见的特征降维方法主要有PCA、SVD等。</p>
+<p>代码地址：git@github.com:gshtime/tensorflow-api.git</p>
+<p>// escape: /^\([\`<em>{}[]()#$+-.!<em>&gt;])/,<br>em: /^\b</em>((?:<em>_|[\s\S])+?)</em>\b|^\</em>((?:**|[\s\S])+?)*(?!*)/,<br>math test </p>
+<script type="math/tex; mode=display">R_{m \times n}</script><h1 id="embedding原理"><a href="#embedding原理" class="headerlink" title="embedding原理"></a>embedding原理</h1><p>常见的特征降维方法主要有PCA、SVD等。</p>
 <p>而embedding的主要目的也是对（稀疏）特征进行降维，它降维的方式可以类比为一个全连接层（没有激活函数），通过 embedding 层的权重矩阵计算来降低维度。</p>
 <p>假设：</p>
 <ul>
@@ -427,6 +428,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/06/02/google-wide-and-deep-network/" rel="prev" title="google-wide-and-deep-network">
+                google-wide-and-deep-network <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -502,7 +507,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -702,7 +707,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
