@@ -431,9 +431,13 @@
           
           概述本文主要讲解tensorflow中涉及embedding的API。之前看了一些文章，写的云山雾绕，花了好长时间才搞懂，太笨了。embedding 算法主要用于处理稀疏特征，应用于NLP、推荐、广告等领域。所以word2vec 只是embbeding 思想的一个应用，而不是全部。
 代码地址：git@github.com:gshtime/tensorflow-api.git
-// escape: /^\([\`{}[]()#$+-.!&gt;])/,em: /^\b((?:_|[\s\S])+?)\b|^\((?:**|[\s\S])+?)*(?!*)/,math test 
-R_{m \times n}embedding原理常见的特征降维方法主要有PCA、SVD等。
-而embedding的主要目的也是对（稀疏）特征进行降维，它降维的方式可以类比为一个全连接层（没有激活函数）
+embedding原理常见的特征降维方法主要有PCA、SVD等。
+而embedding的主要目的也是对（稀疏）特征进行降维，它降维的方式可以类比为一个全连接层（没有激活函数），通过 embedding 层的权重矩阵计算来降低维度。
+假设：
+
+feature_num : 原始特征数
+embedding_size: embedding之后的特征数
+[feature_num, embedding_size] 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1754,7 +1758,7 @@ git push 命令git push命令用于将本地分支的更新，推送到远程主
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
@@ -1807,6 +1811,28 @@ git push 命令git push命令用于将本地分支的更新，推送到远程主
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
 
   
 
