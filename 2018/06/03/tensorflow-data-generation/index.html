@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="Hi, I&apos;m fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Linux-vim/index.html">
+<meta name="description" content="tensorflow 数据读取 office guide 十图详解tensorflow数据读取机制（附代码） tf.train.batch和tf.train.shuffle_batch的理解 如何使用TensorFlow中的高级API：Estimator、Experiment和Dataset tensorflow架构 tensorflow架构 Tensoflow 分布式部署简介 TensorFlo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tensorflow data generation">
+<meta property="og:url" content="http://yoursite.com/2018/06/03/tensorflow-data-generation/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:description" content="Hi, I&apos;m fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.">
+<meta property="og:description" content="tensorflow 数据读取 office guide 十图详解tensorflow数据读取机制（附代码） tf.train.batch和tf.train.shuffle_batch的理解 如何使用TensorFlow中的高级API：Estimator、Experiment和Dataset tensorflow架构 tensorflow架构 Tensoflow 分布式部署简介 TensorFlo">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-03T08:34:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta name="twitter:description" content="Hi, I&apos;m fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.">
+<meta name="twitter:title" content="tensorflow data generation">
+<meta name="twitter:description" content="tensorflow 数据读取 office guide 十图详解tensorflow数据读取机制（附代码） tf.train.batch和tf.train.shuffle_batch的理解 如何使用TensorFlow中的高级API：Estimator、Experiment和Dataset tensorflow架构 tensorflow架构 Tensoflow 分布式部署简介 TensorFlo">
 
 
 
@@ -118,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Linux-vim/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/03/tensorflow-data-generation/"/>
 
 
 
 
 
-  <title>标签: Linux, vim | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>tensorflow data generation | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -143,7 +144,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,54 +218,148 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Linux, vim<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/tensorflow-data-generation/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/05/20/vim-guide/" itemprop="url">
-              
-                <span itemprop="name">vim使用指南及vim快捷键</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">tensorflow data generation</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-20T01:12:54+08:00"
-              content="2018-05-20" >
-          05-20
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T16:18:12+08:00">
+                2018-06-03
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://wiki.jikexueyuan.com/project/tensorflow-zh/how_tos/reading_data.html#AUTOGENERATED-preloaded-data" target="_blank" rel="noopener">tensorflow 数据读取 office guide</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/27238630" target="_blank" rel="noopener">十图详解tensorflow数据读取机制（附代码）</a></p>
+<p><a href="https://blog.csdn.net/ying86615791/article/details/73864381" target="_blank" rel="noopener">tf.train.batch和tf.train.shuffle_batch的理解</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/29210791" target="_blank" rel="noopener">如何使用TensorFlow中的高级API：Estimator、Experiment和Dataset</a></p>
+<p>tensorflow架构</p>
+<p><a href="https://blog.csdn.net/stdcoutzyx/article/details/51645396" target="_blank" rel="noopener">tensorflow架构</a></p>
+<p><a href="https://blog.csdn.net/sydpz1987/article/details/51340277" target="_blank" rel="noopener">Tensoflow 分布式部署简介</a></p>
+<p><a href="https://blog.csdn.net/CodeMaster_/article/details/76223835" target="_blank" rel="noopener">TensorFlow分布式全套（原理，部署，实例）</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/03/tensorflow-loss-and-regularizer/" rel="next" title="tensorflow中损失函数加正则项">
+                <i class="fa fa-chevron-left"></i> tensorflow中损失函数加正则项
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -272,6 +367,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -484,11 +583,15 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -541,26 +644,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

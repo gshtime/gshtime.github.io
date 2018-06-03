@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="概述Wide &amp;amp; Deep前者是用来给用户推荐潜在喜欢的APP；Deep &amp;amp; Cross是用来预测用户可能点击的广告排序。 参考阅读 2016 《Wide &amp;amp; Deep Learning for Recommender Systems》 blog 2017 《Deep &amp;amp; Cross Network for Ad Click Predictions》 blog g">
+<meta name="description" content="第0章wide是指高维特征+特征组合的LR。LR高效、容易规模化（scalable）、可解释性强。但是泛化性需要在特征工程上下功夫deep就是deep learning了。特征工程省力，但是容易过度泛化over-generalize。 参考阅读 2016 《Wide &amp;amp; Deep Learning for Recommender Systems》 blog 2017 《Deep &amp;amp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="google-wide-and-deep-network">
 <meta property="og:url" content="http://yoursite.com/2018/06/02/google-wide-and-deep-network/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:description" content="概述Wide &amp;amp; Deep前者是用来给用户推荐潜在喜欢的APP；Deep &amp;amp; Cross是用来预测用户可能点击的广告排序。 参考阅读 2016 《Wide &amp;amp; Deep Learning for Recommender Systems》 blog 2017 《Deep &amp;amp; Cross Network for Ad Click Predictions》 blog g">
+<meta property="og:description" content="第0章wide是指高维特征+特征组合的LR。LR高效、容易规模化（scalable）、可解释性强。但是泛化性需要在特征工程上下功夫deep就是deep learning了。特征工程省力，但是容易过度泛化over-generalize。 参考阅读 2016 《Wide &amp;amp; Deep Learning for Recommender Systems》 blog 2017 《Deep &amp;amp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-03T03:36:02.000Z">
+<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/wide-and-deep-1.png">
+<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/DX-20180603@2x.png">
+<meta property="og:updated_time" content="2018-06-03T08:19:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="google-wide-and-deep-network">
-<meta name="twitter:description" content="概述Wide &amp;amp; Deep前者是用来给用户推荐潜在喜欢的APP；Deep &amp;amp; Cross是用来预测用户可能点击的广告排序。 参考阅读 2016 《Wide &amp;amp; Deep Learning for Recommender Systems》 blog 2017 《Deep &amp;amp; Cross Network for Ad Click Predictions》 blog g">
+<meta name="twitter:description" content="第0章wide是指高维特征+特征组合的LR。LR高效、容易规模化（scalable）、可解释性强。但是泛化性需要在特征工程上下功夫deep就是deep learning了。特征工程省力，但是容易过度泛化over-generalize。 参考阅读 2016 《Wide &amp;amp; Deep Learning for Recommender Systems》 blog 2017 《Deep &amp;amp">
+<meta name="twitter:image" content="http://p8vrqzrnj.bkt.clouddn.com/wide-and-deep-1.png">
 
 
 
@@ -299,19 +302,25 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Wide &amp; Deep前者是用来给用户推荐潜在喜欢的APP；Deep &amp; Cross是用来预测用户可能点击的广告排序。</p>
+        <h1 id="第0章"><a href="#第0章" class="headerlink" title="第0章"></a>第0章</h1><p>wide是指高维特征+特征组合的LR。LR高效、容易规模化（scalable）、可解释性强。但是泛化性需要在特征工程上下功夫<br>deep就是deep learning了。特征工程省力，但是容易过度泛化over-generalize。</p>
 <h2 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h2><ul>
 <li>2016 《Wide &amp; Deep Learning for Recommender Systems》 <a href="">blog</a></li>
 <li>2017 《Deep &amp; Cross Network for Ad Click Predictions》 <a href="">blog</a></li>
 <li><a href="https://research.googleblog.com/2016/06/wide-deep-learning-better-together-with.html" target="_blank" rel="noopener">google research blog</a></li>
-<li><a href="https://github.com/tensorflow/models/tree/master/official/wide_deep" target="_blank" rel="noopener">wide&amp;deep github code</a></li>
+<li><a href="https://github.com/tensorflow/models/tree/master/official/wide_deep" target="_blank" rel="noopener">wide &amp; deep github code</a></li>
 <li>《2016-Deep Crossing: Web-Scale Modeling without Manually Crafted Combinatorial Features》 </li>
 </ul>
 <p>链接：本文参考：<a href="https://blog.csdn.net/yujianmin1990/article/details/78989099" target="_blank" rel="noopener">https://blog.csdn.net/yujianmin1990/article/details/78989099</a></p>
-<h1 id="特征输入"><a href="#特征输入" class="headerlink" title="特征输入"></a>特征输入</h1><p>W&amp;D的特征包括三方面： </p>
+<h1 id="paper"><a href="#paper" class="headerlink" title="paper"></a>paper</h1><p>Wide &amp; Deep前者是用来给用户推荐潜在喜欢的APP；Deep &amp; Cross是用来预测用户可能点击的广告排序。</p>
+<h2 id="Memorization-和-Generalization"><a href="#Memorization-和-Generalization" class="headerlink" title="Memorization 和 Generalization"></a>Memorization 和 Generalization</h2><p>paper 的两个重要概念：</p>
+<p>Memorization（对应wide）: 特征关系的 Memorization ，是 cross-product transformation 实现的一个wide set，它有效也便于理解。<em>Memorization</em> 可以宽泛地定义成学到items或features的共现率，并利用（exploiting）这种在历史数据中的相关关系（correlation）。</p>
+<p>Generalization （对应deep)： 相关性的传递（transitivity），新特征组合,多样性（diversity）好一些。是基于相关关系的转移，并探索（explores）在过往很少或从不出现的新的特征组合。</p>
+<p>基于Memorization的推荐系统通常更局部化(topical)，将items与执行相应动作的users直接相关。而基于Generalization的推荐则更趋向于推荐多样化的items。</p>
+<h2 id="本文的主要贡献"><a href="#本文的主要贡献" class="headerlink" title="本文的主要贡献"></a>本文的主要贡献</h2><p>Wide &amp; Deep 学习框架，可以用于联合训练带embeddings的feed-forward神经网络，以及对于稀疏输入的常用推荐系统所使用的带特征转换的线性模型。<br>Wide &amp; Deep推荐系统的实现和评估在Google Play上已经产品化，这个app store具有数十亿的活跃用户、以及上百万的app。<br>开源，在Tensorflow上提供了一个高级API。</p>
+<h2 id="特征输入"><a href="#特征输入" class="headerlink" title="特征输入"></a>特征输入</h2><p>W&amp;D的特征包括三方面： </p>
 <ul>
 <li>User-Feature：contry, language, demographics. </li>
-<li>Contextual-Feature：device, hour of the day, day of the week. </li>
+<li>Contextual-Feature：device, hour of the day, day of the week. 像余额宝、阿里音乐那个比赛都用了时间特征</li>
 <li>Impression-Feature：app age, historical statistics of an app. </li>
 </ul>
 <ol>
@@ -321,7 +330,7 @@
 </ul>
 </li>
 </ol>
-<p>notice: W&amp;D这里的 cross-product transformation：只在离散特征（稀疏）之间做组合，不管是文本策略型的，还是离散值的；没有连续值特征的啥事，至少在W&amp;D的paper里面是这样使用的。 </p>
+<p>notice: Wide_Deep 这里的 cross-product transformation：只在离散特征（稀疏）之间做组合，不管是文本策略型的，还是离散值的；没有连续值特征的啥事，至少在W&amp;D的paper里面是这样使用的。 </p>
 <ol>
 <li><p>Deep部分的输入特征</p>
 <ul>
@@ -329,15 +338,36 @@
 </ul>
 </li>
 </ol>
-<p>对非连续值之外的特征做embedding处理，这里都是策略特征，就是乘以个embedding_matrix。在TensorFlow里面的接口是：tf.feature_column.embedding_column，默认trainable=True. </p>
+<p>对非连续值之外的特征做 embedding 处理，这里都是策略特征，就是乘以个 embedding_matrix 。在TensorFlow里面的接口是：tf.feature_column.embedding_column，默认trainable=True. </p>
 <p>对连续值特征的处理是：将其按照累积分布函数P(X≤x)，压缩至[0,1]内。 </p>
-<h2 id="notice"><a href="#notice" class="headerlink" title="notice"></a>notice</h2><p>Wide部分用FTRL+L1来训练；Deep部分用AdaGrad来训练。 </p>
+<h3 id="notice"><a href="#notice" class="headerlink" title="notice"></a>notice</h3><p>Wide部分用FTRL+L1来训练；Deep部分用AdaGrad来训练。 </p>
 <p>Wide&amp;Deep在TensorFlow里面的API接口为：tf.estimator.DNNLinearCombinedClassifier </p>
+<p><img src="http://p8vrqzrnj.bkt.clouddn.com/wide-and-deep-1.png" alt=""></p>
+<h2 id="3-Wide-amp-Deep-Learning"><a href="#3-Wide-amp-Deep-Learning" class="headerlink" title="3. Wide &amp; Deep Learning"></a>3. Wide &amp; Deep Learning</h2><h3 id="3-1-Wide组件"><a href="#3-1-Wide组件" class="headerlink" title="3.1 Wide组件"></a>3.1 Wide组件</h3><p>wide组件是一个泛化的线性模型，形式为：$y=w^Tx+b$，如图1(左）所示。y是预测，$x = [x_1, x_2, …, x_d]$ 是d维的特征向量， $w = [w_1, w_2,…, w_d]$ 是模型参数，其中b为bias。特征集包括原始的输入特征和转换后的特征，一个最重要的转换是，cross-product transformation。它可以定义成：</p>
+<p>$\phi_k(x)=\prod_{i=1}^{d}x_{i}^{c_{ki}}, c_{ki} \in \{0, 1\}$ (paper 公式1)</p>
+<p>其中 $c_{ki}$ 为一个boolean变量，如果第i个特征是第k个变换ϕk的一部分，那么为1; 否则为0.对于二值特征，一个cross-product transformation（比如：”AND(gender=female, language=en)”）只能当组成特征（“gender=female” 和 “language=en”）都为1时才会为1, 否则为0. 这会捕获二值特征间的交叉，为通用的线性模型添加非线性。</p>
+<h3 id="3-2-Deep组件"><a href="#3-2-Deep组件" class="headerlink" title="3.2 Deep组件"></a>3.2 Deep组件</h3><p>Deep组件是一个前馈神经网络(feed-forward NN)，如图1(右）所示。对于类别型特征，原始的输入是特征字符串（比如：”language=en”）。这些稀疏的，高维的类别型特征会首先被转换成一个低维的、dense的、real-valued的向量，通常叫做“embedding vector”。embedding的维度通常是O(10)到O(100)的阶。该 embedding vectors 被随机初始化，接着最小化最终的loss的方式训练得到该值。这些低维的dense embedding vectors接着通过前向传递被feed给神经网络的隐层。特别地，每个隐层都会执行以下的计算：</p>
+<p>$a^{l+1}=f(W^{(l)}a^{(l)}+b^{(l)})$ (公式2)</p>
+<p>其中，l是层数，f是激活函数（通常为ReLUs），$a^{(l)}$，$b^{(l)}$ 和$W^{(l)}$分别是第l层的activations, bias，以及weights。</p>
+<p><img src="http://p8vrqzrnj.bkt.clouddn.com/DX-20180603@2x.png" alt=""></p>
+<h3 id="3-3-Wide-amp-Deep模型的联合训练"><a href="#3-3-Wide-amp-Deep模型的联合训练" class="headerlink" title="3.3 Wide &amp; Deep模型的联合训练"></a>3.3 Wide &amp; Deep模型的联合训练</h3><p>Wide组件和Deep组件组合在一起，对它们的输入日志进行一个加权求和来做为预测，它会被feed给一个常见的logistic loss function来进行联合训练。注意，联合训练（joint training）和集成训练（ensemble）有明显的区别。在ensemble中，每个独立的模型会单独训练，相互并不知道，只有在预测时会组合在一起。相反地，<strong>联合训练（joint training）会同时优化所有参数，通过将wide组件和deep组件在训练时进行加权求和的方式进行。</strong>这也暗示了模型的size：对于一个ensemble，由于训练是不联合的（disjoint），每个单独的模型size通常需要更大些（例如：更多的特征和转换）来达到合理的精度。相比之下，对于联合训练（joint training）来说，wide组件只需要补充deep组件的缺点，使用一小部分的cross-product特征转换即可，而非使用一个full-size的wide模型。</p>
+<p>一个Wide&amp;Deep模型的联合训练，通过对梯度进行后向传播算法、SGD优化来完成。在试验中，我们使用FTRL算法，使用L1正则做为Wide组件的优化器，对Deep组件使用AdaGrad。</p>
+<p>组合模型如图一（中）所示。对于一个logistic regression问题，模型的预测为：</p>
+<p>$P(Y = 1 | x) = \sigma(w_{wide}^{T} [x, \phi(x)] + w_{deep}^{T} a^{(l_f)} + b)$  (paper 公式3)</p>
+<p>其中Y是二分类的label，$\sigma(·)$是sigmoid function， $\phi(x)$ 是对原始特征x做cross product transformations，b是bias项。$w_{wide}$ 是所有wide模型权重向量，$w_{deep}$ 是应用在最终激活函数 $a^{(lf)}$ 上的权重。</p>
+<h2 id="4-系统实践"><a href="#4-系统实践" class="headerlink" title="4 系统实践"></a>4 系统实践</h2><p>连续值先用累计分布函数CDF归一化到[0,1]，再划档离散化。</p>
 <h1 id="论文翻译"><a href="#论文翻译" class="headerlink" title="论文翻译"></a>论文翻译</h1><p><a href="http://d0evi1.com/widedeep-recsys/" target="_blank" rel="noopener">基于Wide &amp; Deep Learning的推荐系统</a></p>
-<h1 id="附"><a href="#附" class="headerlink" title="附"></a>附</h1><ul>
-<li>tf.nn.embedding_lookup_sparse如何处理不定长的字符串的embedding问题</li>
-</ul>
+<h1 id="附"><a href="#附" class="headerlink" title="附"></a>附</h1><h2 id="Tensorflow"><a href="#Tensorflow" class="headerlink" title="Tensorflow"></a>Tensorflow</h2><p>只需要3步，即可以使用tf.estimator API来配置一个wide，deep或者Wide&amp;Deep：</p>
+<ol>
+<li>选中wide组件的特征：选中你想用的稀疏的base特征列和交叉列特征列</li>
+<li>选择deep组件的特征：选择连续型的列，对于每个类别型列的embedding维，以及隐层的size。</li>
+</ol>
+<p>将它们放置到一个Wide&amp;Deep模型中（DNNLinearCombinedClassifier）</p>
+<p>关于更详细的操作，示例代码在：/tensorflow/tensorflow/examples/learn/wide_n_deep_tutorial.py，具体详见tensorflow tutorial。</p>
+<h2 id="tf-nn-embedding-lookup-sparse"><a href="#tf-nn-embedding-lookup-sparse" class="headerlink" title="tf.nn.embedding_lookup_sparse"></a>tf.nn.embedding_lookup_sparse</h2><p>如何处理不定长的字符串的embedding问题</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入数据如下</span></span><br><span class="line">csv = [</span><br><span class="line">    <span class="string">"1,oscars|brad-pitt|awards"</span>,</span><br><span class="line">    <span class="string">"2,oscars|film|reviews"</span>,</span><br><span class="line">    <span class="string">"3,matt-damon|bourne"</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二列是不定长的特征。处理如下</span></span><br><span class="line"><span class="comment"># Purposefully omitting "bourne" to demonstrate OOV mappings.</span></span><br><span class="line">TAG_SET = [<span class="string">"oscars"</span>, <span class="string">"brad-pitt"</span>, <span class="string">"awards"</span>, <span class="string">"film"</span>, <span class="string">"reviews"</span>, <span class="string">"matt-damon"</span>]</span><br><span class="line">NUM_OOV = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sparse_from_csv</span><span class="params">(csv)</span>:</span></span><br><span class="line">    ids, post_tags_str = tf.decode_csv(csv, [[<span class="number">-1</span>], [<span class="string">""</span>]])</span><br><span class="line">    table = tf.contrib.lookup.index_table_from_tensor(</span><br><span class="line">        mapping=TAG_SET, num_oov_buckets=NUM_OOV, default_value=<span class="number">-1</span>)  <span class="comment"># 构造查找表</span></span><br><span class="line">    split_tags = tf.string_split(post_tags_str, <span class="string">"|"</span>)</span><br><span class="line">    <span class="keyword">return</span> ids, tf.SparseTensor(</span><br><span class="line">            indices=split_tags.indices,</span><br><span class="line">            values=table.lookup(split_tags.values),  <span class="comment"># 不同值通过表查到的index</span></span><br><span class="line">            dense_shape=split_tags.dense_shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Optionally create an embedding for this.</span></span><br><span class="line">TAG_EMBEDDING_DIM = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">ids, tags = sparse_from_csv(csv)</span><br><span class="line"></span><br><span class="line">embedding_params = tf.Variable(tf.truncated_normal([len(TAG_SET) + NUM_OOV, TAG_EMBEDDING_DIM]))</span><br><span class="line">embedded_tags = tf.nn.embedding_lookup_sparse(embedding_params, sp_ids=tags, sp_weights=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Test it out</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run([tf.global_variables_initializer(), tf.tables_initializer()])</span><br><span class="line">    print(s.run([ids, embedded_tags]))</span><br></pre></td></tr></table></figure>
+<h2 id="继续学习"><a href="#继续学习" class="headerlink" title="继续学习"></a>继续学习</h2><p><a href="https://blog.csdn.net/kwame211/article/details/78015498" target="_blank" rel="noopener">TensorFlow Wide And Deep 模型详解与应用</a></p>
+
       
     </div>
     
@@ -450,7 +480,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -496,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考阅读"><span class="nav-number">1.1.</span> <span class="nav-text">参考阅读</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征输入"><span class="nav-number">2.</span> <span class="nav-text">特征输入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#notice"><span class="nav-number">2.1.</span> <span class="nav-text">notice</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#论文翻译"><span class="nav-number">3.</span> <span class="nav-text">论文翻译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附"><span class="nav-number">4.</span> <span class="nav-text">附</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第0章"><span class="nav-number">1.</span> <span class="nav-text">第0章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考阅读"><span class="nav-number">1.1.</span> <span class="nav-text">参考阅读</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#paper"><span class="nav-number">2.</span> <span class="nav-text">paper</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Memorization-和-Generalization"><span class="nav-number">2.1.</span> <span class="nav-text">Memorization 和 Generalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本文的主要贡献"><span class="nav-number">2.2.</span> <span class="nav-text">本文的主要贡献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征输入"><span class="nav-number">2.3.</span> <span class="nav-text">特征输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notice"><span class="nav-number">2.3.1.</span> <span class="nav-text">notice</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Wide-amp-Deep-Learning"><span class="nav-number">2.4.</span> <span class="nav-text">3. Wide &amp; Deep Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Wide组件"><span class="nav-number">2.4.1.</span> <span class="nav-text">3.1 Wide组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Deep组件"><span class="nav-number">2.4.2.</span> <span class="nav-text">3.2 Deep组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Wide-amp-Deep模型的联合训练"><span class="nav-number">2.4.3.</span> <span class="nav-text">3.3 Wide &amp; Deep模型的联合训练</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-系统实践"><span class="nav-number">2.5.</span> <span class="nav-text">4 系统实践</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#论文翻译"><span class="nav-number">3.</span> <span class="nav-text">论文翻译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附"><span class="nav-number">4.</span> <span class="nav-text">附</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow"><span class="nav-number">4.1.</span> <span class="nav-text">Tensorflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-nn-embedding-lookup-sparse"><span class="nav-number">4.2.</span> <span class="nav-text">tf.nn.embedding_lookup_sparse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继续学习"><span class="nav-number">4.3.</span> <span class="nav-text">继续学习</span></a></li></ol></li></ol></div>
             
 
           </div>

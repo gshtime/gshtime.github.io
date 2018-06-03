@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Hi, I&apos;m fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.">
+<meta name="description" content="一些概念推荐广告怎么做？ 系统架构是什么样？系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。 广告从投放到计费经过哪些主要流程？投放">
 <meta property="og:type" content="article">
-<meta property="og:title" content="recommemder alg introduction">
+<meta property="og:title" content="推荐算法方面的优秀文章">
 <meta property="og:url" content="http://yoursite.com/2018/06/03/recommemder-alg-introduction/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:description" content="Hi, I&apos;m fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.">
+<meta property="og:description" content="一些概念推荐广告怎么做？ 系统架构是什么样？系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。 广告从投放到计费经过哪些主要流程？投放">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-03T07:18:15.000Z">
+<meta property="og:updated_time" content="2018-06-03T08:34:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="recommemder alg introduction">
-<meta name="twitter:description" content="Hi, I&apos;m fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.">
+<meta name="twitter:title" content="推荐算法方面的优秀文章">
+<meta name="twitter:description" content="一些概念推荐广告怎么做？ 系统架构是什么样？系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。 广告从投放到计费经过哪些主要流程？投放">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>recommemder alg introduction | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>推荐算法方面的优秀文章 | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">recommemder alg introduction</h1>
+          <h1 class="post-title" itemprop="name headline">推荐算法方面的优秀文章</h1>
         
 
         <div class="post-meta">
@@ -299,7 +299,29 @@
       
 
       
-        
+        <h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><p>推荐广告怎么做？</p>
+<p>系统架构是什么样？<br>系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。</p>
+<p>广告从投放到计费经过哪些主要流程？<br>投放到计费流程：点击付费(CPC), 展示付费(CPM), 按销售收入付费(CPS)等。</p>
+<p>这个流程中算法策略关注什么？<br>算法策略关注：架构流程中每个步骤的数据的准确性，完整性对整个系统的准确度有重要影响。</p>
+<h1 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h1><p><a href="https://blog.csdn.net/John_xyz/article/details/78933253" target="_blank" rel="noopener">CTR预估算法之FM, FFM, DeepFM及实践</a></p>
+<p>阿里巴巴</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&amp;mid=2247483811&amp;idx=1&amp;sn=fc3ee4ddfc4a8d6014a4cd90cdb5983c&amp;scene=4#wechat_redirect" target="_blank" rel="noopener">常用推荐算法（50页干货）</a></li>
+</ul>
+<p>腾讯</p>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1005915" target="_blank" rel="noopener">常见计算广告点击率预估算法总结</a></li>
+<li>高航，<a href="https://cloud.tencent.com/developer/article/1006667" target="_blank" rel="noopener">深度学习在 CTR 中应用</a></li>
+</ul>
+<p>美团</p>
+<ul>
+<li><a href="http://www.52caml.com/head_first_ml/ml-chapter9-factorization-family/" target="_blank" rel="noopener">第09章：深入浅出ML之Factorization家族</a><h1 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h1></li>
+</ul>
+<p><a href="https://www.cnblogs.com/AndyJee/p/7879765.html" target="_blank" rel="noopener">FM算法(一)：算法理论</a><br><a href="https://www.cnblogs.com/AndyJee/p/8032553.html" target="_blank" rel="noopener">FM算法(二)：工程实现</a><br><a href="https://blog.csdn.net/bitcarmanlee/article/details/52143909" target="_blank" rel="noopener">FM算法详解</a></p>
+<p><a href="https://tech.meituan.com/deep-understanding-of-ffm-principles-and-practices.html" target="_blank" rel="noopener">深入FFM原理与实践</a></p>
+<h1 id="2013"><a href="#2013" class="headerlink" title="2013"></a>2013</h1><p><a href="http://www.cnblogs.com/EE-NovRain/p/3810737.html" target="_blank" rel="noopener">各大公司广泛使用的在线学习算法FTRL详解</a></p>
+<h1 id="code-action"><a href="#code-action" class="headerlink" title="code + action"></a>code + action</h1><p><a href="https://zhuanlan.zhihu.com/p/33699909" target="_blank" rel="noopener">TensorFlow Estimator of Deep CTR —DeepFM/NFM/AFM/FNN/PNN</a></p>
+
       
     </div>
     
@@ -387,8 +409,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -403,7 +434,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -439,6 +470,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些概念"><span class="nav-number">1.</span> <span class="nav-text">一些概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#综述"><span class="nav-number">2.</span> <span class="nav-text">综述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间线"><span class="nav-number">3.</span> <span class="nav-text">时间线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2013"><span class="nav-number">4.</span> <span class="nav-text">2013</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code-action"><span class="nav-number">5.</span> <span class="nav-text">code + action</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
