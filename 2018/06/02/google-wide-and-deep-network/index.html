@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Hi, I&apos;m fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.">
+<meta name="description" content="概述Wide &amp;amp; Deep前者是用来给用户推荐潜在喜欢的APP；Deep &amp;amp; Cross是用来预测用户可能点击的广告排序。 参考阅读 2016 《Wide &amp;amp; Deep Learning for Recommender Systems》 blog 2017 《Deep &amp;amp; Cross Network for Ad Click Predictions》 blog g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="google-wide-and-deep-network">
 <meta property="og:url" content="http://yoursite.com/2018/06/02/google-wide-and-deep-network/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:description" content="Hi, I&apos;m fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.">
+<meta property="og:description" content="概述Wide &amp;amp; Deep前者是用来给用户推荐潜在喜欢的APP；Deep &amp;amp; Cross是用来预测用户可能点击的广告排序。 参考阅读 2016 《Wide &amp;amp; Deep Learning for Recommender Systems》 blog 2017 《Deep &amp;amp; Cross Network for Ad Click Predictions》 blog g">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-02T05:32:55.000Z">
+<meta property="og:updated_time" content="2018-06-03T03:36:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="google-wide-and-deep-network">
-<meta name="twitter:description" content="Hi, I&apos;m fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.">
+<meta name="twitter:description" content="概述Wide &amp;amp; Deep前者是用来给用户推荐潜在喜欢的APP；Deep &amp;amp; Cross是用来预测用户可能点击的广告排序。 参考阅读 2016 《Wide &amp;amp; Deep Learning for Recommender Systems》 blog 2017 《Deep &amp;amp; Cross Network for Ad Click Predictions》 blog g">
 
 
 
@@ -299,7 +299,45 @@
       
 
       
-        
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Wide &amp; Deep前者是用来给用户推荐潜在喜欢的APP；Deep &amp; Cross是用来预测用户可能点击的广告排序。</p>
+<h2 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h2><ul>
+<li>2016 《Wide &amp; Deep Learning for Recommender Systems》 <a href="">blog</a></li>
+<li>2017 《Deep &amp; Cross Network for Ad Click Predictions》 <a href="">blog</a></li>
+<li><a href="https://research.googleblog.com/2016/06/wide-deep-learning-better-together-with.html" target="_blank" rel="noopener">google research blog</a></li>
+<li><a href="https://github.com/tensorflow/models/tree/master/official/wide_deep" target="_blank" rel="noopener">wide&amp;deep github code</a></li>
+<li>《2016-Deep Crossing: Web-Scale Modeling without Manually Crafted Combinatorial Features》 </li>
+</ul>
+<p>链接：本文参考：<a href="https://blog.csdn.net/yujianmin1990/article/details/78989099" target="_blank" rel="noopener">https://blog.csdn.net/yujianmin1990/article/details/78989099</a></p>
+<h1 id="特征输入"><a href="#特征输入" class="headerlink" title="特征输入"></a>特征输入</h1><p>W&amp;D的特征包括三方面： </p>
+<ul>
+<li>User-Feature：contry, language, demographics. </li>
+<li>Contextual-Feature：device, hour of the day, day of the week. </li>
+<li>Impression-Feature：app age, historical statistics of an app. </li>
+</ul>
+<ol>
+<li><p>Wide部分的输入特征</p>
+<ul>
+<li>raw input features and transformed features [手挑的交叉特征]. </li>
+</ul>
+</li>
+</ol>
+<p>notice: W&amp;D这里的 cross-product transformation：只在离散特征（稀疏）之间做组合，不管是文本策略型的，还是离散值的；没有连续值特征的啥事，至少在W&amp;D的paper里面是这样使用的。 </p>
+<ol>
+<li><p>Deep部分的输入特征</p>
+<ul>
+<li>raw input + embeding处理 </li>
+</ul>
+</li>
+</ol>
+<p>对非连续值之外的特征做embedding处理，这里都是策略特征，就是乘以个embedding_matrix。在TensorFlow里面的接口是：tf.feature_column.embedding_column，默认trainable=True. </p>
+<p>对连续值特征的处理是：将其按照累积分布函数P(X≤x)，压缩至[0,1]内。 </p>
+<h2 id="notice"><a href="#notice" class="headerlink" title="notice"></a>notice</h2><p>Wide部分用FTRL+L1来训练；Deep部分用AdaGrad来训练。 </p>
+<p>Wide&amp;Deep在TensorFlow里面的API接口为：tf.estimator.DNNLinearCombinedClassifier </p>
+<h1 id="论文翻译"><a href="#论文翻译" class="headerlink" title="论文翻译"></a>论文翻译</h1><p><a href="http://d0evi1.com/widedeep-recsys/" target="_blank" rel="noopener">基于Wide &amp; Deep Learning的推荐系统</a></p>
+<h1 id="附"><a href="#附" class="headerlink" title="附"></a>附</h1><ul>
+<li>tf.nn.embedding_lookup_sparse如何处理不定长的字符串的embedding问题</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入数据如下</span></span><br><span class="line">csv = [</span><br><span class="line">    <span class="string">"1,oscars|brad-pitt|awards"</span>,</span><br><span class="line">    <span class="string">"2,oscars|film|reviews"</span>,</span><br><span class="line">    <span class="string">"3,matt-damon|bourne"</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二列是不定长的特征。处理如下</span></span><br><span class="line"><span class="comment"># Purposefully omitting "bourne" to demonstrate OOV mappings.</span></span><br><span class="line">TAG_SET = [<span class="string">"oscars"</span>, <span class="string">"brad-pitt"</span>, <span class="string">"awards"</span>, <span class="string">"film"</span>, <span class="string">"reviews"</span>, <span class="string">"matt-damon"</span>]</span><br><span class="line">NUM_OOV = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sparse_from_csv</span><span class="params">(csv)</span>:</span></span><br><span class="line">    ids, post_tags_str = tf.decode_csv(csv, [[<span class="number">-1</span>], [<span class="string">""</span>]])</span><br><span class="line">    table = tf.contrib.lookup.index_table_from_tensor(</span><br><span class="line">        mapping=TAG_SET, num_oov_buckets=NUM_OOV, default_value=<span class="number">-1</span>)  <span class="comment"># 构造查找表</span></span><br><span class="line">    split_tags = tf.string_split(post_tags_str, <span class="string">"|"</span>)</span><br><span class="line">    <span class="keyword">return</span> ids, tf.SparseTensor(</span><br><span class="line">            indices=split_tags.indices,</span><br><span class="line">            values=table.lookup(split_tags.values),  <span class="comment"># 不同值通过表查到的index</span></span><br><span class="line">            dense_shape=split_tags.dense_shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Optionally create an embedding for this.</span></span><br><span class="line">TAG_EMBEDDING_DIM = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">ids, tags = sparse_from_csv(csv)</span><br><span class="line"></span><br><span class="line">embedding_params = tf.Variable(tf.truncated_normal([len(TAG_SET) + NUM_OOV, TAG_EMBEDDING_DIM]))</span><br><span class="line">embedded_tags = tf.nn.embedding_lookup_sparse(embedding_params, sp_ids=tags, sp_weights=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Test it out</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run([tf.global_variables_initializer(), tf.tables_initializer()])</span><br><span class="line">    print(s.run([ids, embedded_tags]))</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -332,6 +370,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/03/google-deep-and-cross/" rel="prev" title="google-deep-and-cross">
+                google-deep-and-cross <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -383,8 +425,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -399,7 +450,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -435,6 +486,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考阅读"><span class="nav-number">1.1.</span> <span class="nav-text">参考阅读</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征输入"><span class="nav-number">2.</span> <span class="nav-text">特征输入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#notice"><span class="nav-number">2.1.</span> <span class="nav-text">notice</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#论文翻译"><span class="nav-number">3.</span> <span class="nav-text">论文翻译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附"><span class="nav-number">4.</span> <span class="nav-text">附</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
