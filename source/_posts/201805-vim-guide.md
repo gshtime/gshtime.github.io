@@ -231,3 +231,5 @@ R 移动文件
 :Texplore
 :Vexplore
 ```
+
+[详细使用教程](https://www.cnblogs.com/lijia0511/p/5644566.html)
