@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="tensorflow onlinelearning 在线学习," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="阿里巴巴 TFRS阿里妈妈基于TensorFlow做了哪些深度优化？TensorFlowRS架构解析 亮点：  ps-plus框架重构，解决了水平扩展问题，支持增量更新，（grpc，lock，graph-engine）方面，Failover机制。  在线学习   问题： 1、tensorflow的worker与ps-plus的对接，是重构worker还是对接口进行了修改？ 综述场景：搜索、广告、">
+<meta name="keywords" content="tensorflow onlinelearning 在线学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tensorflow 和 在线学习 onlinelearning">
+<meta property="og:url" content="http://yoursite.com/2018/06/23/tensorflow-and-onlinelearning/index.html">
+<meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
+<meta property="og:description" content="阿里巴巴 TFRS阿里妈妈基于TensorFlow做了哪些深度优化？TensorFlowRS架构解析 亮点：  ps-plus框架重构，解决了水平扩展问题，支持增量更新，（grpc，lock，graph-engine）方面，Failover机制。  在线学习   问题： 1、tensorflow的worker与ps-plus的对接，是重构worker还是对接口进行了修改？ 综述场景：搜索、广告、">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/tfrs_instruction.jpg">
+<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/ps-plus.jpg">
+<meta property="og:updated_time" content="2018-06-23T01:06:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tensorflow 和 在线学习 onlinelearning">
+<meta name="twitter:description" content="阿里巴巴 TFRS阿里妈妈基于TensorFlow做了哪些深度优化？TensorFlowRS架构解析 亮点：  ps-plus框架重构，解决了水平扩展问题，支持增量更新，（grpc，lock，graph-engine）方面，Failover机制。  在线学习   问题： 1、tensorflow的worker与ps-plus的对接，是重构worker还是对接口进行了修改？ 综述场景：搜索、广告、">
+<meta name="twitter:image" content="http://p8vrqzrnj.bkt.clouddn.com/tfrs_instruction.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/23/tensorflow-and-onlinelearning/"/>
+
+
+
+
+
+  <title>tensorflow 和 在线学习 onlinelearning | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Record study process, and keep improving and producing.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/tensorflow-and-onlinelearning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">tensorflow 和 在线学习 onlinelearning</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-23T00:50:14+08:00">
+                2018-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="阿里巴巴-TFRS"><a href="#阿里巴巴-TFRS" class="headerlink" title="阿里巴巴 TFRS"></a>阿里巴巴 TFRS</h1><p><a href="https://mp.weixin.qq.com/s/yuHavuGTYMH5JDC_1fnjcg" target="_blank" rel="noopener">阿里妈妈基于TensorFlow做了哪些深度优化？TensorFlowRS架构解析</a></p>
+<p>亮点：</p>
+<ol>
+<li><p>ps-plus框架重构，解决了水平扩展问题，支持增量更新，（grpc，lock，graph-engine）方面，Failover机制。</p>
+</li>
+<li><p>在线学习</p>
+</li>
+</ol>
+<p>问题：</p>
+<p>1、tensorflow的worker与ps-plus的对接，是重构worker还是对接口进行了修改？</p>
+<h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>场景：搜索、广告、推荐<br>场景特点: 样本规模和特征空间通常非常巨大，千亿样本、百亿特征并不罕见，同时存在大量的稀疏特征作为Embedding输入</p>
+<p>TFRS主要成果：</p>
+<ol>
+<li>解决了原生TF水平扩展能力不足的问题。在我们的测试中，绝大多数搜索广告模型的训练性能提升在十倍以上，某些模型的极限性能最高可提升百倍。</li>
+<li>支持完备的在线学习语义，模型变更实时写出；稀疏特征无需做连续ID化，可以直接使用原始特征表征进行训练，大幅简化了特征工程的复杂度。</li>
+<li>异步训练的梯度修正优化器（grad-compensation optimizer），有效减少了异步大规模并发引起的训练效果损失。</li>
+<li>集成了高效的Graph Embedding、Memory Network、Cross Media等多种高级训练模式。</li>
+<li>模型可视化系统DeepInSight提供深度模型训练的多维度可视化分析。</li>
+</ol>
+<h2 id="TensorFlowRS分布式架构"><a href="#TensorFlowRS分布式架构" class="headerlink" title="TensorFlowRS分布式架构"></a>TensorFlowRS分布式架构</h2><p>在使用TensorFlow的过程中我们发现TF作为一个分布式训练系统有两个主要的问题：</p>
+<ol>
+<li>水平扩展能力差：在大部分模型的性能测试中,我们发现随着数据并行度的增加，单个worker的样本处理QPS急剧下降。当worker数量增大到一定规模的时候，系统整体QPS不再有增长甚至有所下降。</li>
+<li>缺乏完备的分布式Failover机制。</li>
+</ol>
+<p>TensorFlowRS采取的解决方案包括：</p>
+<ul>
+<li>通过对接独立参数服务器提升水平扩展能力</li>
+</ul>
+<p>在对TF做过细致的profiling之后，我们发现TF原生的PS由于设计和实现方面的多种原因（grpc，lock，graph-engine），很难达良好的水平扩展能力。于是我们决定丢掉TF-PS的包袱，重新实现一个高性能的参数服务器：PS-Plus。此外我们提供了完整的TF on PS-Plus方案，可以支持用户在Native-PS和PS-Plus之间自由切换，并且完全兼容TensorFlow的Graph语义和所有API。用户可以在深度网络代码一行不改的情况下，将参数分布和运行在PS-Plus上，享受高性能的参数交换和良好的水平扩展能力。 </p>
+<ul>
+<li>重新设计Failover机制，支持动态组网和Exactly-Once的Failover</li>
+</ul>
+<p>TensorFlowRS引入了worker state，在checkpoint中存储了worker的状态信息，worker重启后，会从接着上次的进度继续训练。此外TensorFlowRS通过zk生成cluster配置，支持了动态组网的Failover。新的Failover机制可以保证任意角色挂掉的情况下，系统都能在分钟级完成Failover，并且不多算和漏算数据。</p>
+<p>TensorFlowRS的整体架构</p>
+<p><img src="http://p8vrqzrnj.bkt.clouddn.com/tfrs_instruction.jpg" alt="TensorFlowRS的整体架构"></p>
+<h2 id="PS-Plus"><a href="#PS-Plus" class="headerlink" title="PS-Plus"></a>PS-Plus</h2><p>PS-Plus相对于传统的ParameterServer有如下特点：</p>
+<p>(1)高性能：PS-Plus通过智能参数分配，零拷贝，seastar等多项技术，进一步提升了单台server的服务能力和系统整体的水平扩展能力。在实测中，在64core的机器上单个server能轻松用满55+的核心，在dense场景下io能打满双25G网卡，系统整体在 1~4000 worker 的范围内都具有近似线性的水平扩展能力</p>
+<p>(2)高度灵活：PS-Plus拥有完善的UDF接口，用户可使用SDK开发定制化的UDF插件，并且可以通过简单的C++以及Python接口进行调用。</p>
+<p>(3)完备的在线学习支持：PS-Plus支持非ID化特征训练，特征动态增删，以及模型增量实时导出等支撑在线学习的重要特性。</p>
+<p>下面从中选取几点做比较详细的介绍：</p>
+<ol>
+<li>智能参数分配</li>
+</ol>
+<p>参数分配策略(variable placement)，决定了如何将一个参数切分并放置到不同的server上。placement策略的好坏在高并发的情况下对PS的整体性能有着重大的影响。传统ParameterServer的placement方案是由系统预先实现几种常见的placement算法（比如平均切分+roundrobin），或者由用户在创建参数的时候手工划分，往往没有综合考虑全局的参数规模、Server的负载等。</p>
+<p>PS-Plus实现了基于模拟退火算法的启发式参数分配策略，后续也在考虑实现基于运行时负载，动态rebalance的placement策略。PS-Plus的placement设计有如下优点：</p>
+<ul>
+<li>综合考虑了全局参数的shape信息，在cpu，内存，网络带宽等限制条件下给出了近似最优的placement方案，避免了手工分配造成的不均匀、热点等问题。</li>
+<li>整个参数分配过程由系统内部自动完成，用户无需配置即可获得接近最优的性能，用户无需了解PS底层实现的具体细节。</li>
+<li>Partition由框架自动完成，在上层算法代码，如TF代码中，不需要额外使用PartitionedVariable等机制，使用简单方便。</li>
+</ul>
+<ol>
+<li>去ID化特征支持</li>
+</ol>
+<p>目前主流的深度学习框架都是以连续的内存来存储训练参数，通过偏移量（ID值）来寻址到具体的权重。为了避免内存的浪费，需要对特征做从0开始的连续ID化编码，这一过程我们称之为特征ID化。特征ID化是一个非常复杂的过程，尤其是当样本和特征数量非常庞大的时候，特征ID化会占用大量的时间和机器资源，给样本构建带来了很大的复杂度。</p>
+<p>PS-Plus内部实现了一个定制化的hashmap，针对参数交换场景做了专门的优化，在支持特征动态增删的同时提供了超高的性能。通过hashmap，PS-Plus直接实现了对非ID特征的支持，极大的简化了样本构建的复杂度。</p>
+<ol>
+<li>通信层优化</li>
+</ol>
+<p>对于Parameter Server架构，延迟是影响整体性能的重要原因。尤其是在模型复杂度不高的情况下，模型计算部分往往在10~100ms量级，那么总体通信的延迟就成为一个关键因素。</p>
+<p>在传统的pipeline线程模型，高并发情况下中断和线程上下文切换会导致很大的开销，同时会引起大量的cache-line miss。此外，高频的锁竞争是带来延迟的最主要原因之一，即便是各类SpinLock、读写锁等优化也并不能有效消除这个问题。我们认为polling + run to completion是一个正确的选择，并且设计了我们的整体通信层架构。在新的通信层中，我们使用了Seastar作为底层的框架。对于Server、Worker上的connection，都严格保证connection绑定到固定的线程，同时线程与CPU核心绑定。Request、response直接采用run to completion的方式在当前线程处理。</p>
+<p>整体架构如下图所示：</p>
+<p><img src="http://p8vrqzrnj.bkt.clouddn.com/ps-plus.jpg" alt="ps-plus架构"></p>
+<p>在Seastar的基础上，我们做了很多功能、性能的改进和优化，这里做一些简要的介绍。</p>
+<p>外部线程交互队列。我们借鉴Seastar核心之间的交互机制，提供了一个 M:N 无锁生产者消费者队列，用于外部线程与Seastar内部线程进行交互。相比传统队列性能有极大的提升。</p>
+<p>写请求顺序调度。从外部线程poll到的写请求，如果直接调用Seastar的写接口，会导致写buffer无法保证有序。我们通过队列机制的改造，自动保证了写顺序，同时基本不损失多connection的并发写的性能。</p>
+<p>灵活的编解码层。我们提供了一套编解码层的抽象接口，方便用户使用，从而不需要借助protobuf等传统的序列化、反序列化的第三方库，同时也避免了protobuf的一些性能问题。</p>
+<h2 id="在线学习"><a href="#在线学习" class="headerlink" title="在线学习"></a>在线学习</h2><ol>
+<li>非ID化特征支持</li>
+<li>特征动态增删</li>
+<li>模型增量实时导出</li>
+<li>AUC Decay</li>
+</ol>
+<h2 id="大规模训练场景下的收敛效果优化"><a href="#大规模训练场景下的收敛效果优化" class="headerlink" title="大规模训练场景下的收敛效果优化"></a>大规模训练场景下的收敛效果优化</h2><p>boost 方法解决分布式并行训练中梯度和模型不一致的问题。</p>
+<h2 id="高级训练模式"><a href="#高级训练模式" class="headerlink" title="高级训练模式"></a>高级训练模式</h2><p>TFRS中集成了多种高阶训练模式，例如Graph Embedding，Memory Network，Cross Media Training等。</p>
+<h2 id="可视化模型分析系统DeepInsight"><a href="#可视化模型分析系统DeepInsight" class="headerlink" title="可视化模型分析系统DeepInsight"></a>可视化模型分析系统DeepInsight</h2><p>DeepInsight是一个深度学习可视化质量评估系统，支持训练阶段模型内部数据的全面透出与可视化分析，用以解决模型评估、分析、调试等一系列问题，提高深度模型的可解释性。</p>
+<h1 id="tensorflow-issue"><a href="#tensorflow-issue" class="headerlink" title="tensorflow issue"></a>tensorflow issue</h1><p>API: sparse_column_with_hash_bucket.<br>params: hash_keys<br>source: <a href="https://github.com/tensorflow/tensorflow/issues/19324#issuecomment-394597155" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow/issues/19324#issuecomment-394597155</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tensorflow-onlinelearning-在线学习/" rel="tag"># tensorflow onlinelearning 在线学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/13/vscode-shortcuts/" rel="next" title="vscode 快捷键 MAC版">
+                <i class="fa fa-chevron-left"></i> vscode 快捷键 MAC版
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gao Shang</p>
+              <p class="site-description motion-element" itemprop="description">Hi, I'm fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#阿里巴巴-TFRS"><span class="nav-number">1.</span> <span class="nav-text">阿里巴巴 TFRS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#综述"><span class="nav-number">1.1.</span> <span class="nav-text">综述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TensorFlowRS分布式架构"><span class="nav-number">1.2.</span> <span class="nav-text">TensorFlowRS分布式架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PS-Plus"><span class="nav-number">1.3.</span> <span class="nav-text">PS-Plus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在线学习"><span class="nav-number">1.4.</span> <span class="nav-text">在线学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大规模训练场景下的收敛效果优化"><span class="nav-number">1.5.</span> <span class="nav-text">大规模训练场景下的收敛效果优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级训练模式"><span class="nav-number">1.6.</span> <span class="nav-text">高级训练模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视化模型分析系统DeepInsight"><span class="nav-number">1.7.</span> <span class="nav-text">可视化模型分析系统DeepInsight</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensorflow-issue"><span class="nav-number">2.</span> <span class="nav-text">tensorflow issue</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gao Shang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

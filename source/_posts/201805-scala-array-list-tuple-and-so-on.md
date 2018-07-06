@@ -1,5 +1,5 @@
 ---
-title: scala array list tuple and so on
+title: scala 数据结构 array list tuple
 date: 2018-05-20 10:11:31
 tags:
 ---
