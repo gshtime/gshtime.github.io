@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="linux command line, iterms, shortcut," />
+  <meta name="keywords" content="设计模式 工程模式 代码 宏定义," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="标签 新建标签：command + t 关闭标签：command + w 切换标签：command + 数字 或 command + 左右方向键 切换全屏：command + enter  分屏 垂直分屏：command + d 水平分屏：command + shift + d 切换屏幕：command + option + 方向键 command + [ 或 command + ]  命令编辑删">
-<meta name="keywords" content="linux command line, iterms, shortcut">
+<meta name="description" content="简单模式工厂模式中最简单的一种，用比较简单的方式隐藏创建对象的细节，一般只需要告诉工厂类所需要的类型，工厂类就会返回需要的产品类，但客户端看到的只是产品的抽象对象，无需关心到底是返回了哪个子类。 客户端唯一需要知道的具体子类就是工厂子类。除了这点，基本是达到了依赖倒转原则的要求。 疑问：如果每次用工厂类创建的类型都不相同，这样修改起来的时候还是需要大量的替换。所以简单工厂模式一般应该于程序中大部分">
+<meta name="keywords" content="设计模式 工程模式 代码 宏定义">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux 命令行和 iterm2 操作指南">
-<meta property="og:url" content="http://yoursite.com/2018/05/31/linux-command-line-and-iterm-use-guide/index.html">
+<meta property="og:title" content="【设计模式】三种工厂模式及在c++中的实现">
+<meta property="og:url" content="http://yoursite.com/2018/07/07/factory-model-in-cpp-programming/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:description" content="标签 新建标签：command + t 关闭标签：command + w 切换标签：command + 数字 或 command + 左右方向键 切换全屏：command + enter  分屏 垂直分屏：command + d 水平分屏：command + shift + d 切换屏幕：command + option + 方向键 command + [ 或 command + ]  命令编辑删">
+<meta property="og:description" content="简单模式工厂模式中最简单的一种，用比较简单的方式隐藏创建对象的细节，一般只需要告诉工厂类所需要的类型，工厂类就会返回需要的产品类，但客户端看到的只是产品的抽象对象，无需关心到底是返回了哪个子类。 客户端唯一需要知道的具体子类就是工厂子类。除了这点，基本是达到了依赖倒转原则的要求。 疑问：如果每次用工厂类创建的类型都不相同，这样修改起来的时候还是需要大量的替换。所以简单工厂模式一般应该于程序中大部分">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-31T07:26:46.000Z">
+<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/19100800-208864687d8a43c7afed3069bd0c3174.jpg">
+<meta property="og:updated_time" content="2018-07-07T02:19:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux 命令行和 iterm2 操作指南">
-<meta name="twitter:description" content="标签 新建标签：command + t 关闭标签：command + w 切换标签：command + 数字 或 command + 左右方向键 切换全屏：command + enter  分屏 垂直分屏：command + d 水平分屏：command + shift + d 切换屏幕：command + option + 方向键 command + [ 或 command + ]  命令编辑删">
+<meta name="twitter:title" content="【设计模式】三种工厂模式及在c++中的实现">
+<meta name="twitter:description" content="简单模式工厂模式中最简单的一种，用比较简单的方式隐藏创建对象的细节，一般只需要告诉工厂类所需要的类型，工厂类就会返回需要的产品类，但客户端看到的只是产品的抽象对象，无需关心到底是返回了哪个子类。 客户端唯一需要知道的具体子类就是工厂子类。除了这点，基本是达到了依赖倒转原则的要求。 疑问：如果每次用工厂类创建的类型都不相同，这样修改起来的时候还是需要大量的替换。所以简单工厂模式一般应该于程序中大部分">
+<meta name="twitter:image" content="http://p8vrqzrnj.bkt.clouddn.com/19100800-208864687d8a43c7afed3069bd0c3174.jpg">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/31/linux-command-line-and-iterm-use-guide/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/07/factory-model-in-cpp-programming/"/>
 
 
 
 
 
-  <title>linux 命令行和 iterm2 操作指南 | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>【设计模式】三种工厂模式及在c++中的实现 | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -283,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/linux-command-line-and-iterm-use-guide/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/07/factory-model-in-cpp-programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Gao Shang">
@@ -300,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">linux 命令行和 iterm2 操作指南</h1>
+          <h1 class="post-title" itemprop="name headline">【设计模式】三种工厂模式及在c++中的实现</h1>
         
 
         <div class="post-meta">
@@ -312,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T12:39:47+08:00">
-                2018-05-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-07T01:03:28+08:00">
+                2018-07-07
               </time>
             
 
@@ -350,43 +352,24 @@
       
 
       
-        <h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><ul>
-<li>新建标签：<code>command + t</code></li>
-<li>关闭标签：<code>command + w</code></li>
-<li>切换标签：<code>command + 数字</code> 或 <code>command + 左右方向键</code></li>
-<li>切换全屏：<code>command + enter</code></li>
-</ul>
-<h1 id="分屏"><a href="#分屏" class="headerlink" title="分屏"></a>分屏</h1><ul>
-<li>垂直分屏：command + d</li>
-<li>水平分屏：command + shift + d</li>
-<li>切换屏幕：command + option + 方向键 command + [ 或 command + ]</li>
-</ul>
-<h1 id="命令编辑"><a href="#命令编辑" class="headerlink" title="命令编辑"></a>命令编辑</h1><h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
-<li>删除单词：ctrl + w, 删除光标之前的单词</li>
-<li>删除行：ctrl + u，删除到行首</li>
-<li>删除行：ctrl + k，删除到行尾</li>
-<li>删除字符：删除当前光标<code>ctrl + d</code>，删除光标之前：<code>ctrl + h</code></li>
-<li>清屏1：command + r</li>
-<li>清屏2：ctrl + l</li>
-</ul>
-<h2 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h2><ul>
-<li>光标到行首：ctrl + a (同 ⌘ + ←)</li>
-<li>光标到行尾：ctrl + e (同 ⌘ + →)</li>
-<li>单词移动：alt + b / alt + b 按单词前移/后移</li>
-<li>字符移动：ctrl + f / ctrl +b 按字符前移/后移，相当于左右方向</li>
-<li>交换光标处文本：ctrl + t</li>
-</ul>
-<h2 id="历史命令"><a href="#历史命令" class="headerlink" title="历史命令"></a>历史命令</h2><ul>
-<li>查看历史命令：<code>command + ;</code> （输入打头几个字母，然后输入 <code>command + ;</code> iterm2将自动列出之前输入过的类似命令。）</li>
-<li>查看剪贴板历史：command + shift + h</li>
-<li>上一条命令：ctrl + p</li>
-<li>搜索命令历史：ctrl + r</li>
-</ul>
-<h1 id="选中即复制"><a href="#选中即复制" class="headerlink" title="选中即复制"></a>选中即复制</h1><p>iterm2 有 2 种好用的选中即复制模式。</p>
-<ul>
-<li>一种是用鼠标，在 iterm2 中，选中某个路径或者某个词汇，那么，iterm2 就自动复制了。 　　</li>
-<li>另一种是无鼠标模式，<code>command + f</code>,弹出 iterm2 的查找模式，输入要查找并复制的内容的前几个字母，确认找到的是自己的内容之- 后，输入 tab，查找窗口将自动变化内容，并将其复制。如果输入的是 s- hift+tab，则自动将查找内容的左边选中并复制。</li>
-</ul>
+        <h1 id="简单模式"><a href="#简单模式" class="headerlink" title="简单模式"></a>简单模式</h1><p>工厂模式中最简单的一种，用比较简单的方式隐藏创建对象的细节，一般只需要告诉工厂类所需要的类型，工厂类就会返回需要的产品类，但客户端看到的只是产品的抽象对象，无需关心到底是返回了哪个子类。</p>
+<p>客户端唯一需要知道的具体子类就是工厂子类。除了这点，基本是达到了依赖倒转原则的要求。</p>
+<p>疑问：如果每次用工厂类创建的类型都不相同，这样修改起来的时候还是需要大量的替换。所以简单工厂模式一般应该于程序中大部分地方都只使用其中一种产品，工厂类也不用频繁创建产品类的情况。这样修改的时候只需要修改有限的几个地方即可。</p>
+<p><img src="http://p8vrqzrnj.bkt.clouddn.com/19100800-208864687d8a43c7afed3069bd0c3174.jpg" alt=""></p>
+<p>客户只需要知道SimpleFactory就可以了，使用的时候也是使用的AbstractFactory，这样客户端只在第一次创建工厂的时候是知道具体的细节的，其他时候它都只知道AbstractFactory，这样就完美的达到了依赖倒转的原则。</p>
+<h2 id="常用的场景"><a href="#常用的场景" class="headerlink" title="常用的场景"></a>常用的场景</h2><p>例如部署多种数据库的情况，可能在不同的地方要使用不同的数据库，此时只需要在配置文件中设定数据库的类型，每次再根据类型生成实例，这样，不管下面的数据库类型怎么变化，在客户端看来都是只有一个AbstractProduct，使用的时候根本无需修改代码。提供的类型也可以用比较便于识别的字符串，这样不用记很长的类名，还可以保存为配置文件。</p>
+<p>这样，每次只需要修改配置文件和添加新的产品子类即可。</p>
+<p>所以简单工厂模式一般应用于多种同类型类的情况，将这些类隐藏起来，再提供统一的接口，便于维护和修改。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>隐藏了对象创建的细节，将产品的实例化推迟到子类中实现。</li>
+<li>客户端基本不用关心使用的是哪个产品，只需要知道用哪个工厂就行了，提供的类型也可以用比较便于识别的字符串。</li>
+<li>方便添加新的产品子类，每次只需要修改工厂类传递的类型值就行了。</li>
+<li>遵循了依赖倒转原则。</li>
+</ol>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ol>
+<li>要求产品子类的类型差不多，使用的方法名都相同，如果类比较多，而所有的类又必须要添加一种方法，则会是非常麻烦的事情。或者是一种类另一种类有几种方法不相同，客户端无法知道是哪一个产品子类，也就无法调用这几个不相同的方法。</li>
+<li>每添加一个产品子类，都必须在工厂类中添加一个判断分支，这违背了开放-封闭原则。</li>
+</ol>
 
       
     </div>
@@ -404,7 +387,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux-command-line-iterms-shortcut/" rel="tag"># linux command line, iterms, shortcut</a>
+            <a href="/tags/设计模式-工程模式-代码-宏定义/" rel="tag"># 设计模式 工程模式 代码 宏定义</a>
           
         </div>
       
@@ -417,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/27/to-write-list/" rel="next" title="to-write-list">
-                <i class="fa fa-chevron-left"></i> to-write-list
+              <a href="/2018/06/24/recommender-and-ads-algs/" rel="next" title="推荐系统及广告系统相关算法综述">
+                <i class="fa fa-chevron-left"></i> 推荐系统及广告系统相关算法综述
               </a>
             
           </div>
@@ -427,8 +410,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/01/tensorflow-embedding-lookup-sparse/" rel="prev" title="机器学习中的embedding原理及tf.nn.embedding_lookup_sparse等API的理解">
-                机器学习中的embedding原理及tf.nn.embedding_lookup_sparse等API的理解 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/09/meituan-ads-deep-learning/" rel="prev" title="meituan ads deep learning">
+                meituan ads deep learning <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -552,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#标签"><span class="nav-number">1.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分屏"><span class="nav-number">2.</span> <span class="nav-text">分屏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令编辑"><span class="nav-number">3.</span> <span class="nav-text">命令编辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">3.1.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#光标移动"><span class="nav-number">3.2.</span> <span class="nav-text">光标移动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#历史命令"><span class="nav-number">3.3.</span> <span class="nav-text">历史命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选中即复制"><span class="nav-number">4.</span> <span class="nav-text">选中即复制</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单模式"><span class="nav-number">1.</span> <span class="nav-text">简单模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的场景"><span class="nav-number">1.1.</span> <span class="nav-text">常用的场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">1.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">1.3.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></div>
             
 
           </div>
