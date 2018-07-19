@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="设计模式 工程模式 代码 宏定义," />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="一些概念推荐广告怎么做？ 系统架构是什么样？系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。 广告从投放到计费经过哪些主要流程？投放">
+<meta name="description" content="简单模式工厂模式中最简单的一种，用比较简单的方式隐藏创建对象的细节，一般只需要告诉工厂类所需要的类型，工厂类就会返回需要的产品类，但客户端看到的只是产品的抽象对象，无需关心到底是返回了哪个子类。 客户端唯一需要知道的具体子类就是工厂子类。除了这点，基本是达到了依赖倒转原则的要求。 疑问：如果每次用工厂类创建的类型都不相同，这样修改起来的时候还是需要大量的替换。所以简单工厂模式一般应该于程序中大部分">
+<meta name="keywords" content="设计模式 工程模式 代码 宏定义">
 <meta property="og:type" content="article">
-<meta property="og:title" content="推荐算法方面的优秀文章">
-<meta property="og:url" content="http://yoursite.com/2018/06/03/recommemder-alg-introduction/index.html">
+<meta property="og:title" content="【设计模式】三种工厂模式及在c++中的实现">
+<meta property="og:url" content="http://yoursite.com/2018/07/07/factory-model-in-cpp-programming/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:description" content="一些概念推荐广告怎么做？ 系统架构是什么样？系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。 广告从投放到计费经过哪些主要流程？投放">
+<meta property="og:description" content="简单模式工厂模式中最简单的一种，用比较简单的方式隐藏创建对象的细节，一般只需要告诉工厂类所需要的类型，工厂类就会返回需要的产品类，但客户端看到的只是产品的抽象对象，无需关心到底是返回了哪个子类。 客户端唯一需要知道的具体子类就是工厂子类。除了这点，基本是达到了依赖倒转原则的要求。 疑问：如果每次用工厂类创建的类型都不相同，这样修改起来的时候还是需要大量的替换。所以简单工厂模式一般应该于程序中大部分">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-03T08:34:57.000Z">
+<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/19100800-208864687d8a43c7afed3069bd0c3174.jpg">
+<meta property="og:updated_time" content="2018-07-09T16:25:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="推荐算法方面的优秀文章">
-<meta name="twitter:description" content="一些概念推荐广告怎么做？ 系统架构是什么样？系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。 广告从投放到计费经过哪些主要流程？投放">
+<meta name="twitter:title" content="【设计模式】三种工厂模式及在c++中的实现">
+<meta name="twitter:description" content="简单模式工厂模式中最简单的一种，用比较简单的方式隐藏创建对象的细节，一般只需要告诉工厂类所需要的类型，工厂类就会返回需要的产品类，但客户端看到的只是产品的抽象对象，无需关心到底是返回了哪个子类。 客户端唯一需要知道的具体子类就是工厂子类。除了这点，基本是达到了依赖倒转原则的要求。 疑问：如果每次用工厂类创建的类型都不相同，这样修改起来的时候还是需要大量的替换。所以简单工厂模式一般应该于程序中大部分">
+<meta name="twitter:image" content="http://p8vrqzrnj.bkt.clouddn.com/19100800-208864687d8a43c7afed3069bd0c3174.jpg">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/03/recommemder-alg-introduction/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/07/factory-model-in-cpp-programming/"/>
 
 
 
 
 
-  <title>推荐算法方面的优秀文章 | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>【设计模式】三种工厂模式及在c++中的实现 | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -282,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/recommemder-alg-introduction/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/07/factory-model-in-cpp-programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Gao Shang">
@@ -299,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">推荐算法方面的优秀文章</h1>
+          <h1 class="post-title" itemprop="name headline">【设计模式】三种工厂模式及在c++中的实现</h1>
         
 
         <div class="post-meta">
@@ -311,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T15:18:15+08:00">
-                2018-06-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-07T01:03:28+08:00">
+                2018-07-07
               </time>
             
 
@@ -349,28 +352,25 @@
       
 
       
-        <h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><p>推荐广告怎么做？</p>
-<p>系统架构是什么样？<br>系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。</p>
-<p>广告从投放到计费经过哪些主要流程？<br>投放到计费流程：点击付费(CPC), 展示付费(CPM), 按销售收入付费(CPS)等。</p>
-<p>这个流程中算法策略关注什么？<br>算法策略关注：架构流程中每个步骤的数据的准确性，完整性对整个系统的准确度有重要影响。</p>
-<h1 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h1><p><a href="https://blog.csdn.net/John_xyz/article/details/78933253" target="_blank" rel="noopener">CTR预估算法之FM, FFM, DeepFM及实践</a></p>
-<p>阿里巴巴</p>
-<ul>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&amp;mid=2247483811&amp;idx=1&amp;sn=fc3ee4ddfc4a8d6014a4cd90cdb5983c&amp;scene=4#wechat_redirect" target="_blank" rel="noopener">常用推荐算法（50页干货）</a></li>
-</ul>
-<p>腾讯</p>
-<ul>
-<li><a href="https://cloud.tencent.com/developer/article/1005915" target="_blank" rel="noopener">常见计算广告点击率预估算法总结</a></li>
-<li>高航，<a href="https://cloud.tencent.com/developer/article/1006667" target="_blank" rel="noopener">深度学习在 CTR 中应用</a></li>
-</ul>
-<p>美团</p>
-<ul>
-<li><a href="http://www.52caml.com/head_first_ml/ml-chapter9-factorization-family/" target="_blank" rel="noopener">第09章：深入浅出ML之Factorization家族</a><h1 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h1></li>
-</ul>
-<p><a href="https://www.cnblogs.com/AndyJee/p/7879765.html" target="_blank" rel="noopener">FM算法(一)：算法理论</a><br><a href="https://www.cnblogs.com/AndyJee/p/8032553.html" target="_blank" rel="noopener">FM算法(二)：工程实现</a><br><a href="https://blog.csdn.net/bitcarmanlee/article/details/52143909" target="_blank" rel="noopener">FM算法详解</a></p>
-<p><a href="https://tech.meituan.com/deep-understanding-of-ffm-principles-and-practices.html" target="_blank" rel="noopener">深入FFM原理与实践</a></p>
-<h1 id="2013"><a href="#2013" class="headerlink" title="2013"></a>2013</h1><p><a href="http://www.cnblogs.com/EE-NovRain/p/3810737.html" target="_blank" rel="noopener">各大公司广泛使用的在线学习算法FTRL详解</a></p>
-<h1 id="code-action"><a href="#code-action" class="headerlink" title="code + action"></a>code + action</h1><p><a href="https://zhuanlan.zhihu.com/p/33699909" target="_blank" rel="noopener">TensorFlow Estimator of Deep CTR —DeepFM/NFM/AFM/FNN/PNN</a></p>
+        <h1 id="简单模式"><a href="#简单模式" class="headerlink" title="简单模式"></a>简单模式</h1><p>工厂模式中最简单的一种，用比较简单的方式隐藏创建对象的细节，一般只需要告诉工厂类所需要的类型，工厂类就会返回需要的产品类，但客户端看到的只是产品的抽象对象，无需关心到底是返回了哪个子类。</p>
+<p>客户端唯一需要知道的具体子类就是工厂子类。除了这点，基本是达到了依赖倒转原则的要求。</p>
+<p>疑问：如果每次用工厂类创建的类型都不相同，这样修改起来的时候还是需要大量的替换。所以简单工厂模式一般应该于程序中大部分地方都只使用其中一种产品，工厂类也不用频繁创建产品类的情况。这样修改的时候只需要修改有限的几个地方即可。</p>
+<p><img src="http://p8vrqzrnj.bkt.clouddn.com/19100800-208864687d8a43c7afed3069bd0c3174.jpg" alt=""></p>
+<p>客户只需要知道SimpleFactory就可以了，使用的时候也是使用的AbstractFactory，这样客户端只在第一次创建工厂的时候是知道具体的细节的，其他时候它都只知道AbstractFactory，这样就完美的达到了依赖倒转的原则。</p>
+<h2 id="常用的场景"><a href="#常用的场景" class="headerlink" title="常用的场景"></a>常用的场景</h2><p>例如部署多种数据库的情况，可能在不同的地方要使用不同的数据库，此时只需要在配置文件中设定数据库的类型，每次再根据类型生成实例，这样，不管下面的数据库类型怎么变化，在客户端看来都是只有一个AbstractProduct，使用的时候根本无需修改代码。提供的类型也可以用比较便于识别的字符串，这样不用记很长的类名，还可以保存为配置文件。</p>
+<p>这样，每次只需要修改配置文件和添加新的产品子类即可。</p>
+<p>所以简单工厂模式一般应用于多种同类型类的情况，将这些类隐藏起来，再提供统一的接口，便于维护和修改。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>隐藏了对象创建的细节，将产品的实例化推迟到子类中实现。</li>
+<li>客户端基本不用关心使用的是哪个产品，只需要知道用哪个工厂就行了，提供的类型也可以用比较便于识别的字符串。</li>
+<li>方便添加新的产品子类，每次只需要修改工厂类传递的类型值就行了。</li>
+<li>遵循了依赖倒转原则。</li>
+</ol>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ol>
+<li>要求产品子类的类型差不多，使用的方法名都相同，如果类比较多，而所有的类又必须要添加一种方法，则会是非常麻烦的事情。或者是一种类另一种类有几种方法不相同，客户端无法知道是哪一个产品子类，也就无法调用这几个不相同的方法。</li>
+<li>每添加一个产品子类，都必须在工厂类中添加一个判断分支，这违背了开放-封闭原则。</li>
+</ol>
+<p><a href="https://www.cnblogs.com/cxjchen/p/3143633.html" target="_blank" rel="noopener">https://www.cnblogs.com/cxjchen/p/3143633.html</a><br><a href="https://blog.csdn.net/kuaipengfei_/article/details/49590727" target="_blank" rel="noopener">https://blog.csdn.net/kuaipengfei_/article/details/49590727</a></p>
 
       
     </div>
@@ -386,6 +386,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/设计模式-工程模式-代码-宏定义/" rel="tag"># 设计模式 工程模式 代码 宏定义</a>
+          
+        </div>
+      
 
       
       
@@ -395,8 +401,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/03/google-deep-and-cross/" rel="next" title="google-deep-and-cross">
-                <i class="fa fa-chevron-left"></i> google-deep-and-cross
+              <a href="/2018/06/24/recommender-and-ads-algs/" rel="next" title="推荐系统及广告系统相关算法综述">
+                <i class="fa fa-chevron-left"></i> 推荐系统及广告系统相关算法综述
               </a>
             
           </div>
@@ -405,8 +411,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/03/tensorflow-loss-and-regularizer/" rel="prev" title="tensorflow中损失函数加正则项">
-                tensorflow中损失函数加正则项 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/09/meituan-ads-deep-learning/" rel="prev" title="meituan ads deep learning">
+                meituan ads deep learning <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -530,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些概念"><span class="nav-number">1.</span> <span class="nav-text">一些概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#综述"><span class="nav-number">2.</span> <span class="nav-text">综述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间线"><span class="nav-number">3.</span> <span class="nav-text">时间线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2013"><span class="nav-number">4.</span> <span class="nav-text">2013</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code-action"><span class="nav-number">5.</span> <span class="nav-text">code + action</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简单模式"><span class="nav-number">1.</span> <span class="nav-text">简单模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的场景"><span class="nav-number">1.1.</span> <span class="nav-text">常用的场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">1.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">1.3.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></div>
             
 
           </div>

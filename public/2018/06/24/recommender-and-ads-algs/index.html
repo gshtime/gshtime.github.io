@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="一些概念推荐广告怎么做？ 系统架构是什么样？系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。 广告从投放到计费经过哪些主要流程？投放">
+<meta name="description" content="目前，推荐系统领域主流的算法主要包括：  ftrl, 2013年, Google公司, 《Ad click prediction: a view from the trenches》  在线学习 ftrl传统的批量算法的每次迭代是对全体训练数据集进行计算（例如计算全局梯度），优点是精度和收敛还可以，缺点是无法有效处理大数据集（此时全局梯度计算代价太大），且没法应用于数据流做在线学习。 而在线学习算">
 <meta property="og:type" content="article">
-<meta property="og:title" content="推荐算法方面的优秀文章">
-<meta property="og:url" content="http://yoursite.com/2018/06/03/recommemder-alg-introduction/index.html">
+<meta property="og:title" content="推荐系统及广告系统相关算法综述">
+<meta property="og:url" content="http://yoursite.com/2018/06/24/recommender-and-ads-algs/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:description" content="一些概念推荐广告怎么做？ 系统架构是什么样？系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。 广告从投放到计费经过哪些主要流程？投放">
+<meta property="og:description" content="目前，推荐系统领域主流的算法主要包括：  ftrl, 2013年, Google公司, 《Ad click prediction: a view from the trenches》  在线学习 ftrl传统的批量算法的每次迭代是对全体训练数据集进行计算（例如计算全局梯度），优点是精度和收敛还可以，缺点是无法有效处理大数据集（此时全局梯度计算代价太大），且没法应用于数据流做在线学习。 而在线学习算">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-03T08:34:57.000Z">
+<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/onlinelearning1.png">
+<meta property="og:updated_time" content="2018-06-27T02:11:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="推荐算法方面的优秀文章">
-<meta name="twitter:description" content="一些概念推荐广告怎么做？ 系统架构是什么样？系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。 广告从投放到计费经过哪些主要流程？投放">
+<meta name="twitter:title" content="推荐系统及广告系统相关算法综述">
+<meta name="twitter:description" content="目前，推荐系统领域主流的算法主要包括：  ftrl, 2013年, Google公司, 《Ad click prediction: a view from the trenches》  在线学习 ftrl传统的批量算法的每次迭代是对全体训练数据集进行计算（例如计算全局梯度），优点是精度和收敛还可以，缺点是无法有效处理大数据集（此时全局梯度计算代价太大），且没法应用于数据流做在线学习。 而在线学习算">
+<meta name="twitter:image" content="http://p8vrqzrnj.bkt.clouddn.com/onlinelearning1.png">
 
 
 
@@ -119,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/03/recommemder-alg-introduction/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/24/recommender-and-ads-algs/"/>
 
 
 
 
 
-  <title>推荐算法方面的优秀文章 | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>推荐系统及广告系统相关算法综述 | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -282,7 +284,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/recommemder-alg-introduction/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/24/recommender-and-ads-algs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Gao Shang">
@@ -299,7 +301,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">推荐算法方面的优秀文章</h1>
+          <h1 class="post-title" itemprop="name headline">推荐系统及广告系统相关算法综述</h1>
         
 
         <div class="post-meta">
@@ -311,8 +313,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T15:18:15+08:00">
-                2018-06-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-24T00:01:42+08:00">
+                2018-06-24
               </time>
             
 
@@ -349,28 +351,28 @@
       
 
       
-        <h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><p>推荐广告怎么做？</p>
-<p>系统架构是什么样？<br>系统架构： bizer(特征抽取) → QR(用户理解 利用user id或上下文、位置等 → 相关的tag list) → Searcher(广告倒排 tag → ad list(后续ctr排序预选的ad)) → Ranker(根据cpm = ctr*bid，以及相关性等精排), 然后依次返回到用户做个性化推荐。</p>
-<p>广告从投放到计费经过哪些主要流程？<br>投放到计费流程：点击付费(CPC), 展示付费(CPM), 按销售收入付费(CPS)等。</p>
-<p>这个流程中算法策略关注什么？<br>算法策略关注：架构流程中每个步骤的数据的准确性，完整性对整个系统的准确度有重要影响。</p>
-<h1 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h1><p><a href="https://blog.csdn.net/John_xyz/article/details/78933253" target="_blank" rel="noopener">CTR预估算法之FM, FFM, DeepFM及实践</a></p>
-<p>阿里巴巴</p>
-<ul>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&amp;mid=2247483811&amp;idx=1&amp;sn=fc3ee4ddfc4a8d6014a4cd90cdb5983c&amp;scene=4#wechat_redirect" target="_blank" rel="noopener">常用推荐算法（50页干货）</a></li>
-</ul>
-<p>腾讯</p>
-<ul>
-<li><a href="https://cloud.tencent.com/developer/article/1005915" target="_blank" rel="noopener">常见计算广告点击率预估算法总结</a></li>
-<li>高航，<a href="https://cloud.tencent.com/developer/article/1006667" target="_blank" rel="noopener">深度学习在 CTR 中应用</a></li>
-</ul>
-<p>美团</p>
-<ul>
-<li><a href="http://www.52caml.com/head_first_ml/ml-chapter9-factorization-family/" target="_blank" rel="noopener">第09章：深入浅出ML之Factorization家族</a><h1 id="时间线"><a href="#时间线" class="headerlink" title="时间线"></a>时间线</h1></li>
-</ul>
-<p><a href="https://www.cnblogs.com/AndyJee/p/7879765.html" target="_blank" rel="noopener">FM算法(一)：算法理论</a><br><a href="https://www.cnblogs.com/AndyJee/p/8032553.html" target="_blank" rel="noopener">FM算法(二)：工程实现</a><br><a href="https://blog.csdn.net/bitcarmanlee/article/details/52143909" target="_blank" rel="noopener">FM算法详解</a></p>
-<p><a href="https://tech.meituan.com/deep-understanding-of-ffm-principles-and-practices.html" target="_blank" rel="noopener">深入FFM原理与实践</a></p>
-<h1 id="2013"><a href="#2013" class="headerlink" title="2013"></a>2013</h1><p><a href="http://www.cnblogs.com/EE-NovRain/p/3810737.html" target="_blank" rel="noopener">各大公司广泛使用的在线学习算法FTRL详解</a></p>
-<h1 id="code-action"><a href="#code-action" class="headerlink" title="code + action"></a>code + action</h1><p><a href="https://zhuanlan.zhihu.com/p/33699909" target="_blank" rel="noopener">TensorFlow Estimator of Deep CTR —DeepFM/NFM/AFM/FNN/PNN</a></p>
+        <p>目前，推荐系统领域主流的算法主要包括：</p>
+<ol>
+<li>ftrl, 2013年, Google公司, 《Ad click prediction: a view from the trenches》</li>
+</ol>
+<h1 id="在线学习-ftrl"><a href="#在线学习-ftrl" class="headerlink" title="在线学习 ftrl"></a>在线学习 ftrl</h1><p>传统的批量算法的每次迭代是对全体训练数据集进行计算（例如计算全局梯度），优点是精度和收敛还可以，缺点是无法有效处理大数据集（此时全局梯度计算代价太大），且没法应用于数据流做在线学习。</p>
+<p>而在线学习算法的特点是：每来一个训练样本，就用该样本产生的loss和梯度对模型迭代一次，一个一个数据地进行训练，因此可以处理大数据量训练和在线训练。准确地说，Online Learning并不是一种模型，而是一种模型的训练方法，Online Learning能够根据线上反馈数据，实时快速地进行模型调整，使得模型及时反映线上的变化，提高线上预测的准确率。</p>
+<p>Online Learning的流程包括：将模型的预测结果展现给用户，然后收集用户的反馈数据，再用来训练模型，形成闭环的系统。如下图所示：</p>
+<p><img src="http://p8vrqzrnj.bkt.clouddn.com/onlinelearning1.png" alt=""></p>
+<h2 id="CTR预测算法"><a href="#CTR预测算法" class="headerlink" title="CTR预测算法"></a>CTR预测算法</h2><p>这篇论文提出的基于FTRL的在线CTR预测算法，就是一种Online Learning算法。</p>
+<p>即，针对每一个训练样本，首先通过一种方式进行预测，然后再利用一种损失函数进行误差评估，最后再通过所评估的误差值对参数进行更新迭代。直到所有样本全部遍历完，则结束。</p>
+<p>那么，如何选择模型预测方法、评估指标以及模型更新公式就是该算法的重点所在。下面将介绍论文中这三部分内容：</p>
+<p>1.预测方法：在每一轮 $t$ 中，针对特征样本 ${x}_{t}\in {R}^{d}$，以及迭代后(第一此则是给定初值)的模型参数 $w_t$，我们可以预测该样本的标记值：${p}_{t}=\sigma({w}_{t},{x}_{t})$ ，其中 $\sigma(a)=\frac{1}{1+exp(-a)}$ 是一个sigmoid函数。</p>
+<p>2.损失函数：对一个特征样本 $x_t$，对应的标记为 $y_t \in 0, 1$， 则通过logistic loss 来作为损失函数，即： ${\mathit{l}}_{t}({w}_{t})= -{y}_{t}log{p}_{t}-(1-{y}_{t})log(1-{p}_{t})$ </p>
+<p>3.迭代公式： 目的是使得损失函数尽可能小，即可以采用极大似然估计来求解参数。首先求梯度：</p>
+<script type="math/tex; mode=display">{g}_{t}=\frac{d\mathit{l}_{t}(w)}{dw}=(\sigma(w*{x}_{t})-{y}_{t}){x}_{t}=({p}_{t}-{y}_{t}){x}_{t}</script><p>暂时看不懂了<br>基于FTRL的在线CTR预测算法<br><a href="https://blog.csdn.net/yz930618/article/details/75270869" target="_blank" rel="noopener">https://blog.csdn.net/yz930618/article/details/75270869</a></p>
+<h2 id="ftrl-References"><a href="#ftrl-References" class="headerlink" title="ftrl References"></a>ftrl References</h2><p><a href="https://blog.csdn.net/yimingsilence/article/details/75123026" target="_blank" rel="noopener">@默一鸣</a> 标注了一下各篇paper的主要内容，感兴趣的可以有选择性地看一下，如果只关注工程实现，看标红的那篇就ok了：<br>[1] J. Langford, L. Li, and T. Zhang. Sparse online learning via truncated gradient.JMLR, 10, 2009. （截断梯度的paper）</p>
+<p>[2] H. B. McMahan. Follow-the-regularized-leader and mirror descent: Equivalence theorems and L1 regularization. In AISTATS, 2011 （FOBOS、RDA、FTRL等各种方法对比的paper）</p>
+<p>[3] L. Xiao. Dual averaging method for regularized stochastic learning and online optimization. In NIPS, 2009 （RDA方法）</p>
+<p>[4] J. Duchi and Y. Singer. Efficient learning using forward-backward splitting. In Advances in Neural Information Processing Systems 22, pages 495{503. 2009. （FOBOS方法）</p>
+<p>[5] H. Brendan McMahan, Gary Holt, D. Sculley, Michael Young, Dietmar Ebner, Julian Grady, Lan Nie, Todd Phillips, Eugene Davydov, Daniel Golovin, Sharat Chikkerur, Dan Liu, Martin Wattenberg, Arnar Mar Hrafnkelsson, Tom Boulos, Jeremy Kubica, Ad Click Prediction: a View from the Trenches, Proceedings of the 19th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD) (2013) （这篇是那篇工程性的paper）</p>
+<p>[6] H. Brendan McMahan. A unied analysis of regular-ized dual averaging and composite mirror descent with implicit updates. Submitted, 2011 （FTRL理论发展，regret bound和加入通用正则化项）</p>
+<p>[7] H. Brendan McMahan and Matthew Streeter. Adap-tive bound optimization for online convex optimiza-tion. InCOLT, 2010 （开始的那篇理论性paper）</p>
 
       
     </div>
@@ -395,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/03/google-deep-and-cross/" rel="next" title="google-deep-and-cross">
-                <i class="fa fa-chevron-left"></i> google-deep-and-cross
+              <a href="/2018/06/23/tensorflow-and-onlinelearning/" rel="next" title="tensorflow 和 在线学习 onlinelearning">
+                <i class="fa fa-chevron-left"></i> tensorflow 和 在线学习 onlinelearning
               </a>
             
           </div>
@@ -405,8 +407,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/03/tensorflow-loss-and-regularizer/" rel="prev" title="tensorflow中损失函数加正则项">
-                tensorflow中损失函数加正则项 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/07/factory-model-in-cpp-programming/" rel="prev" title="【设计模式】三种工厂模式及在c++中的实现">
+                【设计模式】三种工厂模式及在c++中的实现 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -530,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一些概念"><span class="nav-number">1.</span> <span class="nav-text">一些概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#综述"><span class="nav-number">2.</span> <span class="nav-text">综述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间线"><span class="nav-number">3.</span> <span class="nav-text">时间线</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2013"><span class="nav-number">4.</span> <span class="nav-text">2013</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code-action"><span class="nav-number">5.</span> <span class="nav-text">code + action</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#在线学习-ftrl"><span class="nav-number">1.</span> <span class="nav-text">在线学习 ftrl</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CTR预测算法"><span class="nav-number">1.1.</span> <span class="nav-text">CTR预测算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ftrl-References"><span class="nav-number">1.2.</span> <span class="nav-text">ftrl References</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -684,7 +686,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
@@ -737,6 +739,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
