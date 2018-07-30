@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
 <meta property="og:description" content="scons是什么office guide SCons 是一个开放源代码、以 Python 语言编写的下一代的程序建造工具。功能上类似于make。  一个单个文件的程序是不需要scons和make之类的构建工具的，只要用gcc或者g++编译就好。但是一些相对较大的项目有多个文件，各个文件之间的依赖关系复杂，如果用g++来编译就会非常复杂，不仅要写的命令多，而且容易出错，所以就出现了make，但是ma">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-11T16:37:18.000Z">
+<meta property="og:updated_time" content="2018-07-30T02:45:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scons - cpp编译工具学习">
 <meta name="twitter:description" content="scons是什么office guide SCons 是一个开放源代码、以 Python 语言编写的下一代的程序建造工具。功能上类似于make。  一个单个文件的程序是不需要scons和make之类的构建工具的，只要用gcc或者g++编译就好。但是一些相对较大的项目有多个文件，各个文件之间的依赖关系复杂，如果用g++来编译就会非常复杂，不仅要写的命令多，而且容易出错，所以就出现了make，但是ma">
@@ -366,7 +366,7 @@
 <h1 id="scons命令"><a href="#scons命令" class="headerlink" title="scons命令"></a>scons命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scons -Q <span class="comment"># 减少编译时的由 scons 产生的冗余信息，关闭一些输出提示</span></span><br><span class="line">scons -c <span class="comment"># scons -clean，根据SConstruct文件，执行清理任务</span></span><br></pre></td></tr></table></figure>
 <h1 id="SConstruct-文件常用函数"><a href="#SConstruct-文件常用函数" class="headerlink" title="SConstruct 文件常用函数"></a>SConstruct 文件常用函数</h1><h2 id="Program-：生成可执行文件"><a href="#Program-：生成可执行文件" class="headerlink" title="Program()：生成可执行文件"></a>Program()：生成可执行文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Program(target, source, libs) </span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">编译hello.c并生成.o文件和可执行文件</span></span><br><span class="line"><span class="string">target:编译的目标文件名 </span></span><br><span class="line"><span class="string">source:需要编译的文件组 </span></span><br><span class="line"><span class="string">libs:  需要的所有库 </span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">Program(<span class="string">'hello.c'</span>)  <span class="comment"># 编译hello.c为可执行文件,文件名为第一个文件名</span></span><br><span class="line">Program(<span class="string">'main'</span>, <span class="string">'hello.c'</span>)  <span class="comment"># 编译hello.c为可执行文件,文件名mian</span></span><br><span class="line">Program(<span class="string">'program'</span>, [<span class="string">'prog.c'</span>, <span class="string">'file1.c'</span>, <span class="string">'file2.c'</span>])</span><br><span class="line"><span class="comment"># 也可以利用Glob函数获得名字列表</span></span><br><span class="line"><span class="comment"># Golb('*.c')返回规则匹配的string列表</span></span><br><span class="line"><span class="comment"># 就是类似上面的'prog.c', 'file1.c', 'file2.c'</span></span><br><span class="line">Program(<span class="string">'program'</span>, Glob(<span class="string">'*.c'</span>) )</span><br><span class="line"></span><br><span class="line">Program(target = <span class="string">'main'</span>, source = <span class="string">'hello.c'</span>)  <span class="comment"># 使用关键字指明编译对象</span></span><br></pre></td></tr></table></figure>
 <h2 id="Object-：生成目标文件。如："><a href="#Object-：生成目标文件。如：" class="headerlink" title="Object()：生成目标文件。如："></a>Object()：生成目标文件。如：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object(<span class="string">'hello.c'</span>)          <span class="comment"># 编译hello.c，但只生成生成.o文件</span></span><br><span class="line">Object(<span class="string">'main'</span>, <span class="string">'hello.c'</span>)  <span class="comment"># 编译hello.c 为目标文件，文件名为main.o</span></span><br></pre></td></tr></table></figure>
-<h2 id="生成库文件"><a href="#生成库文件" class="headerlink" title="生成库文件"></a>生成库文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Library()        <span class="comment"># 生成库，默认为静态库。</span></span><br><span class="line"></span><br><span class="line">StaticLibrary()  <span class="comment"># 生成静态库</span></span><br><span class="line"></span><br><span class="line">ShareLibrary()   <span class="comment"># 生成动态库</span></span><br></pre></td></tr></table></figure>
+<h2 id="生成库文件"><a href="#生成库文件" class="headerlink" title="生成库文件"></a>生成库文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Library()        <span class="comment"># 生成库，默认为静态库。</span></span><br><span class="line"></span><br><span class="line">StaticLibrary()  <span class="comment"># 生成静态库 .a</span></span><br><span class="line"></span><br><span class="line">ShareLibrary()   <span class="comment"># 生成动态库 .so</span></span><br></pre></td></tr></table></figure>
 <h1 id="scons-关键字"><a href="#scons-关键字" class="headerlink" title="scons 关键字"></a>scons 关键字</h1><p>编译相关关键字说明</p>
 <h2 id="基本的编译关键字"><a href="#基本的编译关键字" class="headerlink" title="基本的编译关键字"></a>基本的编译关键字</h2><div class="table-container">
 <table>
@@ -462,6 +462,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/07/19/hadoop-common-warn-and-error/" rel="prev" title="hadoop common warn and error">
+                hadoop common warn and error <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -537,7 +541,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

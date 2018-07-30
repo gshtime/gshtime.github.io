@@ -282,6 +282,660 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/30/shell-script-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/30/shell-script-guide/" itemprop="url">shell 脚本note</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T10:30:49+08:00">
+                2018-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Linux Shell中三种引号的用法及区别Linux Shell中有三种引号，分别为双引号（” “）、单引号(‘ ‘)以及反引号(` `)。
+单引号不进行替换，将字符串中所有字符作为普通字符输出，而反引号中字符串作为shell命令执行，并返回执行结果。具体含义如下：
+
+双引号（” “）：对字符串中出现的 $, ‘’, `和 进行替换，除此以外所有的字符都解释成字符本身。
+单引号（’ ‘）：不替换特殊字符（$,’’,`和\），将字符串中所有字符作为普通字符输出。
+反引号（` `）：字符串作为shell命令执行，并返回执行结果。
+
+Shell的for循环语句第一类：数字性循环1234567891011121314151617181920# 1for((i=1;i&lt;=10;i++));  do   echo $(expr $i \* 3 + 1);  done  # 2 for i in
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/30/shell-script-guide/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/30/spark-common-error-in-development/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/30/spark-common-error-in-development/" itemprop="url">spark 开发中遇到的一些问题总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T00:30:07+08:00">
+                2018-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          参考：开发中遇到的一些问题 文中有很多之前碰到的问题
+1.StackOverflowError
+问题：简单代码记录 :
+for (day &lt;- days){
+　　rdd = rdd.union(sc.textFile(/path/to/day) …. )
+}
+大概场景就是我想把数量比较多的文件合并成一个大rdd,从而导致了栈溢出；
+解决：很明显是方法递归调用太多，我之后改成了几个小任务进行了合并；这里union也会造成最终rdd分区数过多
+2.java.io.FileNotFoundException: /tmp/spark-90507c1d-e98 ….. temp_shuffle_98deadd9-f7c3-4a12(No such file or directory) 类似这种 
+报错：Exception in thread “main” org.apache.spark.Sp
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/30/spark-common-error-in-development/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/20/tensorflow-spacial-API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/20/tensorflow-spacial-API/" itemprop="url">tensorflow spacial API </a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T00:33:38+08:00">
+                2018-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          https://www.jianshu.com/p/fceb64c790f3
+https://segmentfault.com/a/1190000014799038
+tf.stack()h
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/20/tensorflow-spacial-API/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/magic-machine-leaning-feature-engineering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/19/magic-machine-leaning-feature-engineering/" itemprop="url">magic machine leaning feature engineering</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-19T21:22:24+08:00">
+                2018-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          一篇特征工程的好文章《评分卡系列（二）：特征工程》https://www.cnblogs.com/gasongjian/p/8159501.html
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/19/magic-machine-leaning-feature-engineering/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/hadoop-common-warn-and-error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/19/hadoop-common-warn-and-error/" itemprop="url">hadoop common warn and error</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-19T20:49:37+08:00">
+                2018-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          常规报错不影响运行的错误
+Container preempted by scheduler如果有fair scheduler 并且有很多不同的 queue ，高优的应用程序会把jobs杀掉。每个queue都有相应的优先级 Preemption，
+https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.2/bk_yarn_resource_mgt/content/preemption.html
+解决方案：取决于对性能和效果的预期，好的方法是检查job和队列的优先级。
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/19/hadoop-common-warn-and-error/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/10/scons-cpp-sconstruct-tool/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2896,7 +3550,7 @@ mac系统到 node.js 官网下安装包
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/18/git-guide-for-freshman/" itemprop="url">git 远程仓库使用指南</a></h1>
+                <a class="post-title-link" href="/2018/05/18/git-guide-for-freshman/" itemprop="url">git 使用指南</a></h1>
         
 
         <div class="post-meta">
@@ -2948,12 +3602,11 @@ mac系统到 node.js 官网下安装包
       
         
           
-          git branch 命令12# 重命名分支git branch -m [old name] [new name]
+          git 回滚123456789# 回退命令：$ git reset --hard HEAD^         回退到上个版本$ git reset --hard HEAD~3        回退到前3次提交之前，以此类推，回退到n次提交之前$ git reset --hard commit_id     退到/进到 指定commit的sha码# 强推到远程：$ git push origin HEAD --force
+git branch 命令12# 重命名分支git branch -m [old name] [new name]
 克隆 git 仓库1git clone &lt;remote_repo&gt; -b &lt;branch&gt;
 远程仓库查看、添加远程分支
-12345# 查看远程分支git branch -r # 添加远程仓库git remote add origin http://192.168.36.10:10080/quantum_rng_testing/nist # 添加远程仓库 origin 为自设的名字, ”quantum_rng_testing/nist“ 为工程的目录
-远程分支基本操作拉取篇
-12345678910111213# 拉取远程分支并创建本地分支# 方法一，使用该方式会在本地新建分支，并自动切换到该本地分支，并建立映射关系git checkout -b 本地分支
+12345# 查看远程分支git branch -r # 添加远程仓库git remote add origin ht
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -3041,7 +3694,7 @@ mac系统到 node.js 官网下安装包
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
