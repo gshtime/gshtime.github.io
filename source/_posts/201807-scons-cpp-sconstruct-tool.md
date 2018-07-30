@@ -74,9 +74,9 @@ Object('main', 'hello.c')  # 编译hello.c 为目标文件，文件名为main.o
 ``` python
 Library()        # 生成库，默认为静态库。
 
-StaticLibrary()  # 生成静态库
+StaticLibrary()  # 生成静态库 .a
 
-ShareLibrary()   # 生成动态库
+ShareLibrary()   # 生成动态库 .so
 
 ```
 
