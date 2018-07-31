@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
 <meta property="og:description" content="Refshttp://www.runoob.com/python/python-strings.html 字符串转义    转义字符 描述     \(在行尾时) 续行符     Python字符串运算符下表实例变量 a 值为字符串 “Hello”，b 变量值为 “Python”： 1234567891011121314# + 字符串连接	a + b&apos;HelloPython&apos;# * 重复输出字符串">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-31T16:18:50.000Z">
+<meta property="og:updated_time" content="2018-07-31T16:38:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 字符串处理">
 <meta name="twitter:description" content="Refshttp://www.runoob.com/python/python-strings.html 字符串转义    转义字符 描述     \(在行尾时) 续行符     Python字符串运算符下表实例变量 a 值为字符串 “Hello”，b 变量值为 “Python”： 1234567891011121314# + 字符串连接	a + b&apos;HelloPython&apos;# * 重复输出字符串">
@@ -368,7 +368,7 @@
 </div>
 <h1 id="Python字符串运算符"><a href="#Python字符串运算符" class="headerlink" title="Python字符串运算符"></a>Python字符串运算符</h1><p>下表实例变量 a 值为字符串 “Hello”，b 变量值为 “Python”：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># + 字符串连接	</span></span><br><span class="line">a + b</span><br><span class="line"><span class="string">'HelloPython'</span></span><br><span class="line"><span class="comment"># * 重复输出字符串	</span></span><br><span class="line">a * <span class="number">2</span></span><br><span class="line"><span class="string">'HelloHello'</span></span><br><span class="line"><span class="comment"># in 成员运算符:如果字符串中包含给定的字符返回 True	</span></span><br><span class="line"><span class="string">"H"</span> <span class="keyword">in</span> a</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="comment"># r/R 原始字符串 - 原始字符串：所有的字符串都是直接按照字面的意思来使用，没有转义特殊或不能打印的字符。 原始字符串除在字符串的第一个引号前加上字母"r"（可以大小写）以外，与普通字符串有着几乎完全相同的语法。	</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">r'\n'</span></span><br><span class="line">\n</span><br><span class="line"><span class="keyword">print</span> R<span class="string">'\n'</span></span><br><span class="line">\n</span><br></pre></td></tr></table></figure>
-<h1 id="内建函数"><a href="#内建函数" class="headerlink" title="内建函数"></a>内建函数</h1><h2 id="find-方法"><a href="#find-方法" class="headerlink" title="find()方法"></a>find()方法</h2><p>str.find(str, beg=0, end=len(string))</p>
+<h1 id="内建函数"><a href="#内建函数" class="headerlink" title="内建函数"></a>内建函数</h1><h2 id="find-方法"><a href="#find-方法" class="headerlink" title="find()方法"></a>find()方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.find(str, beg=<span class="number">0</span>, end=len(string))</span><br></pre></td></tr></table></figure>
 <p>参数</p>
 <ul>
 <li>str — 指定检索的字符串</li>
@@ -376,9 +376,18 @@
 <li>end — 结束索引，默认为字符串的长度。</li>
 </ul>
 <p>返回值<br>如果包含子字符串返回开始的索引值，否则返回-1。</p>
-<h2 id="index-方法"><a href="#index-方法" class="headerlink" title="index()方法"></a>index()方法</h2><p>描述<br>Python index() 方法检测字符串中是否包含子字符串 str ，如果指定 beg（开始） 和 end（结束） 范围，则检查是否包含在指定范围内，该方法与 python find()方法一样，只不过如果str不在 string中会报一个异常。</p>
-<p>语法<br>index()方法语法：</p>
-<p>str.index(str, beg=0, end=len(string))<br>参数<br>str — 指定检索的字符串<br>beg — 开始索引，默认为0。<br>end — 结束索引，默认为字符串的长度。<br>返回值<br>如果包含子字符串返回开始的索引值，否则抛出异常。</p>
+<h2 id="index-方法"><a href="#index-方法" class="headerlink" title="index()方法"></a>index()方法</h2><p>描述</p>
+<p>Python index() 方法检测字符串中是否包含子字符串 str ，如果指定 beg（开始） 和 end（结束） 范围，则检查是否包含在指定范围内，该方法与 python find()方法一样，只不过如果str不在 string中会报一个异常。</p>
+<p>语法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.index(str, beg=<span class="number">0</span>, end=len(string))</span><br></pre></td></tr></table></figure>
+<p>参数</p>
+<ul>
+<li>str — 指定检索的字符串</li>
+<li>beg — 开始索引，默认为0。</li>
+<li>end — 结束索引，默认为字符串的长度。</li>
+</ul>
+<p>返回值</p>
+<p>如果包含子字符串返回开始的索引值，否则抛出异常。</p>
 
       
     </div>
