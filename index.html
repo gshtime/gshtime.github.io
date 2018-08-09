@@ -963,7 +963,8 @@ time 模块https://www.cnblogs.com/jackadam/p/7845888.html
 Spark REPL和Databricks Notebook中的SparkSession对象在之前的Spark版本中，Spark shell会自动创建一个SparkContext对象sc。2.0中Spark shell则会自动创建一个SparkSession对象（spark），在输入spark时就会发现它已经存在了。
 
 在Databricks notebook中创建集群时也会自动生成一个SparkSession，这里用的名字也是spark。
-pyspark.sql.SparkSessionhttps://blog.csdn.net/cjhnbls/a
+SparkContext
+SparkContext起到的是一个中介的作用，通过它来使用Spark其他的功能。每
           ...
           <!--noindex-->
           <div class="post-button text-center">

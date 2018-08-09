@@ -87,12 +87,13 @@
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
 <meta property="og:description" content="SparkSession的功能Spark2.0中引入了SparkSession的概念，它为用户提供了一个统一的切入点来使用Spark的各项功能，用户不但可以使用DataFrame和Dataset的各种API，学习Spark的难度也会大大降低。 Spark REPL和Databricks Notebook中的SparkSession对象在之前的Spark版本中，Spark shell会自动创建一个S">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/08/02/pyspark-easy-lookup/p8vrqzrnj.bkt.clouddn.com/20160823134504487.png">
-<meta property="og:updated_time" content="2018-08-09T17:12:57.000Z">
+<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/20160823134504487.png">
+<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/20160823134731334.png">
+<meta property="og:updated_time" content="2018-08-09T17:18:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Spark 使用教程】SparkSession">
 <meta name="twitter:description" content="SparkSession的功能Spark2.0中引入了SparkSession的概念，它为用户提供了一个统一的切入点来使用Spark的各项功能，用户不但可以使用DataFrame和Dataset的各种API，学习Spark的难度也会大大降低。 Spark REPL和Databricks Notebook中的SparkSession对象在之前的Spark版本中，Spark shell会自动创建一个S">
-<meta name="twitter:image" content="http://yoursite.com/2018/08/02/pyspark-easy-lookup/p8vrqzrnj.bkt.clouddn.com/20160823134504487.png">
+<meta name="twitter:image" content="http://p8vrqzrnj.bkt.clouddn.com/20160823134504487.png">
 
 
 
@@ -376,8 +377,11 @@
       
         <h1 id="SparkSession的功能"><a href="#SparkSession的功能" class="headerlink" title="SparkSession的功能"></a>SparkSession的功能</h1><p>Spark2.0中引入了SparkSession的概念，它为用户提供了一个统一的切入点来使用Spark的各项功能，用户不但可以使用DataFrame和Dataset的各种API，学习Spark的难度也会大大降低。</p>
 <p>Spark REPL和Databricks Notebook中的SparkSession对象<br>在之前的Spark版本中，Spark shell会自动创建一个SparkContext对象sc。2.0中Spark shell则会自动创建一个SparkSession对象（spark），在输入spark时就会发现它已经存在了。</p>
-<p><img src="p8vrqzrnj.bkt.clouddn.com/20160823134504487.png" alt=""></p>
+<p><img src="http://p8vrqzrnj.bkt.clouddn.com/20160823134504487.png" alt=""></p>
 <p>在Databricks notebook中创建集群时也会自动生成一个SparkSession，这里用的名字也是spark。</p>
+<h1 id="SparkContext"><a href="#SparkContext" class="headerlink" title="SparkContext"></a>SparkContext</h1><p><img src="http://p8vrqzrnj.bkt.clouddn.com/20160823134731334.png" alt=""></p>
+<p>SparkContext起到的是一个中介的作用，通过它来使用Spark其他的功能。每一个JVM都有一个对应的SparkContext，driver program通过SparkContext连接到集群管理器来实现对集群中任务的控制。Spark配置参数的设置以及对SQLContext、HiveContext和StreamingContext的控制也要通过SparkContext进行。</p>
+<p>不过在Spark2.0中上述的一切功能都是通过SparkSession来完成的，同时SparkSession也简化了DataFrame/Dataset API的使用和对数据的操作。</p>
 <h1 id="pyspark-sql-SparkSession"><a href="#pyspark-sql-SparkSession" class="headerlink" title="pyspark.sql.SparkSession"></a>pyspark.sql.SparkSession</h1><p><a href="https://blog.csdn.net/cjhnbls/article/details/79254188" target="_blank" rel="noopener">https://blog.csdn.net/cjhnbls/article/details/79254188</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx = SparkSession.builder.appName(<span class="string">"ApplicationName"</span>).config(<span class="string">"spark.driver.memory"</span>, <span class="string">"6G"</span>).master(<span class="string">'local[7]'</span>).getOrCreate()</span><br></pre></td></tr></table></figure>
 <h1 id="Scala-API"><a href="#Scala-API" class="headerlink" title="Scala API"></a>Scala API</h1><h2 id="创建SparkSession"><a href="#创建SparkSession" class="headerlink" title="创建SparkSession"></a>创建SparkSession</h2><p>在2.0版本之前，使用Spark必须先创建SparkConf和SparkContext，代码如下：</p>
@@ -574,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SparkSession的功能"><span class="nav-number">1.</span> <span class="nav-text">SparkSession的功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyspark-sql-SparkSession"><span class="nav-number">2.</span> <span class="nav-text">pyspark.sql.SparkSession</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scala-API"><span class="nav-number">3.</span> <span class="nav-text">Scala API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建SparkSession"><span class="nav-number">3.1.</span> <span class="nav-text">创建SparkSession</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置运行参数"><span class="nav-number">3.2.</span> <span class="nav-text">设置运行参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取元数据"><span class="nav-number">3.3.</span> <span class="nav-text">读取元数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Dataset和Dataframe"><span class="nav-number">3.4.</span> <span class="nav-text">创建Dataset和Dataframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取JSON数据"><span class="nav-number">3.5.</span> <span class="nav-text">读取JSON数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用SparkSQL"><span class="nav-number">3.6.</span> <span class="nav-text">使用SparkSQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储-读取Hive表"><span class="nav-number">3.7.</span> <span class="nav-text">存储/读取Hive表</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SparkSession的功能"><span class="nav-number">1.</span> <span class="nav-text">SparkSession的功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SparkContext"><span class="nav-number">2.</span> <span class="nav-text">SparkContext</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyspark-sql-SparkSession"><span class="nav-number">3.</span> <span class="nav-text">pyspark.sql.SparkSession</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scala-API"><span class="nav-number">4.</span> <span class="nav-text">Scala API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建SparkSession"><span class="nav-number">4.1.</span> <span class="nav-text">创建SparkSession</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置运行参数"><span class="nav-number">4.2.</span> <span class="nav-text">设置运行参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取元数据"><span class="nav-number">4.3.</span> <span class="nav-text">读取元数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Dataset和Dataframe"><span class="nav-number">4.4.</span> <span class="nav-text">创建Dataset和Dataframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取JSON数据"><span class="nav-number">4.5.</span> <span class="nav-text">读取JSON数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用SparkSQL"><span class="nav-number">4.6.</span> <span class="nav-text">使用SparkSQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储-读取Hive表"><span class="nav-number">4.7.</span> <span class="nav-text">存储/读取Hive表</span></a></li></ol></li></ol></div>
             
 
           </div>
