@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="获取当前脚本的路径12345678910111213141516171819$(cd `dirname $0`;pwd)SCRIPT_DIR=&quot;$(cd &quot;$(dirname &quot;$&amp;#123;BASH_SOURCE[0]&amp;#125;&quot;)&quot; &amp;amp;&amp;amp; pwd)&quot;# $() 和 `` 作用相同，字符串作为shell命令执行# BASH_SOURCE[0] 等价于 BASH_SOURCE，">
+<meta name="description" content="shell脚本参数12345if [ $# -gt 0 ]; then    data=$1 else    data=`date +&quot;%Y-%m-%d&quot;`fi shell 时间处理括号shell中的括号 2&amp;gt;&amp;amp;1配置spark每日例行任务时候，直接运行脚本可以输入spark任务的运行信息，可是一旦用crontab就不行了，原来spark的任务日志是linux“错误输出”，要加2&amp;g">
 <meta name="keywords" content="shell,脚本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 脚本note">
 <meta property="og:url" content="http://yoursite.com/2018/07/30/shell-script-guide/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:description" content="获取当前脚本的路径12345678910111213141516171819$(cd `dirname $0`;pwd)SCRIPT_DIR=&quot;$(cd &quot;$(dirname &quot;$&amp;#123;BASH_SOURCE[0]&amp;#125;&quot;)&quot; &amp;amp;&amp;amp; pwd)&quot;# $() 和 `` 作用相同，字符串作为shell命令执行# BASH_SOURCE[0] 等价于 BASH_SOURCE，">
+<meta property="og:description" content="shell脚本参数12345if [ $# -gt 0 ]; then    data=$1 else    data=`date +&quot;%Y-%m-%d&quot;`fi shell 时间处理括号shell中的括号 2&amp;gt;&amp;amp;1配置spark每日例行任务时候，直接运行脚本可以输入spark任务的运行信息，可是一旦用crontab就不行了，原来spark的任务日志是linux“错误输出”，要加2&amp;g">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-01T09:51:24.000Z">
+<meta property="og:updated_time" content="2018-08-09T16:48:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 脚本note">
-<meta name="twitter:description" content="获取当前脚本的路径12345678910111213141516171819$(cd `dirname $0`;pwd)SCRIPT_DIR=&quot;$(cd &quot;$(dirname &quot;$&amp;#123;BASH_SOURCE[0]&amp;#125;&quot;)&quot; &amp;amp;&amp;amp; pwd)&quot;# $() 和 `` 作用相同，字符串作为shell命令执行# BASH_SOURCE[0] 等价于 BASH_SOURCE，">
+<meta name="twitter:description" content="shell脚本参数12345if [ $# -gt 0 ]; then    data=$1 else    data=`date +&quot;%Y-%m-%d&quot;`fi shell 时间处理括号shell中的括号 2&amp;gt;&amp;amp;1配置spark每日例行任务时候，直接运行脚本可以输入spark任务的运行信息，可是一旦用crontab就不行了，原来spark的任务日志是linux“错误输出”，要加2&amp;g">
 
 
 
@@ -372,7 +372,11 @@
       
 
       
-        <h1 id="获取当前脚本的路径"><a href="#获取当前脚本的路径" class="headerlink" title="获取当前脚本的路径"></a>获取当前脚本的路径</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">cd</span> `dirname <span class="variable">$0</span>`;<span class="built_in">pwd</span>)</span><br><span class="line">SCRIPT_DIR=<span class="string">"<span class="variable">$(cd "$(dirname "$&#123;BASH_SOURCE[0]&#125;")</span>"</span> &amp;&amp; <span class="built_in">pwd</span>)<span class="string">"</span></span><br><span class="line"><span class="string"># <span class="variable">$()</span> 和 `` 作用相同，字符串作为shell命令执行</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># BASH_SOURCE[0] 等价于 BASH_SOURCE， 取得当前执行的shell文件所在的路径及文件名。</span></span><br><span class="line"><span class="string"># 如/home/abc/test.sh 内容如下：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#!/bin/sh</span></span><br><span class="line"><span class="string">echo "</span><span class="variable">$&#123;BASH_SOURCE[0]&#125;</span><span class="string">"</span></span><br><span class="line"><span class="string">echo "</span><span class="variable">$&#123;BASH_SOURCE]&#125;</span><span class="string">"</span></span><br><span class="line"><span class="string">echo "</span>$( dirname <span class="string">"<span class="variable">$&#123;BASH_SOURCE[0]&#125;</span>"</span> )<span class="string">"</span></span><br><span class="line"><span class="string">DIR="</span>$( <span class="built_in">cd</span> <span class="string">"<span class="variable">$( dirname "$&#123;BASH_SOURCE[0]&#125;" )</span>"</span> &amp;&amp; <span class="built_in">pwd</span> )<span class="string">"</span></span><br><span class="line"><span class="string">echo <span class="variable">$DIR</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 若当前目录在/home/,执行source ./abc/test.sh, 则输出：</span></span><br><span class="line"><span class="string"># ./abc/test.sh</span></span><br><span class="line"><span class="string"># ./abc/test.sh</span></span><br><span class="line"><span class="string"># ./abc/</span></span><br><span class="line"><span class="string"># /home/abc</span></span><br></pre></td></tr></table></figure>
+        <h1 id="shell脚本参数"><a href="#shell脚本参数" class="headerlink" title="shell脚本参数"></a>shell脚本参数</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -gt 0 ]; <span class="keyword">then</span></span><br><span class="line">    data=<span class="variable">$1</span> </span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    data=`date +<span class="string">"%Y-%m-%d"</span>`</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h2 id="shell-时间处理"><a href="#shell-时间处理" class="headerlink" title="shell 时间处理"></a>shell 时间处理</h2><h1 id="括号"><a href="#括号" class="headerlink" title="括号"></a>括号</h1><p>shell中的括号</p>
+<h1 id="2-gt-amp-1"><a href="#2-gt-amp-1" class="headerlink" title="2&gt;&amp;1"></a>2&gt;&amp;1</h1><p>配置spark每日例行任务时候，直接运行脚本可以输入spark任务的运行信息，可是一旦用crontab就不行了，原来spark的任务日志是linux“错误输出”，要加2&gt;&amp;1 才能从正常输出里面捕捉到，坑死了。</p>
+<p>ref:<a href="https://www.cnblogs.com/zhenghongxin/p/7029173.html" target="_blank" rel="noopener">Linux 2&gt;&amp;1</a></p>
+<h1 id="获取当前脚本的路径"><a href="#获取当前脚本的路径" class="headerlink" title="获取当前脚本的路径"></a>获取当前脚本的路径</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">cd</span> `dirname <span class="variable">$0</span>`;<span class="built_in">pwd</span>)</span><br><span class="line">SCRIPT_DIR=<span class="string">"<span class="variable">$(cd "$(dirname "$&#123;BASH_SOURCE[0]&#125;")</span>"</span> &amp;&amp; <span class="built_in">pwd</span>)<span class="string">"</span></span><br><span class="line"><span class="string"># <span class="variable">$()</span> 和 `` 作用相同，字符串作为shell命令执行</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># BASH_SOURCE[0] 等价于 BASH_SOURCE， 取得当前执行的shell文件所在的路径及文件名。</span></span><br><span class="line"><span class="string"># 如/home/abc/test.sh 内容如下：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#!/bin/sh</span></span><br><span class="line"><span class="string">echo "</span><span class="variable">$&#123;BASH_SOURCE[0]&#125;</span><span class="string">"</span></span><br><span class="line"><span class="string">echo "</span><span class="variable">$&#123;BASH_SOURCE]&#125;</span><span class="string">"</span></span><br><span class="line"><span class="string">echo "</span>$( dirname <span class="string">"<span class="variable">$&#123;BASH_SOURCE[0]&#125;</span>"</span> )<span class="string">"</span></span><br><span class="line"><span class="string">DIR="</span>$( <span class="built_in">cd</span> <span class="string">"<span class="variable">$( dirname "$&#123;BASH_SOURCE[0]&#125;" )</span>"</span> &amp;&amp; <span class="built_in">pwd</span> )<span class="string">"</span></span><br><span class="line"><span class="string">echo <span class="variable">$DIR</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 若当前目录在/home/,执行source ./abc/test.sh, 则输出：</span></span><br><span class="line"><span class="string"># ./abc/test.sh</span></span><br><span class="line"><span class="string"># ./abc/test.sh</span></span><br><span class="line"><span class="string"># ./abc/</span></span><br><span class="line"><span class="string"># /home/abc</span></span><br></pre></td></tr></table></figure>
 <p>总之：<br><code>DIR=&quot;$( cd &quot;$( dirname &quot;${BASH_SOURCE[0]}&quot; )&quot; &amp;&amp; pwd )&quot;</code>得到shell脚本文件所在完整路径（绝对路径）及文件名（无论source,sh,.三种调用方式），且不改变shell的当前目录。</p>
 <h1 id="Linux-Shell中三种引号的用法及区别"><a href="#Linux-Shell中三种引号的用法及区别" class="headerlink" title="Linux Shell中三种引号的用法及区别"></a>Linux Shell中三种引号的用法及区别</h1><p>Linux Shell中有三种引号，分别为双引号（” “）、单引号(‘ ‘)以及反引号(` `)。</p>
 <p>单引号不进行替换，将字符串中所有字符作为普通字符输出，而反引号中字符串作为shell命令执行，并返回执行结果。具体含义如下：</p>
@@ -507,7 +511,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -518,7 +522,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -529,7 +533,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -562,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#获取当前脚本的路径"><span class="nav-number">1.</span> <span class="nav-text">获取当前脚本的路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-Shell中三种引号的用法及区别"><span class="nav-number">2.</span> <span class="nav-text">Linux Shell中三种引号的用法及区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell的for循环语句"><span class="nav-number">3.</span> <span class="nav-text">Shell的for循环语句</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#shell脚本参数"><span class="nav-number">1.</span> <span class="nav-text">shell脚本参数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-时间处理"><span class="nav-number">1.1.</span> <span class="nav-text">shell 时间处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#括号"><span class="nav-number">2.</span> <span class="nav-text">括号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-gt-amp-1"><span class="nav-number">3.</span> <span class="nav-text">2&gt;&amp;1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取当前脚本的路径"><span class="nav-number">4.</span> <span class="nav-text">获取当前脚本的路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-Shell中三种引号的用法及区别"><span class="nav-number">5.</span> <span class="nav-text">Linux Shell中三种引号的用法及区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell的for循环语句"><span class="nav-number">6.</span> <span class="nav-text">Shell的for循环语句</span></a></li></ol></div>
             
 
           </div>

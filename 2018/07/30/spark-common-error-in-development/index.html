@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="参考：开发中遇到的一些问题 文中有很多之前碰到的问题 1.StackOverflowError 问题：简单代码记录 : for (day &amp;lt;- days){ 　　rdd = rdd.union(sc.textFile(/path/to/day) …. ) } 大概场景就是我想把数量比较多的文件合并成一个大rdd,从而导致了栈溢出； 解决：很明显是方法递归调用太多，我之后改成了几个小任务进行了">
+<meta name="description" content="不知道spark怎么调bug，没有系统学习过，摸着石头过河吧。 卡在一个excutor上，没有报错因为一台机器的内存分配给越多的executor，每个executor的内存就越小，以致出现过多的数据spill over甚至out of memory的情况。把这个参数调大些试试:spark.shuffle.memoryFraction 参数说明：该参数用于设置shuffle过程中一个task拉取到上">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spark 开发中遇到的一些问题总结">
 <meta property="og:url" content="http://yoursite.com/2018/07/30/spark-common-error-in-development/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:description" content="参考：开发中遇到的一些问题 文中有很多之前碰到的问题 1.StackOverflowError 问题：简单代码记录 : for (day &amp;lt;- days){ 　　rdd = rdd.union(sc.textFile(/path/to/day) …. ) } 大概场景就是我想把数量比较多的文件合并成一个大rdd,从而导致了栈溢出； 解决：很明显是方法递归调用太多，我之后改成了几个小任务进行了">
+<meta property="og:description" content="不知道spark怎么调bug，没有系统学习过，摸着石头过河吧。 卡在一个excutor上，没有报错因为一台机器的内存分配给越多的executor，每个executor的内存就越小，以致出现过多的数据spill over甚至out of memory的情况。把这个参数调大些试试:spark.shuffle.memoryFraction 参数说明：该参数用于设置shuffle过程中一个task拉取到上">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-30T02:11:20.000Z">
+<meta property="og:updated_time" content="2018-08-09T16:43:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spark 开发中遇到的一些问题总结">
-<meta name="twitter:description" content="参考：开发中遇到的一些问题 文中有很多之前碰到的问题 1.StackOverflowError 问题：简单代码记录 : for (day &amp;lt;- days){ 　　rdd = rdd.union(sc.textFile(/path/to/day) …. ) } 大概场景就是我想把数量比较多的文件合并成一个大rdd,从而导致了栈溢出； 解决：很明显是方法递归调用太多，我之后改成了几个小任务进行了">
+<meta name="twitter:description" content="不知道spark怎么调bug，没有系统学习过，摸着石头过河吧。 卡在一个excutor上，没有报错因为一台机器的内存分配给越多的executor，每个executor的内存就越小，以致出现过多的数据spill over甚至out of memory的情况。把这个参数调大些试试:spark.shuffle.memoryFraction 参数说明：该参数用于设置shuffle过程中一个task拉取到上">
 
 
 
@@ -349,8 +349,24 @@
       
 
       
-        <p>参考：<a href="https://www.cnblogs.com/arachis/p/Spark_prog.html" target="_blank" rel="noopener">开发中遇到的一些问题</a> 文中有很多之前碰到的问题</p>
-<p>1.StackOverflowError</p>
+        <p>不知道spark怎么调bug，没有系统学习过，摸着石头过河吧。</p>
+<h1 id="卡在一个excutor上，没有报错"><a href="#卡在一个excutor上，没有报错" class="headerlink" title="卡在一个excutor上，没有报错"></a>卡在一个excutor上，没有报错</h1><p>因为一台机器的内存分配给越多的executor，每个executor的内存就越小，以致出现过多的数据spill over甚至out of memory的情况。<br>把这个参数调大些试试:spark.shuffle.memoryFraction</p>
+<p>参数说明：该参数用于设置shuffle过程中一个task拉取到上个stage的task的输出后，进行聚合操作时能够使用的Executor内存的比例，默认是0.2。也就是说，Executor默认只有20%的内存用来进行该操作。shuffle操作在进行聚合时，如果发现使用的内存超出了这个20%的限制，那么多余的数据就会溢写到磁盘文件中去，此时就会极大地降低性能。</p>
+<p>参数调优建议：如果Spark作业中的RDD持久化操作较少，shuffle操作较多时，建议降低持久化操作的内存占比，提高shuffle操作的内存占比比例，避免shuffle过程中数据过多时内存不够用，必须溢写到磁盘上，降低了性能。此外，如果发现作业由于频繁的gc导致运行缓慢，意味着task执行用户代码的内存不够用，那么同样建议调低这个参数的值。</p>
+<p>设置了参数，如下，可以跑完，但是变得很慢。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SparkConf sc = <span class="keyword">new</span> SparkConf()</span><br><span class="line">.setAppName(<span class="string">"SparkCalculateSR"</span>)</span><br><span class="line">.set(<span class="string">"spark.storage.memoryFraction"</span>, <span class="string">"0.2"</span>)</span><br><span class="line">.set(<span class="string">"spark.default.parallelism"</span>, <span class="string">"20"</span>)</span><br><span class="line">.set(<span class="string">"spark.serializer"</span>, <span class="string">"org.apache.spark.serializer.KryoSerializer"</span>)</span><br><span class="line">.set(<span class="string">"spark.shuffle.consolidateFiles"</span>, <span class="string">"true"</span>)  <span class="comment">// consolidateFiles这个参数是hashshuffle的时候用的</span></span><br><span class="line">.set(<span class="string">"spark.reducer.maxSizeInFlight"</span>, <span class="string">"100m"</span>)</span><br><span class="line">.set(<span class="string">"spark.shuffle.file.buffer"</span>, <span class="string">"100k"</span>)</span><br><span class="line">.set(<span class="string">"spark.shuffle.io.maxRetries"</span>, <span class="string">"10"</span>)</span><br><span class="line">.set(<span class="string">"spark.shuffle.io.retryWait"</span>, <span class="string">"10s"</span>);</span><br></pre></td></tr></table></figure>
+<p>继续建议：</p>
+<p>上边设置的参数可以提高shuffle的稳定性,所以是跑成功了.如果要增大shuffle使用executor内存可以调下边两个参数</p>
+<ul>
+<li>num-executors 100 —这个调小</li>
+<li>spark.shuffle.memoryFraction —这个调大 </li>
+</ul>
+<p>不知道具体慢在哪了,所以没法给具体的优化建议.你采用的是hashshuffle吗? consolidateFiles这个参数是hashshuffle的时候用的,要不改成SortShuffle试试,一般慢都慢在shuffle上了</p>
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><p><a href="https://bbs.csdn.net/topics/392142267" target="_blank" rel="noopener">spark 卡住</a></p>
+<h1 id="spark-配置计算"><a href="#spark-配置计算" class="headerlink" title="spark 配置计算"></a>spark 配置计算</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--num-executors 100 \</span><br><span class="line">--driver-memory 6g \</span><br><span class="line">--executor-memory 6g \</span><br><span class="line">--executor-cores 8 \</span><br></pre></td></tr></table></figure>
+<p>100个executors  一个executor-memory 6G内存  8核cpu   那得多少内存多少cpu啊</p>
+<p>答案：600g内存， 800核</p>
+<h1 id="参考：开发中遇到的一些问题-文中有很多之前碰到的问题"><a href="#参考：开发中遇到的一些问题-文中有很多之前碰到的问题" class="headerlink" title="参考：开发中遇到的一些问题 文中有很多之前碰到的问题"></a>参考：<a href="https://www.cnblogs.com/arachis/p/Spark_prog.html" target="_blank" rel="noopener">开发中遇到的一些问题</a> 文中有很多之前碰到的问题</h1><p>1.StackOverflowError</p>
 <p>问题：简单代码记录 :</p>
 <p>for (day &lt;- days){</p>
 <p>　　rdd = rdd.union(sc.textFile(/path/to/day) …. )</p>
@@ -378,7 +394,8 @@
 <p>rdd.repartition(numPartitions)</p>
 <h1 id="Spark-Shuffle-FetchFailedException解决方案"><a href="#Spark-Shuffle-FetchFailedException解决方案" class="headerlink" title="Spark Shuffle FetchFailedException解决方案"></a>Spark Shuffle FetchFailedException解决方案</h1><p>在大规模数据处理中，这是个比较常见的错误。</p>
 <p>报错提示</p>
-<p>SparkSQL shuffle操作带来的报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">org.apache.spark.shuffle.MetadataFetchFailedException: </span><br><span class="line">Missing an output location for shuffle 0</span><br><span class="line"></span><br><span class="line">org.apache.spark.shuffle.FetchFailedException:</span><br><span class="line">Failed to connect to hostname/192.168.xx.xxx:50268</span><br><span class="line"></span><br><span class="line">RDD的shuffle操作带来的报错</span><br><span class="line">WARN TaskSetManager: Lost task 17.1 in stage 4.1 (TID 1386, spark050013): java.io.FileNotFoundException: /data04/spark/tmp/blockmgr-817d372f-c359-4a00-96dd-8f6554aa19cd/2f/temp_shuffle_e22e013a-5392-4edb-9874-a196a1dad97c (没有那个文件或目录)</span><br><span class="line"></span><br><span class="line">FetchFailed(BlockManagerId(6083b277-119a-49e8-8a49-3539690a2a3f-S155, spark050013, 8533), shuffleId=1, mapId=143, reduceId=3, message=</span><br><span class="line">org.apache.spark.shuffle.FetchFailedException: Error in opening FileSegmentManagedBuffer&#123;file=/data04/spark/tmp/blockmgr-817d372f-c359-4a00-96dd-8f6554aa19cd/0e/shuffle_1_143_0.data, offset=997061, length=112503&#125;</span><br></pre></td></tr></table></figure></p>
+<p>SparkSQL shuffle操作带来的报错</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">org.apache.spark.shuffle.MetadataFetchFailedException: </span><br><span class="line">Missing an output location <span class="keyword">for</span> shuffle <span class="number">0</span></span><br><span class="line"></span><br><span class="line">org.apache.spark.shuffle.FetchFailedException:</span><br><span class="line">Failed to connect to hostname/<span class="number">192.168</span>.xx.xxx:<span class="number">50268</span></span><br><span class="line"></span><br><span class="line">RDD的shuffle操作带来的报错</span><br><span class="line">WARN TaskSetManager: Lost task <span class="number">17.1</span> in stage <span class="number">4.1</span> (TID <span class="number">1386</span>, spark050013): java.io.FileNotFoundException: /data04/spark/tmp/blockmgr-<span class="number">817</span>d372f-c359-<span class="number">4</span>a00-<span class="number">96</span>dd-<span class="number">8f</span>6554aa19cd/<span class="number">2f</span>/temp_shuffle_e22e013a-<span class="number">5392</span>-<span class="number">4</span>edb-<span class="number">9874</span>-a196a1dad97c (没有那个文件或目录)</span><br><span class="line"></span><br><span class="line">FetchFailed(BlockManagerId(<span class="number">6083</span>b277-<span class="number">119</span>a-<span class="number">49e8</span>-<span class="number">8</span>a49-<span class="number">3539690</span>a2a3f-S155, spark050013, <span class="number">8533</span>), shuffleId=<span class="number">1</span>, mapId=<span class="number">143</span>, reduceId=<span class="number">3</span>, message=</span><br><span class="line">org.apache.spark.shuffle.FetchFailedException: Error in opening FileSegmentManagedBuffer&#123;file=/data04/spark/tmp/blockmgr-<span class="number">817</span>d372f-c359-<span class="number">4</span>a00-<span class="number">96</span>dd-<span class="number">8f</span>6554aa19cd/<span class="number">0</span>e/shuffle_1_143_0.data, offset=<span class="number">997061</span>, length=<span class="number">112503</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>原因</p>
 <p>shuffle分为shuffle write和shuffle read两部分。<br>shuffle write的分区数由上一阶段的RDD分区数控制，shuffle read的分区数则是由Spark提供的一些参数控制。</p>
 <p>shuffle write可以简单理解为类似于saveAsLocalDiskFile的操作，将计算的中间结果按某种规则临时放到各个executor所在的本地磁盘上。</p>
@@ -517,7 +534,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -528,7 +545,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -539,7 +556,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -572,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spark-Shuffle-FetchFailedException解决方案"><span class="nav-number">1.</span> <span class="nav-text">Spark Shuffle FetchFailedException解决方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#卡在一个excutor上，没有报错"><span class="nav-number">1.</span> <span class="nav-text">卡在一个excutor上，没有报错</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ref"><span class="nav-number">1.1.</span> <span class="nav-text">ref</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spark-配置计算"><span class="nav-number">2.</span> <span class="nav-text">spark 配置计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考：开发中遇到的一些问题-文中有很多之前碰到的问题"><span class="nav-number">3.</span> <span class="nav-text">参考：开发中遇到的一些问题 文中有很多之前碰到的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spark-Shuffle-FetchFailedException解决方案"><span class="nav-number">4.</span> <span class="nav-text">Spark Shuffle FetchFailedException解决方案</span></a></li></ol></div>
             
 
           </div>
