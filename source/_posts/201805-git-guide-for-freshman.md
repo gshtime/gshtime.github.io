@@ -1,7 +1,9 @@
 ---
 title: git 使用指南
-tags: git
 date: 2018-05-18 00:11:03
+categories: 工具箱
+tags: 
+    - git
 ---
 
 # git 回滚

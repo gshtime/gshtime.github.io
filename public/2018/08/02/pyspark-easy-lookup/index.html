@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="pyspark,大数据," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="SparkSession的功能Spark2.0中引入了SparkSession的概念，它为用户提供了一个统一的切入点来使用Spark的各项功能，用户不但可以使用DataFrame和Dataset的各种API，学习Spark的难度也会大大降低。 Spark REPL和Databricks Notebook中的SparkSession对象在之前的Spark版本中，Spark shell会自动创建一个S">
+<meta name="keywords" content="pyspark,大数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Spark 使用教程】SparkSession">
+<meta property="og:url" content="http://yoursite.com/2018/08/02/pyspark-easy-lookup/index.html">
+<meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
+<meta property="og:description" content="SparkSession的功能Spark2.0中引入了SparkSession的概念，它为用户提供了一个统一的切入点来使用Spark的各项功能，用户不但可以使用DataFrame和Dataset的各种API，学习Spark的难度也会大大降低。 Spark REPL和Databricks Notebook中的SparkSession对象在之前的Spark版本中，Spark shell会自动创建一个S">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/20160823134504487.png">
+<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/20160823134731334.png">
+<meta property="og:updated_time" content="2018-08-09T17:18:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【Spark 使用教程】SparkSession">
+<meta name="twitter:description" content="SparkSession的功能Spark2.0中引入了SparkSession的概念，它为用户提供了一个统一的切入点来使用Spark的各项功能，用户不但可以使用DataFrame和Dataset的各种API，学习Spark的难度也会大大降低。 Spark REPL和Databricks Notebook中的SparkSession对象在之前的Spark版本中，Spark shell会自动创建一个S">
+<meta name="twitter:image" content="http://p8vrqzrnj.bkt.clouddn.com/20160823134504487.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/02/pyspark-easy-lookup/"/>
+
+
+
+
+
+  <title>【Spark 使用教程】SparkSession | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Record study process, and keep improving and producing.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/02/pyspark-easy-lookup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【Spark 使用教程】SparkSession</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-02T19:24:25+08:00">
+                2018-08-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spark/" itemprop="url" rel="index">
+                    <span itemprop="name">spark</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SparkSession的功能"><a href="#SparkSession的功能" class="headerlink" title="SparkSession的功能"></a>SparkSession的功能</h1><p>Spark2.0中引入了SparkSession的概念，它为用户提供了一个统一的切入点来使用Spark的各项功能，用户不但可以使用DataFrame和Dataset的各种API，学习Spark的难度也会大大降低。</p>
+<p>Spark REPL和Databricks Notebook中的SparkSession对象<br>在之前的Spark版本中，Spark shell会自动创建一个SparkContext对象sc。2.0中Spark shell则会自动创建一个SparkSession对象（spark），在输入spark时就会发现它已经存在了。</p>
+<p><img src="http://p8vrqzrnj.bkt.clouddn.com/20160823134504487.png" alt=""></p>
+<p>在Databricks notebook中创建集群时也会自动生成一个SparkSession，这里用的名字也是spark。</p>
+<h1 id="SparkContext"><a href="#SparkContext" class="headerlink" title="SparkContext"></a>SparkContext</h1><p><img src="http://p8vrqzrnj.bkt.clouddn.com/20160823134731334.png" alt=""></p>
+<p>SparkContext起到的是一个中介的作用，通过它来使用Spark其他的功能。每一个JVM都有一个对应的SparkContext，driver program通过SparkContext连接到集群管理器来实现对集群中任务的控制。Spark配置参数的设置以及对SQLContext、HiveContext和StreamingContext的控制也要通过SparkContext进行。</p>
+<p>不过在Spark2.0中上述的一切功能都是通过SparkSession来完成的，同时SparkSession也简化了DataFrame/Dataset API的使用和对数据的操作。</p>
+<h1 id="pyspark-sql-SparkSession"><a href="#pyspark-sql-SparkSession" class="headerlink" title="pyspark.sql.SparkSession"></a>pyspark.sql.SparkSession</h1><p><a href="https://blog.csdn.net/cjhnbls/article/details/79254188" target="_blank" rel="noopener">https://blog.csdn.net/cjhnbls/article/details/79254188</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx = SparkSession.builder.appName(<span class="string">"ApplicationName"</span>).config(<span class="string">"spark.driver.memory"</span>, <span class="string">"6G"</span>).master(<span class="string">'local[7]'</span>).getOrCreate()</span><br></pre></td></tr></table></figure>
+<h1 id="Scala-API"><a href="#Scala-API" class="headerlink" title="Scala API"></a>Scala API</h1><h2 id="创建SparkSession"><a href="#创建SparkSession" class="headerlink" title="创建SparkSession"></a>创建SparkSession</h2><p>在2.0版本之前，使用Spark必须先创建SparkConf和SparkContext，代码如下：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//set up the spark configuration and create contexts</span></span><br><span class="line"><span class="keyword">val</span> sparkConf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setAppName(<span class="string">"SparkSessionZipsExample"</span>).setMaster(<span class="string">"local"</span>)</span><br><span class="line"><span class="comment">// your handle to SparkContext to access other context like SQLContext</span></span><br><span class="line"><span class="keyword">val</span> sc = <span class="keyword">new</span> <span class="type">SparkContext</span>(sparkConf).set(<span class="string">"spark.some.config.option"</span>, <span class="string">"some-value"</span>)</span><br><span class="line"><span class="keyword">val</span> sqlContext = <span class="keyword">new</span> org.apache.spark.sql.<span class="type">SQLContext</span>(sc)</span><br></pre></td></tr></table></figure>
+<p>不过在Spark2.0中只要创建一个SparkSession就够了，SparkConf、SparkContext和SQLContext都已经被封装在SparkSession当中。下面的代码创建了一个SparkSession对象并设置了一些参数。这里使用了生成器模式，只有此“spark”对象不存在时才会创建一个新对象。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a SparkSession. No need to create SparkContext</span></span><br><span class="line"><span class="comment">// You automatically get it as part of the SparkSession</span></span><br><span class="line"><span class="keyword">val</span> warehouseLocation = <span class="string">"file:$&#123;system:user.dir&#125;/spark-warehouse"</span></span><br><span class="line"><span class="keyword">val</span> spark = <span class="type">SparkSession</span></span><br><span class="line">   .builder()</span><br><span class="line">   .appName(<span class="string">"SparkSessionZipsExample"</span>)</span><br><span class="line">   .config(<span class="string">"spark.sql.warehouse.dir"</span>, warehouseLocation)</span><br><span class="line">   .enableHiveSupport()</span><br><span class="line">   .getOrCreate()</span><br></pre></td></tr></table></figure>
+<p>执行完上面的代码就可以使用spark对象了。</p>
+<h2 id="设置运行参数"><a href="#设置运行参数" class="headerlink" title="设置运行参数"></a>设置运行参数</h2><p>创建SparkSession之后可以设置运行参数，代码如下, 也可以使用Scala的迭代器来读取configMap中的数据。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//set new runtime options</span></span><br><span class="line">spark.conf.set(<span class="string">"spark.sql.shuffle.partitions"</span>, <span class="number">6</span>)</span><br><span class="line">spark.conf.set(<span class="string">"spark.executor.memory"</span>, <span class="string">"2g"</span>)</span><br><span class="line"><span class="comment">//get all settings</span></span><br><span class="line"><span class="keyword">val</span> configMap:<span class="type">Map</span>[<span class="type">String</span>, <span class="type">String</span>] = spark.conf.getAll()</span><br></pre></td></tr></table></figure>
+<h2 id="读取元数据"><a href="#读取元数据" class="headerlink" title="读取元数据"></a>读取元数据</h2><p>如果需要读取元数据（catalog），可以通过SparkSession来获取。<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//fetch metadata data from the catalog</span></span><br><span class="line">spark.catalog.listDatabases.show(<span class="literal">false</span>)</span><br><span class="line">spark.catalog.listTables.show(<span class="literal">false</span>)</span><br></pre></td></tr></table></figure></p>
+<p>这里返回的都是Dataset，所以可以根据需要再使用Dataset API来读取。 ???</p>
+<h2 id="创建Dataset和Dataframe"><a href="#创建Dataset和Dataframe" class="headerlink" title="创建Dataset和Dataframe"></a>创建Dataset和Dataframe</h2><p>通过SparkSession来创建Dataset和Dataframe有多种方法。其中最简单的就是使用spark.range方法来生成Dataset，在摸索Dataset API的时候这个办法尤其有用。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// create a Dataset using spark.range starting from 5 to 100, with increments of 5</span></span><br><span class="line"><span class="keyword">val</span> numDS = spark.range(<span class="number">5</span>, <span class="number">100</span>, <span class="number">5</span>)</span><br><span class="line"><span class="comment">// reverse the order and display first 5 items</span></span><br><span class="line">numDS.orderBy(desc(<span class="string">"id"</span>)).show(<span class="number">5</span>)</span><br><span class="line"><span class="comment">//compute descriptive stats and display them</span></span><br><span class="line">numDs.describe().show()</span><br><span class="line"><span class="comment">// create a DataFrame using spark.createDataFrame from a List or Seq</span></span><br><span class="line"><span class="keyword">val</span> langPercentDF = spark.createDataFrame(<span class="type">List</span>((<span class="string">"Scala"</span>, <span class="number">35</span>), (<span class="string">"Python"</span>, <span class="number">30</span>), (<span class="string">"R"</span>, <span class="number">15</span>), (<span class="string">"Java"</span>, <span class="number">20</span>)))</span><br><span class="line"><span class="comment">//rename the columns</span></span><br><span class="line"><span class="keyword">val</span> lpDF = langPercentDF.withColumnRenamed(<span class="string">"_1"</span>, <span class="string">"language"</span>).withColumnRenamed(<span class="string">"_2"</span>, <span class="string">"percent"</span>)</span><br><span class="line"><span class="comment">// order the DataFrame in descending order of percentage</span></span><br><span class="line">lpDF.orderBy(desc(<span class="string">"percent"</span>)).show(<span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="读取JSON数据"><a href="#读取JSON数据" class="headerlink" title="读取JSON数据"></a>读取JSON数据</h2><p>此外，还可以用SparkSession读取JSON、CSV、TXT和parquet表。下面的代码中读取了一个JSON文件，返回的是一个DataFrame。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// read the json file and create the dataframe</span></span><br><span class="line"><span class="keyword">val</span> jsonFile = args(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">val</span> zipsDF = spark.read.json(jsonFile)</span><br><span class="line"><span class="comment">//filter all cities whose population &gt; 40K</span></span><br><span class="line">zipsDF.filter(zipsDF.col(<span class="string">"pop"</span>) &gt; <span class="number">40000</span>).show(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="使用SparkSQL"><a href="#使用SparkSQL" class="headerlink" title="使用SparkSQL"></a>使用SparkSQL</h2><p>借助SparkSession用户可以像SQLContext一样使用Spark SQL的全部功能。下面的代码中先创建了一个表然后对此表进行查询。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Now create an SQL table and issue SQL queries against it without</span></span><br><span class="line"><span class="comment">// using the sqlContext but through the SparkSession object.</span></span><br><span class="line"><span class="comment">// Creates a temporary view of the DataFrame</span></span><br><span class="line">zipsDF.createOrReplaceTempView(<span class="string">"zips_table"</span>)</span><br><span class="line">zipsDF.cache()</span><br><span class="line"><span class="keyword">val</span> resultsDF = spark.sql(<span class="string">"SELECT city, pop, state, zip FROM zips_table"</span>)</span><br><span class="line">resultsDF.show(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="存储-读取Hive表"><a href="#存储-读取Hive表" class="headerlink" title="存储/读取Hive表"></a>存储/读取Hive表</h2><p>下面的代码演示了通过SparkSession来创建Hive表并进行查询的方法。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//drop the table if exists to get around existing table error</span></span><br><span class="line">spark.sql(<span class="string">"DROP TABLE IF EXISTS zips_hive_table"</span>)</span><br><span class="line"><span class="comment">//save as a hive table</span></span><br><span class="line">spark.table(<span class="string">"zips_table"</span>).write.saveAsTable(<span class="string">"zips_hive_table"</span>)</span><br><span class="line"><span class="comment">//make a similar query against the hive table </span></span><br><span class="line"><span class="keyword">val</span> resultsHiveDF = spark.sql(<span class="string">"SELECT city, pop, state, zip FROM zips_hive_table WHERE pop &gt; 40000"</span>)</span><br><span class="line">resultsHiveDF.show(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>这里可以看到从DataFrame API、Spark SQL和Hive语句返回的结果是完全相同的。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pyspark/" rel="tag"># pyspark</a>
+          
+            <a href="/tags/大数据/" rel="tag"># 大数据</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/02/lightgbm-and-I-dont-know-everything/" rel="next" title="lightgbm and I dont know everything">
+                <i class="fa fa-chevron-left"></i> lightgbm and I dont know everything
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/08/alg-tree-traversal/" rel="prev" title="二叉树的前序、中序、后序遍历（java实现）">
+                二叉树的前序、中序、后序遍历（java实现） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gao Shang</p>
+              <p class="site-description motion-element" itemprop="description">Hi, I'm fan of Machine Learing and Online Advertisement technologies, I will record lots of simple and important information for us here.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SparkSession的功能"><span class="nav-number">1.</span> <span class="nav-text">SparkSession的功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SparkContext"><span class="nav-number">2.</span> <span class="nav-text">SparkContext</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyspark-sql-SparkSession"><span class="nav-number">3.</span> <span class="nav-text">pyspark.sql.SparkSession</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scala-API"><span class="nav-number">4.</span> <span class="nav-text">Scala API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建SparkSession"><span class="nav-number">4.1.</span> <span class="nav-text">创建SparkSession</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置运行参数"><span class="nav-number">4.2.</span> <span class="nav-text">设置运行参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取元数据"><span class="nav-number">4.3.</span> <span class="nav-text">读取元数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Dataset和Dataframe"><span class="nav-number">4.4.</span> <span class="nav-text">创建Dataset和Dataframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取JSON数据"><span class="nav-number">4.5.</span> <span class="nav-text">读取JSON数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用SparkSQL"><span class="nav-number">4.6.</span> <span class="nav-text">使用SparkSQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储-读取Hive表"><span class="nav-number">4.7.</span> <span class="nav-text">存储/读取Hive表</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gao Shang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

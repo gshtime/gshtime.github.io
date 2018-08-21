@@ -4,7 +4,58 @@ date: 2018-07-30 00:30:07
 tags:
 ---
 
-参考：[开发中遇到的一些问题](https://www.cnblogs.com/arachis/p/Spark_prog.html) 文中有很多之前碰到的问题
+不知道spark怎么调bug，没有系统学习过，摸着石头过河吧。
+
+# 卡在一个excutor上，没有报错
+
+因为一台机器的内存分配给越多的executor，每个executor的内存就越小，以致出现过多的数据spill over甚至out of memory的情况。
+把这个参数调大些试试:spark.shuffle.memoryFraction
+
+参数说明：该参数用于设置shuffle过程中一个task拉取到上个stage的task的输出后，进行聚合操作时能够使用的Executor内存的比例，默认是0.2。也就是说，Executor默认只有20%的内存用来进行该操作。shuffle操作在进行聚合时，如果发现使用的内存超出了这个20%的限制，那么多余的数据就会溢写到磁盘文件中去，此时就会极大地降低性能。
+
+参数调优建议：如果Spark作业中的RDD持久化操作较少，shuffle操作较多时，建议降低持久化操作的内存占比，提高shuffle操作的内存占比比例，避免shuffle过程中数据过多时内存不够用，必须溢写到磁盘上，降低了性能。此外，如果发现作业由于频繁的gc导致运行缓慢，意味着task执行用户代码的内存不够用，那么同样建议调低这个参数的值。
+
+设置了参数，如下，可以跑完，但是变得很慢。
+
+``` java
+SparkConf sc = new SparkConf()
+.setAppName("SparkCalculateSR")
+.set("spark.storage.memoryFraction", "0.2")
+.set("spark.default.parallelism", "20")
+.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+.set("spark.shuffle.consolidateFiles", "true")  // consolidateFiles这个参数是hashshuffle的时候用的
+.set("spark.reducer.maxSizeInFlight", "100m")
+.set("spark.shuffle.file.buffer", "100k")
+.set("spark.shuffle.io.maxRetries", "10")
+.set("spark.shuffle.io.retryWait", "10s");
+```
+
+继续建议：
+
+上边设置的参数可以提高shuffle的稳定性,所以是跑成功了.如果要增大shuffle使用executor内存可以调下边两个参数
+- num-executors 100 --这个调小
+- spark.shuffle.memoryFraction --这个调大 
+
+不知道具体慢在哪了,所以没法给具体的优化建议.你采用的是hashshuffle吗? consolidateFiles这个参数是hashshuffle的时候用的,要不改成SortShuffle试试,一般慢都慢在shuffle上了
+
+## ref
+
+[spark 卡住](https://bbs.csdn.net/topics/392142267)
+
+# spark 配置计算
+
+``` s
+--num-executors 100 \
+--driver-memory 6g \
+--executor-memory 6g \
+--executor-cores 8 \
+```
+
+100个executors  一个executor-memory 6G内存  8核cpu   那得多少内存多少cpu啊
+
+答案：600g内存， 800核
+
+# 参考：[开发中遇到的一些问题](https://www.cnblogs.com/arachis/p/Spark_prog.html) 文中有很多之前碰到的问题
 
 1.StackOverflowError
 
@@ -72,12 +123,14 @@ rdd.repartition(numPartitions)
 
 
 # Spark Shuffle FetchFailedException解决方案
+
 在大规模数据处理中，这是个比较常见的错误。
 
 报错提示
 
 SparkSQL shuffle操作带来的报错
-```
+
+``` java
 org.apache.spark.shuffle.MetadataFetchFailedException: 
 Missing an output location for shuffle 0
 
