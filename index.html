@@ -282,6 +282,137 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/21/spark-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/21/spark-guide/" itemprop="url">spark 原理资料</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-21T12:17:29+08:00">
+                2018-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          《Spark学习: 简述总结》https://blog.csdn.net/databatman/article/details/53023818
+2 Spark 系统架构首先明确相关术语:
+
+应用程序(Application): 基于Spark的用户程序，包含了一个Driver Program 和集群中多个的Executor；驱动(Driver): 运行Application的main()函数并且创建SparkContext;
+执行单元(Executor): 是为某Application运行在Worker Node上的一个进程，该进程负责运行Task，并且负责将数据存在内存或者磁盘上，每个Application都有各自独立的Executors;
+集群管理程序(Cluster Manager): 在集群上获取资源的外部服务(例如：Local、Standalone、Mesos或Yarn等集群管
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/21/spark-guide/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/10/time-parse-in-every-script/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -485,7 +616,7 @@ day
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/10/spark-sql/" itemprop="url">spark sql</a></h1>
+                <a class="post-title-link" href="/2018/08/10/spark-sql/" itemprop="url">spark SQL 笔记</a></h1>
         
 
         <div class="post-meta">
@@ -1986,67 +2117,9 @@ Python字符串运算符下表实例变量 a 值为字符串 “Hello”，b 变
       
         
           
-          Shell中逻辑运算常见错误1-bash: [: missing `]' # [ 1 -gt 1 ] 括号两边都要有空格，不然就报这个错
-一、逻辑运算符1.关于档案与目录的侦测逻辑卷标！
-
-
-
-逻辑卷标
-表示意思
-
-
-
-
--f
-常用！侦测『档案』是否存在 eg: if [ -f filename ]
-
-
--d
-常用！侦测『目录』是否存在
-
-
--b
-侦测是否为一个『 block 档案』
-
-
--c
-侦测是否为一个『 character 档案』
-
-
--S
-侦测是否为一个『 socket 标签档案』
-
-
--L
-侦测是否为一个『 symbolic link 的档案』
-
-
--e
-侦测『某个东西』是否存在！
-
-
-
-
-2.关于程序的逻辑卷标！
-
-
-
-逻辑卷标
-表示意思
-
-
-
-
--G
-侦测是否由 GID 所执行的程序所拥有
-
-
--O
-侦测是否由 UID 所执行的程序所拥有
-
-
--p
-侦测是否为程序间传送信息
+          shell中的带名参数getopts
+语法格式：getopts [option[:]] [DESCPRITION] VARIABLEoption：表示为某个脚本可以使用的选项“:”：如果某个选项（option）后面出现了冒号（”:”），则表示这个选项后面可以接参数（即一段描述信息DESCPRITION）VARIABLE：表示将某个选项保存在变量VARIABLE中
+123456789101112131415161718while getopts ":a:b:c:" optdo    case $opt in        a)        echo "参数a的值$OPTARG"        ;;        b)        echo "参数b的值$OPTARG"        ;;        c)        echo "参数c的值$OPTARG"        ;;    
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -3050,6 +3123,28 @@ CTR/CVR 预估由机器学习向深度学习迁移的模型探索；CTR/CVR 预�
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/推荐系统算法/" itemprop="url" rel="index">
+                    <span itemprop="name">推荐系统算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -5270,7 +5365,7 @@ git branch 命令12# 重命名分支git branch -m [old name] [new name]
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -5281,7 +5376,7 @@ git branch 命令12# 重命名分支git branch -m [old name] [new name]
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
