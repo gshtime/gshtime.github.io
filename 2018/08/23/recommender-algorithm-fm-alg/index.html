@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/4155986-6a02a396266a34d7.png">
 <meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/4155986-b79f3cdc1229ffbb.png">
 <meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/4155986-6d08a2cdcc6668fb.png">
-<meta property="og:updated_time" content="2018-08-23T03:42:41.000Z">
+<meta property="og:updated_time" content="2018-08-23T03:51:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【推荐系统算法系列一】FM及其衍生算法">
 <meta name="twitter:description" content="1、 FM背景在进行CTR预估时，除了单特征外，往往要对特征进行组合。对于特征组合来说，业界现在通用的做法主要有两大类：FM系列与Tree系列。今天，我们就来讲讲FM算法。 FM 解决one-hot特征稀疏的问题FM(Factorization Machine)主要是为了解决数据稀疏的情况下，特征怎样组合的问题。已一个广告分类的问题为例，根据用户与广告位的一些特征，来预测用户是否会点击广告。数据如">
@@ -436,7 +436,7 @@
 <p>（2）原始数据中往往包含大量稀疏的特征，例如用户和物品的ID，交叉特征的维度空间是原始特征维度的乘积，因此很容易带来维度灾难的问题；</p>
 <p>（3）人工提取的交叉特征无法泛化到未曾在训练样本中出现过的模式中。</p>
 <p>因此自动学习特征间的交互关系是十分有意义的。目前大部分相关的研究工作是基于因子分解机的框架，利用多层全连接神经网络去自动学习特征间的高阶交互关系，例如FNN、PNN和DeepFM等。其缺点是模型学习出的是隐式的交互特征，其形式是未知的、不可控的；同时它们的特征交互是发生在元素级（bit-wise）而不是特征向量之间（vector-wise），这一点违背了因子分解机的初衷。来自Google的团队在KDD 2017 AdKDD &amp; TargetAD研讨会上提出了DCN模型，旨在显式地学习高阶特征交互，其优点是模型非常轻巧高效，但缺点是最终模型的表现形式是一种很特殊的向量扩张，同时特征交互依旧是发生在元素级上。</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>美团点评《深入FFM原理与实践》<a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html" target="_blank" rel="noopener">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>美团点评《深入FFM原理与实践》<br><a href="https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html" target="_blank" rel="noopener">https://tech.meituan.com/deep_understanding_of_ffm_principles_and_practices.html</a></p>
 <p>《推荐系统遇上深度学习(一)—FM模型理论和实践》<a href="https://www.jianshu.com/p/152ae633fb00" target="_blank" rel="noopener">https://www.jianshu.com/p/152ae633fb00</a></p>
 <p>《第09章：深入浅出ML之Factorization家族》<br><a href="http://www.52caml.com/head_first_ml/ml-chapter9-factorization-family/" target="_blank" rel="noopener">http://www.52caml.com/head_first_ml/ml-chapter9-factorization-family/</a></p>
 
@@ -505,6 +505,11 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zOTE2Ni8xNTY5Mw=="></div>
+    </div>
 
   
 
@@ -763,7 +768,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
@@ -787,6 +792,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
