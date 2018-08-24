@@ -5,6 +5,58 @@
     
     
   <url>
+    <loc>https://gshtime.github.com/2018/08/24/python-pandas-guide/</loc>
+    <lastmod>2018-08-24T02:25:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>python pandas 使用指南</title>
+        <pubTime>2018-08-24T02:14:58.000Z</pubTime>
+        
+        <tag>工具箱</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://gshtime.github.com/2018/06/03/recommemder-alg-introduction/</loc>
+    <lastmod>2018-08-24T02:13:12.000Z</lastmod>
+    <data>
+        <display>
+        <title>推荐算法方面的优秀文章</title>
+        <pubTime>2018-06-03T07:18:15.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://gshtime.github.com/2018/08/23/recommender-algorithm-fm-alg/</loc>
+    <lastmod>2018-08-23T07:25:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>【推荐系统算法系列一】FM及其衍生算法</title>
+        <pubTime>2018-08-23T03:35:30.000Z</pubTime>
+        
+        <tag>推荐系统</tag>
+         
+         
+           
+             
+              <breadCrumb title="推荐系统" url="https://gshtime.github.com/categories/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://gshtime.github.com/2018/06/24/recommender-and-ads-algs/</loc>
     <lastmod>2018-08-23T04:14:31.000Z</lastmod>
     <data>
@@ -20,41 +72,6 @@
            
              
               <breadCrumb title="推荐系统算法" url="https://gshtime.github.com/categories/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://gshtime.github.com/2018/06/03/recommemder-alg-introduction/</loc>
-    <lastmod>2018-08-23T04:11:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>推荐算法方面的优秀文章</title>
-        <pubTime>2018-06-03T07:18:15.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://gshtime.github.com/2018/08/23/recommender-algorithm-fm-alg/</loc>
-    <lastmod>2018-08-23T03:51:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>【推荐系统算法系列一】FM及其衍生算法</title>
-        <pubTime>2018-08-23T03:35:30.000Z</pubTime>
-        
-        <tag>推荐系统</tag>
-         
-         
-           
-             
-              <breadCrumb title="推荐系统" url="https://gshtime.github.com/categories/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/"/>
           
         </display>
     </data>

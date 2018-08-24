@@ -286,6 +286,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://gshtime.github.com/2018/08/24/python-pandas-guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gao Shang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Swim in ML/Ad Tech Ocean - MaricLe Gao Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/24/python-pandas-guide/" itemprop="url">python pandas 使用指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-24T10:14:58+08:00">
+                2018-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Series 操作123456# 获取所有的值In [27]: ser2.valuesOut[27]: array([0, 1, 2, 3])# 获取所有的索引In [28]: ser2.indexOut[28]: Index([u'a', u'b', u'c', u'd'], dtype='object')
+按行遍历DataFrame不修改内容要以 Pandas 的方式迭代遍历DataFrame的行，可以使用：
+1234567# 1、DataFrame.iterrows()for index, row in df.iterrows():  # 返回（索引， Series）元组    print row["c1"], row["c2"]# 2 DataFrame.itertuples()for row in df.itertuples(index=True, name='Pandas'):
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/24/python-pandas-guide/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://gshtime.github.com/2018/08/23/recommender-algorithm-fm-alg/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -5551,7 +5679,7 @@ git branch 命令12# 重命名分支git branch -m [old name] [new name]
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -5573,7 +5701,7 @@ git branch 命令12# 重命名分支git branch -m [old name] [new name]
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

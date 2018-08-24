@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="工具箱," />
 
 
 
@@ -83,19 +83,18 @@
 
 
 
-<meta name="description" content="《Spark学习: 简述总结》https://blog.csdn.net/databatman/article/details/53023818 2 Spark 系统架构首先明确相关术语:  应用程序(Application): 基于Spark的用户程序，包含了一个Driver Program 和集群中多个的Executor；驱动(Driver): 运行Application的main()函数并且">
+<meta name="description" content="Series 操作123456# 获取所有的值In [27]: ser2.valuesOut[27]: array([0, 1, 2, 3])# 获取所有的索引In [28]: ser2.indexOut[28]: Index([u&apos;a&apos;, u&apos;b&apos;, u&apos;c&apos;, u&apos;d&apos;], dtype=&apos;object&apos;) 按行遍历DataFrame不修改内容要以 Pandas 的方式迭代遍历DataFrame">
+<meta name="keywords" content="工具箱">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spark 原理资料">
-<meta property="og:url" content="https://gshtime.github.com/2018/08/21/spark-guide/index.html">
+<meta property="og:title" content="python pandas 使用指南">
+<meta property="og:url" content="https://gshtime.github.com/2018/08/24/python-pandas-guide/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
-<meta property="og:description" content="《Spark学习: 简述总结》https://blog.csdn.net/databatman/article/details/53023818 2 Spark 系统架构首先明确相关术语:  应用程序(Application): 基于Spark的用户程序，包含了一个Driver Program 和集群中多个的Executor；驱动(Driver): 运行Application的main()函数并且">
+<meta property="og:description" content="Series 操作123456# 获取所有的值In [27]: ser2.valuesOut[27]: array([0, 1, 2, 3])# 获取所有的索引In [28]: ser2.indexOut[28]: Index([u&apos;a&apos;, u&apos;b&apos;, u&apos;c&apos;, u&apos;d&apos;], dtype=&apos;object&apos;) 按行遍历DataFrame不修改内容要以 Pandas 的方式迭代遍历DataFrame">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/20161103175047811">
-<meta property="og:updated_time" content="2018-08-21T04:52:26.000Z">
+<meta property="og:updated_time" content="2018-08-24T02:25:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spark 原理资料">
-<meta name="twitter:description" content="《Spark学习: 简述总结》https://blog.csdn.net/databatman/article/details/53023818 2 Spark 系统架构首先明确相关术语:  应用程序(Application): 基于Spark的用户程序，包含了一个Driver Program 和集群中多个的Executor；驱动(Driver): 运行Application的main()函数并且">
-<meta name="twitter:image" content="http://p8vrqzrnj.bkt.clouddn.com/20161103175047811">
+<meta name="twitter:title" content="python pandas 使用指南">
+<meta name="twitter:description" content="Series 操作123456# 获取所有的值In [27]: ser2.valuesOut[27]: array([0, 1, 2, 3])# 获取所有的索引In [28]: ser2.indexOut[28]: Index([u&apos;a&apos;, u&apos;b&apos;, u&apos;c&apos;, u&apos;d&apos;], dtype=&apos;object&apos;) 按行遍历DataFrame不修改内容要以 Pandas 的方式迭代遍历DataFrame">
 
 
 
@@ -125,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://gshtime.github.com/2018/08/21/spark-guide/"/>
+  <link rel="canonical" href="https://gshtime.github.com/2018/08/24/python-pandas-guide/"/>
 
 
 
 
 
-  <title>spark 原理资料 | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>python pandas 使用指南 | Swim in ML/Ad Tech Ocean - MaricLe Gao Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -288,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gshtime.github.com/2018/08/21/spark-guide/">
+    <link itemprop="mainEntityOfPage" href="https://gshtime.github.com/2018/08/24/python-pandas-guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Gao Shang">
@@ -305,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spark 原理资料</h1>
+          <h1 class="post-title" itemprop="name headline">python pandas 使用指南</h1>
         
 
         <div class="post-meta">
@@ -317,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-21T12:17:29+08:00">
-                2018-08-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-24T10:14:58+08:00">
+                2018-08-24
               </time>
             
 
@@ -336,8 +335,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/21/spark-guide/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/08/21/spark-guide/" itemprop="commentsCount"></span>
+                <a href="/2018/08/24/python-pandas-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/08/24/python-pandas-guide/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -365,24 +364,19 @@
       
 
       
-        <p>《Spark学习: 简述总结》<br><a href="https://blog.csdn.net/databatman/article/details/53023818" target="_blank" rel="noopener">https://blog.csdn.net/databatman/article/details/53023818</a></p>
-<p>2 Spark 系统架构<br>首先明确相关术语:</p>
-<ul>
-<li>应用程序(Application): 基于Spark的用户程序，包含了一个Driver Program 和集群中多个的Executor；<br>驱动(Driver): 运行Application的main()函数并且创建SparkContext;</li>
-<li>执行单元(Executor): 是为某Application运行在Worker Node上的一个进程，该进程负责运行Task，并且负责将数据存在内存或者磁盘上，每个Application都有各自独立的Executors;</li>
-<li>集群管理程序(Cluster Manager): 在集群上获取资源的外部服务(例如：Local、Standalone、Mesos或Yarn等集群管理系统)；</li>
-<li>操作(Operation): 作用于RDD的各种操作分为Transformation和Action.</li>
-</ul>
-<p>整个 Spark 集群中,分为 Master 节点与 worker 节点,,其中 Master 节点上常驻 Master 守护进程和 Driver 进程, Master 负责将串行任务变成可并行执行的任务集Tasks, 同时还负责出错问题处理等,而 Worker 节点上常驻 Worker 守护进程, Master 节点与 Worker 节点分工不同, Master 负载管理全部的 Worker 节点,而 Worker 节点负责执行任务. </p>
-<p>Driver 的功能是创建 SparkContext, 负责执行用户写的 Application 的 main 函数进程,Application 就是用户写的程序.<br>Spark 支持不同的运行模式,包括Local, Standalone,Mesoses,Yarn 模式.不同的模式可能会将 Driver 调度到不同的节点上执行.集群管理模式里, local 一般用于本地调试. </p>
-<p>每个 Worker 上存在一个或多个 Executor 进程,该对象拥有一个线程池,每个线程负责一个 Task 任务的执行.根据 Executor 上 CPU-core 的数量,其每个时间可以并行多个 跟 core 一样数量的 Task4.Task 任务即为具体执行的 Spark 程序的任务. </p>
-<p><img src="http://p8vrqzrnj.bkt.clouddn.com/20161103175047811" alt=""></p>
-<p>在实际编程中,我们不需关心以上调度细节.只需使用 Spark 提供的指定语言的编程接口调用相应的 API 即可. </p>
-<p>在 Spark API 中, 一个 应用(Application) 对应一个 SparkContext 的实例。一个 应用 可以用于单个 Job，或者分开的多个 Job 的 session，或者响应请求的长时间生存的服务器。与 MapReduce 不同的是，一个 应用 的进程（我们称之为 Executor)，会一直在集群上运行，即使当时没有 Job 在上面运行。 </p>
-<p>而调用一个Spark内部的 Action 会产生一个 Spark job 来完成它。 为了确定这些job实际的内容，Spark 检查 RDD 的DAG再计算出执行 plan 。这个 plan 以最远端的 RDD 为起点（最远端指的是对外没有依赖的 RDD 或者 数据已经缓存下来的 RDD），产生结果 RDD 的 Action 为结束 。并根据是否发生 shuffle 划分 DAG 的 stage.</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// parameter</span></span><br><span class="line"><span class="keyword">val</span> appName = <span class="string">"RetailLocAdjust"</span></span><br><span class="line"><span class="keyword">val</span> master = <span class="string">"local"</span>   <span class="comment">// 选择模式</span></span><br><span class="line"><span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setMaster(master).setAppName(appName)</span><br><span class="line"><span class="comment">// 启动一个 SparkContext Application</span></span><br><span class="line"><span class="keyword">val</span> sc = <span class="keyword">new</span> <span class="type">SparkContext</span>(conf)</span><br><span class="line"><span class="keyword">val</span> rdd = sc.textFile(<span class="string">"path/..."</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>文献:大数据分析平台建设与应用综述<br>Spark学习手册（三）：Spark模块摘读<br>Spark入门实战系列–3.Spark编程模型（上）–编程模型及SparkShell实战<br>文献: 基于 spark 平台推荐系统研究.<br>Apache Spark源码走读之7 – Standalone部署方式分析<br>Spark性能优化指南——基础篇<br>Apache Spark Jobs 性能调优（一）<br>Spark性能优化指南——基础篇<br>Apache Spark Jobs 性能调优（一）<br>Apache Spark Jobs 性能调优（一）<br>Apache Spark Jobs 性能调优（一）<br>Spark性能优化指南——基础篇</p>
-
+        <h1 id="Series-操作"><a href="#Series-操作" class="headerlink" title="Series 操作"></a>Series 操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取所有的值</span></span><br><span class="line">In [<span class="number">27</span>]: ser2.values</span><br><span class="line">Out[<span class="number">27</span>]: array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="comment"># 获取所有的索引</span></span><br><span class="line">In [<span class="number">28</span>]: ser2.index</span><br><span class="line">Out[<span class="number">28</span>]: Index([<span class="string">u'a'</span>, <span class="string">u'b'</span>, <span class="string">u'c'</span>, <span class="string">u'd'</span>], dtype=<span class="string">'object'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="按行遍历DataFrame"><a href="#按行遍历DataFrame" class="headerlink" title="按行遍历DataFrame"></a>按行遍历DataFrame</h1><h2 id="不修改内容"><a href="#不修改内容" class="headerlink" title="不修改内容"></a>不修改内容</h2><p>要以 Pandas 的方式迭代遍历DataFrame的行，可以使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、DataFrame.iterrows()</span></span><br><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> df.iterrows():  <span class="comment"># 返回（索引， Series）元组</span></span><br><span class="line">    <span class="keyword">print</span> row[<span class="string">"c1"</span>], row[<span class="string">"c2"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2 DataFrame.itertuples()</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> df.itertuples(index=<span class="keyword">True</span>, name=<span class="string">'Pandas'</span>):</span><br><span class="line">    <span class="keyword">print</span> getattr(row, <span class="string">"c1"</span>), getattr(row, <span class="string">"c2"</span>)</span><br></pre></td></tr></table></figure>
+<p>itertuples()应该比iterrows()快</p>
+<p>但请注意，根据文档(目前 Pandas 0.19.1)：</p>
+<p>df.iterrows：数据的dtype可能不是按行匹配的，因为iterrows返回一个系列的每一行，它不会保留行的dtypes(dtypes跨DataFrames列保留)*</p>
+<p>iterrows：不要修改行，你不应该修改你正在迭代的东西。这不能保证在所有情况下都能正常工作。根据数据类型的不同，迭代器返回一个副本而不是一个视图，写入它将不起作用。</p>
+<h2 id="第二种方案-apply"><a href="#第二种方案-apply" class="headerlink" title="第二种方案: apply()"></a>第二种方案: apply()</h2><p>DataFrame.apply(),对每行的内容进行修改</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">valuation_formula</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x * y * <span class="number">0.5</span></span><br><span class="line"> </span><br><span class="line">df[<span class="string">'price'</span>] = df.apply(<span class="keyword">lambda</span> row: valuation_formula(row[<span class="string">'x'</span>], row[<span class="string">'y'</span>]), axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="方案3：df-iloc函数"><a href="#方案3：df-iloc函数" class="headerlink" title="方案3：df.iloc函数"></a>方案3：df.iloc函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(df)):</span><br><span class="line">    <span class="keyword">print</span> df.iloc[i][<span class="string">'c1'</span>], df.iloc[i][<span class="string">'c2'</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="第四种方案：略麻烦，但是更高效，将DataFrame转为List"><a href="#第四种方案：略麻烦，但是更高效，将DataFrame转为List" class="headerlink" title="第四种方案：略麻烦，但是更高效，将DataFrame转为List"></a>第四种方案：略麻烦，但是更高效，将DataFrame转为List</h2><p>可以编写自己的实现namedtuple的迭代器,这相当于pd.DataFrame.itertuples，但是效率更高。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myiter</span><span class="params">(d, cols=None)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> cols <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">        v = d.values.tolist()</span><br><span class="line">        cols = d.columns.values.tolist()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        j = [d.columns.get_loc(c) <span class="keyword">for</span> c <span class="keyword">in</span> cols]</span><br><span class="line">        v = d.values[:, j].tolist()</span><br><span class="line"> </span><br><span class="line">    n = namedtuple(<span class="string">'MyTuple'</span>, cols)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> iter(v):</span><br><span class="line">        <span class="keyword">yield</span> n(*line)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将自定义函数用于给定的DataFrame：</span></span><br><span class="line">list(myiter(df))</span><br><span class="line"><span class="comment">### [MyTuple(c1=10, c2=100), MyTuple(c1=11, c2=110), MyTuple(c1=12, c2=120)]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或与pd.DataFrame.itertuples：</span></span><br><span class="line">list(df.itertuples(index=<span class="keyword">False</span>))</span><br><span class="line"><span class="comment">### [Pandas(c1=10, c2=100), Pandas(c1=11, c2=110), Pandas(c1=12, c2=120)]</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -397,6 +391,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/工具箱/" rel="tag"># 工具箱</a>
+          
+        </div>
+      
 
       
       
@@ -406,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/10/time-parse-in-every-script/" rel="next" title="时间处理总结 shell python">
-                <i class="fa fa-chevron-left"></i> 时间处理总结 shell python
+              <a href="/2018/08/23/recommender-algorithm-fm-alg/" rel="next" title="【推荐系统算法系列一】FM及其衍生算法">
+                <i class="fa fa-chevron-left"></i> 【推荐系统算法系列一】FM及其衍生算法
               </a>
             
           </div>
@@ -415,10 +415,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/23/recommender-algorithm-fm-alg/" rel="prev" title="【推荐系统算法系列一】FM及其衍生算法">
-                【推荐系统算法系列一】FM及其衍生算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -557,7 +553,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">1.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Series-操作"><span class="nav-number">1.</span> <span class="nav-text">Series 操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按行遍历DataFrame"><span class="nav-number">2.</span> <span class="nav-text">按行遍历DataFrame</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不修改内容"><span class="nav-number">2.1.</span> <span class="nav-text">不修改内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二种方案-apply"><span class="nav-number">2.2.</span> <span class="nav-text">第二种方案: apply()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案3：df-iloc函数"><span class="nav-number">2.3.</span> <span class="nav-text">方案3：df.iloc函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四种方案：略麻烦，但是更高效，将DataFrame转为List"><span class="nav-number">2.4.</span> <span class="nav-text">第四种方案：略麻烦，但是更高效，将DataFrame转为List</span></a></li></ol></li></ol></div>
             
 
           </div>
