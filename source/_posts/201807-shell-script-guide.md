@@ -7,6 +7,36 @@ tags:
     - 脚本
 ---
 
+# shell中的带名参数
+
+getopts
+
+语法格式：getopts [option[:]] [DESCPRITION] VARIABLE
+option：表示为某个脚本可以使用的选项
+":"：如果某个选项（option）后面出现了冒号（":"），则表示这个选项后面可以接参数（即一段描述信息DESCPRITION）
+VARIABLE：表示将某个选项保存在变量VARIABLE中
+
+``` bash
+
+while getopts ":a:b:c:" opt
+do
+    case $opt in
+        a)
+        echo "参数a的值$OPTARG"
+        ;;
+        b)
+        echo "参数b的值$OPTARG"
+        ;;
+        c)
+        echo "参数c的值$OPTARG"
+        ;;
+        ?)
+        echo "未知参数"
+        exit 1;;
+    esac
+done
+```
+
 # Shell中逻辑运算
 
 常见错误

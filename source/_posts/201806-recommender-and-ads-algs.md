@@ -1,6 +1,7 @@
 ---
 title: 推荐系统及广告系统相关算法综述
 date: 2018-06-24 00:01:42
+categories: 推荐系统算法
 tags:
     - 推荐系统
     - 计算广告
@@ -56,3 +57,15 @@ https://blog.csdn.net/yz930618/article/details/75270869
 [6] H. Brendan McMahan. A unied analysis of regular-ized dual averaging and composite mirror descent with implicit updates. Submitted, 2011 （FTRL理论发展，regret bound和加入通用正则化项）
 
 [7] H. Brendan McMahan and Matthew Streeter. Adap-tive bound optimization for online convex optimiza-tion. InCOLT, 2010 （开始的那篇理论性paper）
+
+# embedding
+
+https://www.cntk.ai/pythondocs/layerref.html#embedding
+
+embedding层，是一种用连续值向量来表示离散值或者word的方法，与one-hot相比，推荐系统中embedding层减少了特征的维度。在cntk中，embedding vector用行向量的方式来表示，将一个word映射到它的embedding只需要向量相乘（选取索引对应的embedding行）。
+
+梯度： embedding矩阵的梯度矩阵也是只在非0值的地方存在梯度，每次更新只要更新存在值的embedding层就行了（和推荐系统好像有点不同）
+
+word2vec中的bp
+http://www.claudiobellei.com/2018/01/06/backprop-word2vec/
+

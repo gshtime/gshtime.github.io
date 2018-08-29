@@ -19,6 +19,8 @@ tags:
 
 Spark是根据shuffle类算子来进行stage的划分。如果我们的代码中执行了某个shuffle类算子（比如reduceByKey、join等），那么就会在该算子处，划分出一个stage界限来。可以大致理解为，shuffle算子执行之前的代码会被划分为一个stage，shuffle算子执行以及之后的代码会被划分为下一个stage。因此一个stage刚开始执行的时候，它的每个task可能都会从上一个stage的task所在的节点，去通过网络传输拉取需要自己处理的所有key，然后对拉取到的所有相同的key使用我们自己编写的算子函数执行聚合操作（比如reduceByKey()算子接收的函数）。这个过程就是shuffle。
 
+> 在Spark中，什么情况下，会发生shuffle？reduceByKey、groupByKey、sortByKey、countByKey、join、cogroup等操作。
+
 ## Executor内存与cache/persist持久化
 
 当我们在代码中执行了cache/persist等持久化操作时，根据我们选择的持久化级别的不同，每个task计算出来的数据也会保存到Executor进程的内存或者所在节点的磁盘文件中。
@@ -40,9 +42,8 @@ task的执行速度是跟每个Executor进程的CPU core数量有直接关系的
 
 ### 1.num-executors
 
-参数说明：该参数用于设置Spark作业总共要用多少个Executor进程来执行。Driver在向YARN集群管理器申请资源时，YARN集群管理器会尽可能按照你的设置来在集群的各个工作节点上，启动相应数量的Executor进程。这个参数非常之重要，如果不设置的话，默认只会给你启动少量的Executor进程，此时你的Spark作业的运行速度是非常慢的。
-
-参数调优建议：每个Spark作业的运行一般设置50~100个左右的Executor进程比较合适，设置太少或太多的Executor进程都不好。设置的太少，无法充分利用集群资源；设置的太多的话，大部分队列可能无法给予充分的资源。
+- 参数说明：该参数用于设置Spark作业总共要用多少个Executor进程来执行。Driver在向YARN集群管理器申请资源时，YARN集群管理器会尽可能按照你的设置来在集群的各个工作节点上，启动相应数量的Executor进程。这个参数非常之重要，如果不设置的话，默认只会给你启动少量的Executor进程，此时你的Spark作业的运行速度是非常慢的。
+- 参数调优建议：每个Spark作业的运行一般设置50~100个左右的Executor进程比较合适，设置太少或太多的Executor进程都不好。设置的太少，无法充分利用集群资源；设置的太多的话，大部分队列可能无法给予充分的资源。
 
 ### 2.executor-memory
 
@@ -139,8 +140,40 @@ val conf = new SparkConf().set("spark.hadoop.validateOutputSpecs", "false").setA
 val sc = new SparkContext(conf)
 ```
 
-# 转载
+# 补充
 
+rdd的全称为Resilient Distributed Datasets（弹性分布式数据集）
+
+rdd的操作有两种transfrom和action。
+
+transfrom并不引发真正的rdd计算，action才会引发真正的rdd计算。
+
+## spark中的持久化
+
+Spark最重要的一个功能，就是在不同操作间，持久化（或缓存）一个数据集在内存中。当你持久化一个RDD，每一个结点都将把它的计算分块结果保存在内存中，并在对此数据集（或者衍生出的数据集）进行的其它动作中重用。这将使得后续的动作(Actions)变得更加迅速（通常快10倍）。缓存是用Spark构建迭代算法的关键。
+
+你可以用persist()或cache()方法来标记一个要被持久化的RDD，然后一旦首次被一个动作（Action）触发计算，它将会被保留在计算结点的内存中并重用。Cache有容错机制，如果RDD的任一分区丢失了，通过使用原先创建它的转换操作，它将会被自动重算（不需要全部重算，只计算丢失的部分）。当需要删除被持久化的RDD，可以用unpersistRDD()来完成该工作。
+
+此外，每一个RDD都可以用不同的保存级别进行保存，从而允许你持久化数据集在硬盘，或者在内存作为序列化的Java对象（节省空间），甚至于跨结点复制。这些等级选择，是通过将一个org.apache.spark.storage.StorageLevel对象传递给persist()方法进行确定。cache()方法是使用默认存储级别的快捷方法，也就是StorageLevel.MEMORY_ONLY(将反序列化的对象存入内存）。
+
+rdd的持久化是便于rdd计算的重复使用。
+
+官方的api说明如下：
+
+``` scala
+persist(storageLevel=StorageLevel(False, True, False, False, 1))
+
+Set this RDD’s storage level to persist its values across operations after the first time it is computed. This can only be used to assign a new storage level if the RDD does not have a storage level set yet. If no storage level is specified defaults to (MEMORY_ONLY_SER)
+```
+
+(1) 在rdd参与第一次计算后，设置rdd的存储级别可以保持rdd计算后的值在内存中。例如：rdd1要经过transform1得到rdd2,然后在一个循环L内rdd2进行transform2和action1。由于trasform操作是不会真正执行的，所以rdd1执行transform1需要在循环L第一次循环的时候触发。如果设置了rdd1的存储级别，那么循环L的第二次循环起，只需要从rdd2开始计算就好了，而不用向第一次循环时从rdd1开始计算。
+
+(2) 另外，只有未曾设置存储级别的rdd才能设置存储级别，设置了存储级别的rdd不能修改其存储级别。
+
+### 持久化方式
+rdd的持久化操作有cache()和presist()函数这两种方式。
+
+# 转载&参考
 [spark submit参数调优](https://blog.csdn.net/chenjieit619/article/details/53421080)
 
 [官方参数配置](http://spark.apache.org/docs/latest/configuration.html)

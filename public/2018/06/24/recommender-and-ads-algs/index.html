@@ -25,12 +25,16 @@
 
 
 
+  <meta name="google-site-verification" content="KJRwmI89SeIUZgoljtuyZ5ZhznAiovAJ9RNt9vUtAV0" />
 
 
 
 
 
 
+
+
+  <meta name="baidu-site-verification" content="B61higctgm" />
 
 
 
@@ -83,12 +87,12 @@
 <meta name="keywords" content="推荐系统,计算广告">
 <meta property="og:type" content="article">
 <meta property="og:title" content="推荐系统及广告系统相关算法综述">
-<meta property="og:url" content="http://yoursite.com/2018/06/24/recommender-and-ads-algs/index.html">
+<meta property="og:url" content="https://gshtime.github.com/2018/06/24/recommender-and-ads-algs/index.html">
 <meta property="og:site_name" content="Swim in ML&#x2F;Ad Tech Ocean - MaricLe Gao Blog">
 <meta property="og:description" content="目前，推荐系统领域主流的算法主要包括：  ftrl, 2013年, Google公司, 《Ad click prediction: a view from the trenches》  在线学习 ftrl传统的批量算法的每次迭代是对全体训练数据集进行计算（例如计算全局梯度），优点是精度和收敛还可以，缺点是无法有效处理大数据集（此时全局梯度计算代价太大），且没法应用于数据流做在线学习。 而在线学习算">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p8vrqzrnj.bkt.clouddn.com/onlinelearning1.png">
-<meta property="og:updated_time" content="2018-08-01T09:50:33.000Z">
+<meta property="og:updated_time" content="2018-08-23T04:14:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="推荐系统及广告系统相关算法综述">
 <meta name="twitter:description" content="目前，推荐系统领域主流的算法主要包括：  ftrl, 2013年, Google公司, 《Ad click prediction: a view from the trenches》  在线学习 ftrl传统的批量算法的每次迭代是对全体训练数据集进行计算（例如计算全局梯度），优点是精度和收敛还可以，缺点是无法有效处理大数据集（此时全局梯度计算代价太大），且没法应用于数据流做在线学习。 而在线学习算">
@@ -122,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/24/recommender-and-ads-algs/"/>
+  <link rel="canonical" href="https://gshtime.github.com/2018/06/24/recommender-and-ads-algs/"/>
 
 
 
@@ -285,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/24/recommender-and-ads-algs/">
+    <link itemprop="mainEntityOfPage" href="https://gshtime.github.com/2018/06/24/recommender-and-ads-algs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Gao Shang">
@@ -325,8 +329,40 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/推荐系统算法/" itemprop="url" rel="index">
+                    <span itemprop="name">推荐系统算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/24/recommender-and-ads-algs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/24/recommender-and-ads-algs/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -374,6 +410,10 @@
 <p>[5] H. Brendan McMahan, Gary Holt, D. Sculley, Michael Young, Dietmar Ebner, Julian Grady, Lan Nie, Todd Phillips, Eugene Davydov, Daniel Golovin, Sharat Chikkerur, Dan Liu, Martin Wattenberg, Arnar Mar Hrafnkelsson, Tom Boulos, Jeremy Kubica, Ad Click Prediction: a View from the Trenches, Proceedings of the 19th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD) (2013) （这篇是那篇工程性的paper）</p>
 <p>[6] H. Brendan McMahan. A unied analysis of regular-ized dual averaging and composite mirror descent with implicit updates. Submitted, 2011 （FTRL理论发展，regret bound和加入通用正则化项）</p>
 <p>[7] H. Brendan McMahan and Matthew Streeter. Adap-tive bound optimization for online convex optimiza-tion. InCOLT, 2010 （开始的那篇理论性paper）</p>
+<h1 id="embedding"><a href="#embedding" class="headerlink" title="embedding"></a>embedding</h1><p><a href="https://www.cntk.ai/pythondocs/layerref.html#embedding" target="_blank" rel="noopener">https://www.cntk.ai/pythondocs/layerref.html#embedding</a></p>
+<p>embedding层，是一种用连续值向量来表示离散值或者word的方法，与one-hot相比，推荐系统中embedding层减少了特征的维度。在cntk中，embedding vector用行向量的方式来表示，将一个word映射到它的embedding只需要向量相乘（选取索引对应的embedding行）。</p>
+<p>梯度： embedding矩阵的梯度矩阵也是只在非0值的地方存在梯度，每次更新只要更新存在值的embedding层就行了（和推荐系统好像有点不同）</p>
+<p>word2vec中的bp<br><a href="http://www.claudiobellei.com/2018/01/06/backprop-word2vec/" target="_blank" rel="noopener">http://www.claudiobellei.com/2018/01/06/backprop-word2vec/</a></p>
 
       
     </div>
@@ -448,6 +488,13 @@
           
 
   
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
 
 
 
@@ -495,7 +542,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -506,7 +553,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -517,7 +564,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -550,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#在线学习-ftrl"><span class="nav-number">1.</span> <span class="nav-text">在线学习 ftrl</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CTR预测算法"><span class="nav-number">1.1.</span> <span class="nav-text">CTR预测算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ftrl-References"><span class="nav-number">1.2.</span> <span class="nav-text">ftrl References</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#在线学习-ftrl"><span class="nav-number">1.</span> <span class="nav-text">在线学习 ftrl</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CTR预测算法"><span class="nav-number">1.1.</span> <span class="nav-text">CTR预测算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ftrl-References"><span class="nav-number">1.2.</span> <span class="nav-text">ftrl References</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#embedding"><span class="nav-number">2.</span> <span class="nav-text">embedding</span></a></li></ol></div>
             
 
           </div>
@@ -736,6 +783,43 @@
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'gshtime',
+            repo: 'gshtime.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'db3a0315b6864aac0846f11371e4fc8019a252d7',
+            
+                client_id: '6551c9cae5588d919a32'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
 
 
 
@@ -752,6 +836,21 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
   

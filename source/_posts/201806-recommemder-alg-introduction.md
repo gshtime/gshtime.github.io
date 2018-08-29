@@ -50,3 +50,13 @@ tags:
 # code + action
 
 [TensorFlow Estimator of Deep CTR --DeepFM/NFM/AFM/FNN/PNN](https://zhuanlan.zhihu.com/p/33699909)
+
+# 协同过滤 待总结
+https://blog.csdn.net/u010297828/article/details/51504952
+
+# AFM
+
+https://blog.csdn.net/jiangjiang_jian/article/details/80674250
+
+# embedding
+https://ask.hellobi.com/blog/wenwen/11885
