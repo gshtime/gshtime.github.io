@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://githubio-1252401222.cos.ap-beijing.myqcloud.com/lossfunction-1.png">
 <meta property="og:image" content="https://githubio-1252401222.cos.ap-beijing.myqcloud.com/lossfunction-2.png">
 <meta property="og:image" content="https://githubio-1252401222.cos.ap-beijing.myqcloud.com/lossfunction-3.png">
-<meta property="og:updated_time" content="2018-12-07T12:23:26.218Z">
+<meta property="og:updated_time" content="2018-12-07T12:24:45.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习中的损失函数">
 <meta name="twitter:description" content="交叉熵交叉熵 cross-entropy cost，是信息论中和“信息量”有关的一个概念。 信息量首先是信息量。假设我们听到了两件事，分别如下：   事件A：巴西队进入了2018世界杯决赛圈。  事件B：中国队进入了2018世界杯决赛圈。仅凭直觉来说，显而易见事件B的信息量比事件A的信息量要大。究其原因，是因为事件A发生的概率很大，事件B发生的概率很小。所以当越不可能的事件发生了，我们获取到的信息">
@@ -472,7 +472,7 @@ loss = \frac{1}{2m}\sum_{i=1}^m(y_i-\hat{y_i})^2</script><p>这里的m表示m个
 <h3 id="交叉熵在单分类问题中的使用"><a href="#交叉熵在单分类问题中的使用" class="headerlink" title="交叉熵在单分类问题中的使用"></a>交叉熵在单分类问题中的使用</h3><p>这里的单类别是指，每一张图像样本只能有一个类别，比如只能是狗或只能是猫。<br>交叉熵在单分类问题上基本是标配的方法 </p>
 <script type="math/tex; mode=display">
 loss=-\sum_{i=1}^{n}y_ilog(\hat{y_i}) \tag{2.1}</script><p>上式为一张样本的loss计算方法。式2.1中n代表着n种类别。<br>举例说明,比如有如下样本<br><img src="https://githubio-1252401222.cos.ap-beijing.myqcloud.com/lossfunction-2.png" alt=""></p>
-<p>对应的标签和预测值<br>| *     | 猫  | 青蛙 | 老鼠 |<br>| ——- | —- | —— | —— |<br>| Label | 0   | 1    | 0    |<br>| Pred  | 0.3 | 0.6  | 0.1  |</p>
+<p>对应的标签和预测值<br>|       | 猫  | 青蛙 | 老鼠 |<br>| ——- | —- | —— | —— |<br>| Label | 0   | 1    | 0    |<br>| Pred  | 0.3 | 0.6  | 0.1  |</p>
 <p>那么 </p>
 <script type="math/tex; mode=display">
 \begin{eqnarray}
@@ -482,7 +482,7 @@ loss&=&-(0\times log(0.3)+1\times log(0.6)+0\times log(0.1)\\
 <script type="math/tex; mode=display">
 loss=-\frac{1}{m}\sum_{j=1}^m\sum_{i=1}^{n}y_{ji}log(\hat{y_{ji}})</script><p>m为当前batch的样本数</p>
 <h3 id="交叉熵在多分类问题中的使用"><a href="#交叉熵在多分类问题中的使用" class="headerlink" title="交叉熵在多分类问题中的使用"></a>交叉熵在多分类问题中的使用</h3><p>这里的多类别是指，每一张图像样本可以有多个类别，比如同时包含一只猫和一只狗。<br>和单分类问题的标签不同，多分类的标签是n-hot。<br>比如下面这张样本图，即有青蛙，又有老鼠，所以是一个多分类问题<br><img src="https://githubio-1252401222.cos.ap-beijing.myqcloud.com/lossfunction-3.png" alt=""></p>
-<p>对应的标签和预测值<br>| *     | 猫  | 青蛙 | 老鼠 |<br>| ——- | —- | —— | —— |<br>| Label | 0   | 1    | 1    |<br>| Pred  | 0.1 | 0.7  | 0.8  |</p>
+<p>对应的标签和预测值<br>|       | 猫  | 青蛙 | 老鼠 |<br>| ——- | —- | —— | —— |<br>| Label | 0   | 1    | 1    |<br>| Pred  | 0.1 | 0.7  | 0.8  |</p>
 <p>值得注意的是，这里的Pred不再是通过softmax计算的了，这里采用的是sigmoid。将每一个节点的输出归一化到[0,1]之间。所有Pred值的和也不再为1。换句话说，就是每一个Label都是独立分布的，相互之间没有影响。所以交叉熵在这里是单独对每一个节点进行计算，每一个节点只有两种可能值，所以是一个二项分布。前面说过对于二项分布这种特殊的分布，熵的计算可以进行简化。</p>
 <p>同样的，交叉熵的计算也可以简化，即 </p>
 <script type="math/tex; mode=display">
