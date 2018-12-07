@@ -1,3 +1,4 @@
+https://gshtime.github.com/2018/12/05/machine-learning-loss-function/
 https://gshtime.github.com/2018/08/24/python-pandas-guide/
 https://gshtime.github.com/2018/08/23/recommender-algorithm-fm-alg/
 https://gshtime.github.com/2018/08/21/spark-guide/
