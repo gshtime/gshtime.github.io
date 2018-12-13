@@ -4,8 +4,25 @@
 
     
   <url>
+    <loc>https://gshtime.github.com/2018/06/01/tensorflow-embedding-lookup-sparse/</loc>
+    <lastmod>2018-12-13T12:55:07.250Z</lastmod>
+    <data>
+        <display>
+        <title>机器学习中的embedding原理及tf.nn.embedding_lookup_sparse等API的理解</title>
+        <pubTime>2018-06-01T06:57:00.000Z</pubTime>
+        
+        <tag>embedding_lookup, tf.gather, embedding_lookup_sparse</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://gshtime.github.com/2018/12/05/machine-learning-loss-function/</loc>
-    <lastmod>2018-12-07T12:26:23.331Z</lastmod>
+    <lastmod>2018-12-07T12:43:02.482Z</lastmod>
     <data>
         <display>
         <title>机器学习中的损失函数</title>
@@ -320,12 +337,12 @@
 
     
   <url>
-    <loc>https://gshtime.github.com/2018/07/31/math-in-machine-learning/</loc>
+    <loc>https://gshtime.github.com/2018/07/09/meituan-ads-deep-learning/</loc>
     <lastmod>2018-12-03T06:45:09.460Z</lastmod>
     <data>
         <display>
-        <title>机器学习中的数学 资料整理</title>
-        <pubTime>2018-07-31T14:25:51.000Z</pubTime>
+        <title>meituan ads deep learning</title>
+        <pubTime>2018-07-09T13:33:00.000Z</pubTime>
         
          
            
@@ -335,12 +352,12 @@
 
     
   <url>
-    <loc>https://gshtime.github.com/2018/07/09/meituan-ads-deep-learning/</loc>
+    <loc>https://gshtime.github.com/2018/07/31/math-in-machine-learning/</loc>
     <lastmod>2018-12-03T06:45:09.460Z</lastmod>
     <data>
         <display>
-        <title>meituan ads deep learning</title>
-        <pubTime>2018-07-09T13:33:00.000Z</pubTime>
+        <title>机器学习中的数学 资料整理</title>
+        <pubTime>2018-07-31T14:25:51.000Z</pubTime>
         
          
            
@@ -420,23 +437,6 @@
         <pubTime>2018-07-06T17:03:28.000Z</pubTime>
         
         <tag>设计模式 工程模式 代码 宏定义</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://gshtime.github.com/2018/06/01/tensorflow-embedding-lookup-sparse/</loc>
-    <lastmod>2018-12-03T06:45:09.380Z</lastmod>
-    <data>
-        <display>
-        <title>机器学习中的embedding原理及tf.nn.embedding_lookup_sparse等API的理解</title>
-        <pubTime>2018-06-01T06:57:00.000Z</pubTime>
-        
-        <tag>embedding_lookup, tf.gather, embedding_lookup_sparse</tag>
          
          
            
@@ -624,12 +624,12 @@
 
     
   <url>
-    <loc>https://gshtime.github.com/2018/05/18/hexo-blog-system-guide/</loc>
+    <loc>https://gshtime.github.com/2018/05/27/hexo-transfer/</loc>
     <lastmod>2018-12-03T06:45:09.280Z</lastmod>
     <data>
         <display>
-        <title>hexo 使用指南</title>
-        <pubTime>2018-05-18T03:03:14.000Z</pubTime>
+        <title>hexo 网站的迁移</title>
+        <pubTime>2018-05-27T09:06:53.000Z</pubTime>
         
          
            
@@ -639,12 +639,12 @@
 
     
   <url>
-    <loc>https://gshtime.github.com/2018/05/27/hexo-transfer/</loc>
+    <loc>https://gshtime.github.com/2018/05/18/hexo-blog-system-guide/</loc>
     <lastmod>2018-12-03T06:45:09.280Z</lastmod>
     <data>
         <display>
-        <title>hexo 网站的迁移</title>
-        <pubTime>2018-05-27T09:06:53.000Z</pubTime>
+        <title>hexo 使用指南</title>
+        <pubTime>2018-05-18T03:03:14.000Z</pubTime>
         
          
            

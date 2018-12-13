@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://gshtime.github.com/2018/06/01/tensorflow-embedding-lookup-sparse/</loc>
+    
+    <lastmod>2018-12-13T12:55:07.250Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://gshtime.github.com/2018/12/05/machine-learning-loss-function/</loc>
     
-    <lastmod>2018-12-07T12:26:23.331Z</lastmod>
+    <lastmod>2018-12-07T12:43:02.482Z</lastmod>
     
   </url>
   
@@ -121,14 +128,14 @@
   </url>
   
   <url>
-    <loc>https://gshtime.github.com/2018/07/31/math-in-machine-learning/</loc>
+    <loc>https://gshtime.github.com/2018/07/09/meituan-ads-deep-learning/</loc>
     
     <lastmod>2018-12-03T06:45:09.460Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gshtime.github.com/2018/07/09/meituan-ads-deep-learning/</loc>
+    <loc>https://gshtime.github.com/2018/07/31/math-in-machine-learning/</loc>
     
     <lastmod>2018-12-03T06:45:09.460Z</lastmod>
     
@@ -166,13 +173,6 @@
     <loc>https://gshtime.github.com/2018/07/07/factory-model-in-cpp-programming/</loc>
     
     <lastmod>2018-12-03T06:45:09.390Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://gshtime.github.com/2018/06/01/tensorflow-embedding-lookup-sparse/</loc>
-    
-    <lastmod>2018-12-03T06:45:09.380Z</lastmod>
     
   </url>
   
@@ -254,14 +254,14 @@
   </url>
   
   <url>
-    <loc>https://gshtime.github.com/2018/05/18/hexo-blog-system-guide/</loc>
+    <loc>https://gshtime.github.com/2018/05/27/hexo-transfer/</loc>
     
     <lastmod>2018-12-03T06:45:09.280Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://gshtime.github.com/2018/05/27/hexo-transfer/</loc>
+    <loc>https://gshtime.github.com/2018/05/18/hexo-blog-system-guide/</loc>
     
     <lastmod>2018-12-03T06:45:09.280Z</lastmod>
     
