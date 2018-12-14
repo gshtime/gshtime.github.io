@@ -93,7 +93,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://githubio-1252401222.cos.ap-beijing.myqcloud.com/embedding-sparse-vecter.png">
 <meta property="og:image" content="https://githubio-1252401222.cos.ap-beijing.myqcloud.com/embedding%E8%BF%9E%E6%8E%A5%E5%B1%82.jpg">
-<meta property="og:updated_time" content="2018-12-13T13:07:00.771Z">
+<meta property="og:updated_time" content="2018-12-13T13:13:51.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习中的embedding原理及tf.nn.embedding_lookup_sparse等API的理解">
 <meta name="twitter:description" content="概述本文主要讲解tensorflow中涉及embedding的API。之前看了一些文章，写的云山雾绕，花了好长时间才搞懂，太笨了。embedding 算法主要用于处理稀疏特征，应用于NLP、推荐、广告等领域。所以word2vec 只是embbeding 思想的一个应用，而不是全部。 代码地址：git@github.com:gshtime/tensorflow-api.git embed">
@@ -382,7 +382,7 @@
 <p><img src="https://githubio-1252401222.cos.ap-beijing.myqcloud.com/embedding-sparse-vecter.png" alt="稀疏向量的选择"></p>
 <p>应用中一般将物体嵌入到一个低维空间 $R^{embedding-size} (embedding-size &lt;&lt; feature-num)$ ，只需要再compose 上一个从 $R^{feature-num}$ 到 $R^{embedding-size}$ 的线性映射就好了。每一个shape为 $feature-num \times embedding-size$ 的矩阵M(embedding矩阵) 都定义了 $R^{feature-num}$ 到 $R^{embedding-size}$ 的一个线性映射: $x \mapsto Mx$ 。当 $x$ 是一个标准基向量的时候，$Mx$对应矩阵 $M$ 中的一列，这就是对应 $id$ 的向量表示。</p>
 <p><img src="https://githubio-1252401222.cos.ap-beijing.myqcloud.com/embedding%E8%BF%9E%E6%8E%A5%E5%B1%82.jpg" alt="连接层"></p>
-<p>从id(索引)找到对应的 One-hot encoding ，然后红色的weight就直接对应了输出节点的值(注意这里没有 activation function)，也就是对应的embedding向量。</p>
+<p>从id(索引)找到对应的 One-hot encoding ，然后红色的weight就直接对应了输出节点的值(注意这里没有 activation function)，也就是对应的embedding向量（每个稀疏特征用一个embedding向量表示）。</p>
 <h1 id="tensorflow-API"><a href="#tensorflow-API" class="headerlink" title="tensorflow API"></a>tensorflow API</h1><h2 id="基础：-tf-SparseTensor"><a href="#基础：-tf-SparseTensor" class="headerlink" title="基础： tf.SparseTensor"></a>基础： tf.SparseTensor</h2><p>构造稀疏向量矩阵，每一行为一个样本</p>
 <p>SparseTensor(indices, values, dense_shape)</p>
 <p>params:</p>

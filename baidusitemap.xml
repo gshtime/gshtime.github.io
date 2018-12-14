@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>https://gshtime.github.com/2018/08/23/recommender-algorithm-fm-alg/</loc>
+    <lastmod>2018-12-13T13:20:15.042Z</lastmod>
+    <data>
+        <display>
+        <title>【推荐系统算法系列一】FM及其衍生算法</title>
+        <pubTime>2018-08-23T03:35:30.000Z</pubTime>
+        
+        <tag>推荐系统</tag>
+         
+         
+           
+             
+              <breadCrumb title="推荐系统" url="https://gshtime.github.com/categories/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://gshtime.github.com/2018/06/01/tensorflow-embedding-lookup-sparse/</loc>
-    <lastmod>2018-12-13T13:07:00.771Z</lastmod>
+    <lastmod>2018-12-13T13:13:51.371Z</lastmod>
     <data>
         <display>
         <title>机器学习中的embedding原理及tf.nn.embedding_lookup_sparse等API的理解</title>
@@ -92,26 +112,6 @@
         
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://gshtime.github.com/2018/08/23/recommender-algorithm-fm-alg/</loc>
-    <lastmod>2018-12-03T06:45:09.550Z</lastmod>
-    <data>
-        <display>
-        <title>【推荐系统算法系列一】FM及其衍生算法</title>
-        <pubTime>2018-08-23T03:35:30.000Z</pubTime>
-        
-        <tag>推荐系统</tag>
-         
-         
-           
-             
-              <breadCrumb title="推荐系统" url="https://gshtime.github.com/categories/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/"/>
-          
         </display>
     </data>
     </url>
